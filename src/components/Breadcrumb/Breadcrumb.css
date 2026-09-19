@@ -1,0 +1,7 @@
+.eb-crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin: 0; padding: 0; list-style: none; font-size: var(--text-sm); }
+.eb-crumbs__item { display: inline-flex; align-items: center; gap: var(--space-2); }
+.eb-crumbs__link { color: var(--color-text-secondary); text-decoration: none; border-radius: 2px; outline: none; }
+.eb-crumbs__link[data-hovered] { color: var(--color-text-primary); text-decoration: underline; text-underline-offset: 3px; }
+.eb-crumbs__link[data-focus-visible] { box-shadow: var(--focus-ring); }
+.eb-crumbs__link[data-current] { color: var(--color-text-primary); font-weight: var(--weight-medium); cursor: default; }
+.eb-crumbs__sep { color: var(--color-text-disabled); }

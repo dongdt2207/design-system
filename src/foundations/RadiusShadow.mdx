@@ -1,0 +1,13 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { RadiusScale, ShadowScale } from './TokenBlocks';
+
+<Meta title="Foundations/Radius & Shadow" />
+
+# Radius & Shadow
+## Radius
+`sm` 6 checkbox, tag · `md` 8 nút, ô nhập · `lg` 12 card, modal, dropdown · `xl` 16 card lớn (hiếm) · `full` badge, avatar.
+<RadiusScale steps={['sm', 'md', 'lg', 'xl', 'full']} />
+
+## Shadow — hệ này không có bóng
+Depth bằng hairline: `--shadow-sm/md/lg` là viền 1px với ba độ đậm, không phải bóng đổ. Card nổi lên nhờ trắng-trên-kem.
+<ShadowScale steps={['sm', 'md', 'lg']} />

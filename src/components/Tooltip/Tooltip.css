@@ -1,0 +1,6 @@
+.eb-tooltip { background: var(--color-bg-ink); color: var(--color-text-on-ink); font-size: var(--text-xs); line-height: 1.4; padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); max-width: 240px; animation: eb-fade-in var(--duration-fast) var(--ease-standard); }
+.eb-tooltip__arrow svg { display: block; fill: var(--color-bg-ink); }
+.eb-tooltip[data-placement="bottom"] .eb-tooltip__arrow svg { transform: rotate(180deg); }
+.eb-tooltip[data-placement="left"] .eb-tooltip__arrow svg { transform: rotate(-90deg); }
+.eb-tooltip[data-placement="right"] .eb-tooltip__arrow svg { transform: rotate(90deg); }
+@keyframes eb-fade-in { from { opacity: 0; } }

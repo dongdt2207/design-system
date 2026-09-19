@@ -1,0 +1,10 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { EmptyState } from './EmptyState';
+import { Button } from '../Button/Button';
+const Icon = () => <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="20" cy="18" r="7" /><path d="M8 40c0-7 5-11 12-11s12 4 12 11M32 16h10M37 11v10" /></svg>;
+const meta: Meta<typeof EmptyState> = { title: 'Components/EmptyState', component: EmptyState, tags: ['autodocs'], argTypes: { icon: { control: false }, action: { control: false }, size: { control: 'radio', options: ['default', 'compact'] } }, decorators: [(S) => <div style={{ width: 480, border: '1px dashed var(--color-border-default)', borderRadius: 12 }}><S /></div>] };
+export default meta;
+type Story = StoryObj<typeof EmptyState>;
+export const FirstTime: Story = { args: { title: 'Chưa có thành viên nào', description: 'Mời đồng nghiệp để bắt đầu làm việc chung.', icon: <Icon />, action: <Button>Mời thành viên</Button> } };
+export const NoResults: Story = { args: { title: 'Không tìm thấy "hà minh"', description: 'Thử tên ngắn hơn hoặc bỏ bộ lọc.', action: <Button variant="secondary">Bỏ bộ lọc</Button> } };
+export const LoadError: Story = { args: { title: 'Không tải được danh sách', description: 'Kiểm tra kết nối rồi thử lại.', action: <Button variant="secondary">Thử lại</Button>, size: 'compact' } };

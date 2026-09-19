@@ -1,0 +1,7 @@
+.eb-badge { display: inline-flex; align-items: center; gap: var(--space-1); height: 22px; padding: 0 var(--space-2); border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: var(--weight-medium); line-height: 1; white-space: nowrap; }
+.eb-badge__dot { width: 6px; height: 6px; border-radius: var(--radius-full); background: currentColor; }
+.eb-badge--neutral { background: var(--color-bg-muted); color: var(--color-text-secondary); }
+.eb-badge--brand   { background: var(--color-bg-brand-subtle); color: var(--color-text-brand); }
+.eb-badge--success { background: var(--color-bg-success-subtle); color: var(--color-text-success); }
+.eb-badge--warning { background: var(--color-bg-warning-subtle); color: var(--color-text-warning); }
+.eb-badge--danger  { background: var(--color-bg-danger-subtle); color: var(--color-text-danger); }

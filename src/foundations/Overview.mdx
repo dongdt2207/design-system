@@ -1,0 +1,24 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Overview" />
+
+# Ebig Design System
+
+Nguồn sự thật cho giao diện các sản phẩm Ebig. Mọi thứ ở đây là **code thật đang chạy**.
+
+Phong cách: **editorial calm** — nền kem, mực ấm, một màu accent dùng dè sẻn, tiêu đề lớn weight 400, depth bằng hairline không bóng, bo góc 8/12. Tham chiếu trong `docs/style-reference.md`.
+
+## Cách dùng
+
+**Designer**
+- Trước khi vẽ màn hình mới, xem *Components* và *Sections*.
+- Figma Variables trùng tên với token ở *Foundations*. Không nhập màu hoặc số tay.
+- Property của component Figma trùng tên với props.
+- Duyệt kết quả tại đây; tab **Design** hiện frame Figma cạnh story.
+
+**Developer**
+- Component chỉ dùng token semantic (`--color-bg-brand`), không dùng primitive (`--brand-500`), không viết hex.
+- Mỗi component: `Name.tsx` + `Name.css` + `Name.stories.tsx`.
+- Mỗi trạng thái nhìn thấy được một story. Tab **Accessibility** sạch lỗi trước khi merge.
+
+Chuyển theme bằng nút trên thanh công cụ.

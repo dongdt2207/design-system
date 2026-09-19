@@ -1,0 +1,11 @@
+@import '../Input/Input.css';
+.eb-slider { display: flex; flex-direction: column; gap: var(--space-2); width: 100%; }
+.eb-slider__head { display: flex; justify-content: space-between; }
+.eb-slider__out { font-size: var(--text-sm); color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
+.eb-slider__track { position: relative; height: 20px; width: 100%; }
+.eb-slider__track::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 4px; transform: translateY(-50%); background: var(--color-bg-muted); border-radius: var(--radius-full); }
+.eb-slider__fill { position: absolute; top: 50%; left: 0; height: 4px; transform: translateY(-50%); background: var(--color-bg-ink); border-radius: var(--radius-full); }
+.eb-slider__thumb { position: absolute; top: 50%; width: 18px; height: 18px; border-radius: var(--radius-full); background: var(--color-bg-surface); border: 1.5px solid var(--color-bg-ink); transform: translate(-50%, -50%); cursor: grab; }
+.eb-slider__thumb[data-dragging] { cursor: grabbing; background: var(--color-bg-ink); }
+.eb-slider__thumb[data-focus-visible] { box-shadow: var(--focus-ring); outline: none; }
+.eb-slider[data-disabled] { opacity: 0.5; } .eb-slider[data-disabled] .eb-slider__thumb { cursor: not-allowed; }

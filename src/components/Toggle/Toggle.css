@@ -1,0 +1,14 @@
+.eb-toggle { display: inline-flex; align-items: center; gap: var(--space-3); cursor: pointer; }
+.eb-toggle__input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.eb-toggle__track { position: relative; flex-shrink: 0; border-radius: var(--radius-full); background: var(--color-bg-muted); transition: background-color var(--duration-normal) var(--ease-standard); }
+.eb-toggle__thumb { position: absolute; top: 2px; left: 2px; border-radius: var(--radius-full); background: var(--white); box-shadow: var(--shadow-sm); transition: transform var(--duration-normal) var(--ease-standard); }
+.eb-toggle--md .eb-toggle__track { width: 40px; height: 24px; } .eb-toggle--md .eb-toggle__thumb { width: 20px; height: 20px; }
+.eb-toggle--sm .eb-toggle__track { width: 32px; height: 18px; } .eb-toggle--sm .eb-toggle__thumb { width: 14px; height: 14px; }
+.eb-toggle__input:checked + .eb-toggle__track { background: var(--color-bg-brand); }
+.eb-toggle--md .eb-toggle__input:checked + .eb-toggle__track .eb-toggle__thumb { transform: translateX(16px); }
+.eb-toggle--sm .eb-toggle__input:checked + .eb-toggle__track .eb-toggle__thumb { transform: translateX(14px); }
+.eb-toggle__input:focus-visible + .eb-toggle__track { box-shadow: var(--focus-ring); }
+.eb-toggle__input:disabled + .eb-toggle__track { opacity: 0.5; }
+.eb-toggle:has(.eb-toggle__input:disabled) { cursor: not-allowed; }
+.eb-toggle:has(.eb-toggle__input:disabled) .eb-toggle__label { color: var(--color-text-disabled); }
+.eb-toggle__label { font-size: var(--text-sm); }

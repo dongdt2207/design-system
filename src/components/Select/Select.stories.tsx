@@ -1,0 +1,11 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Select } from './Select';
+const roles = [{ value: 'admin', label: 'Quản trị viên' }, { value: 'editor', label: 'Biên tập' }, { value: 'viewer', label: 'Chỉ xem' }, { value: 'guest', label: 'Khách (hết hạn)', disabled: true }];
+const meta: Meta<typeof Select> = { title: 'Components/Select', component: Select, tags: ['autodocs'], args: { label: 'Vai trò', options: roles, size: 'md' }, argTypes: { size: { control: 'radio', options: ['sm', 'md', 'lg'] }, options: { control: false } }, decorators: [(S) => <div style={{ width: 320 }}><S /></div>] };
+export default meta;
+type Story = StoryObj<typeof Select>;
+export const Default: Story = {};
+export const Selected: Story = { args: { defaultValue: 'editor' } };
+export const WithHint: Story = { args: { hint: 'Có thể đổi sau trong cài đặt thành viên.' } };
+export const Error: Story = { args: { error: 'Chọn một vai trò để tiếp tục.' } };
+export const Disabled: Story = { args: { disabled: true, defaultValue: 'viewer' } };

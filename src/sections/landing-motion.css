@@ -1,0 +1,49 @@
+/* Landing motion — opt-in via .lp-motion on the landing wrapper.
+   Off-spec against DESIGN-RULES 9.8 ("Motion: none"), kept in its own file so
+   it can be dropped without touching sections.css. Values are token-derived:
+   reveal distance --space-4, easing --ease-standard, timing from --duration-*.
+   The reveal state is set by useScrollReveal(), so without JS nothing hides. */
+
+@keyframes lp-rise { from { opacity: 0; transform: translateY(var(--space-3)); } }
+@keyframes lp-fade { from { opacity: 0; } }
+
+@media (prefers-reduced-motion: no-preference) {
+  .lp-motion a { transition: color var(--duration-fast) var(--ease-standard); }
+
+  /* Above the fold: plays once on load, hero blocks staggered left to right. */
+  .lp-motion .lp-nav,
+  .lp-motion .lp-hero__head { animation: lp-fade var(--duration-normal) var(--ease-standard) both; }
+  .lp-motion .lp-hero__block { animation: lp-rise var(--duration-normal) var(--ease-standard) both; }
+  .lp-motion .lp-hero__block:nth-child(2) { animation-delay: calc(var(--duration-fast) * 0.5); }
+  .lp-motion .lp-hero__block:nth-child(3) { animation-delay: var(--duration-fast); }
+  .lp-motion .lp-hero__block:nth-child(4) { animation-delay: calc(var(--duration-fast) * 1.5); }
+  .lp-motion .lp-hero__block:nth-child(5) { animation-delay: calc(var(--duration-fast) * 2); }
+  .lp-motion .lp-hero__block:nth-child(6) { animation-delay: calc(var(--duration-fast) * 2.5); }
+
+  /* Below the fold: revealed on scroll, staggered by position in the row. */
+  .lp-motion [data-reveal] {
+    opacity: 0;
+    transform: translateY(var(--space-4));
+    transition:
+      opacity calc(var(--duration-normal) * 2) var(--ease-standard),
+      transform calc(var(--duration-normal) * 2) var(--ease-standard);
+    transition-delay: calc(var(--duration-fast) * var(--reveal-i, 0) * 0.6);
+    will-change: opacity, transform;
+  }
+  .lp-motion [data-reveal='in'] { opacity: 1; transform: none; }
+
+  /* Images settle out of a slight scale instead of sliding. */
+  .lp-motion .lp-feature__visual[data-reveal] { transform: none; }
+  .lp-motion .lp-feature__visual[data-reveal] img {
+    transform: scale(1.04);
+    transition: transform calc(var(--duration-normal) * 4) var(--ease-standard);
+  }
+  .lp-motion .lp-feature__visual[data-reveal='in'] img { transform: none; }
+
+  /* Comparison rows come in one after another. */
+  .lp-motion .lp-compare tbody tr[data-reveal] { transform: translateY(var(--space-2)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-motion [data-reveal] { opacity: 1; transform: none; transition: none; }
+}

@@ -1,0 +1,175 @@
+/* ============================================================
+   EBIG DESIGN TOKENS
+   Nguồn sự thật về màu, chữ, khoảng cách. Figma Variables trùng tên với đây.
+   Phong cách: editorial calm — nền kem, mực ấm, một accent, display 400, không bóng.
+   Tham chiếu: docs/style-reference.md
+
+   2 tầng:
+   1. Primitive — giá trị thô. Không dùng trực tiếp trong component.
+   2. Semantic  — ý nghĩa. Component CHỈ dùng tầng này.
+   ============================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
+
+:root {
+  /* ---------- PRIMITIVE: COLOR ---------- */
+  --white: #ffffff;
+  /* neutral ấm */
+  --gray-50:  #fafaf7;
+  --gray-100: #f7f7f4;
+  --gray-200: #efeee8;
+  --gray-300: #e6e5e0;
+  --gray-400: #cfcdc4;
+  --gray-500: #a09c92;
+  --gray-600: #807d72;
+  --gray-700: #5a5852;
+  --gray-800: #3d3b35;
+  --gray-900: #26251e;
+  --gray-950: #16150f;
+
+  /* accent — PLACEHOLDER, thay bằng màu Ebig */
+  --brand-50:  #fff1ea;
+  --brand-100: #ffdcc9;
+  --brand-200: #ffb894;
+  --brand-300: #ff8f57;
+  --brand-400: #fb6a25;
+  --brand-500: #f54e00;
+  --brand-600: #d04200;
+  --brand-700: #a83600;
+  --brand-800: #7d2900;
+  --brand-900: #521b00;
+
+  --green-100: #dcf2e8; --green-500: #1f8a65; --green-700: #16644a;
+  --amber-100: #f8ecd3; --amber-500: #c08532; --amber-700: #8a5e20;
+  --red-100:   #fbe3e9; --red-500:   #cf2d56; --red-700:   #9a1f3f;
+
+  /* ---------- PRIMITIVE: TYPE ---------- */
+  --font-sans: "Inter", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Consolas, monospace;
+
+  --text-xs: 0.8125rem;  /* 13 caption */
+  --text-sm: 0.875rem;   /* 14 */
+  --text-md: 1rem;       /* 16 body */
+  --text-lg: 1.125rem;   /* 18 title */
+  --text-xl: 1.375rem;   /* 22 */
+  --text-2xl: 1.625rem;  /* 26 */
+  --text-3xl: 2.25rem;   /* 36 */
+
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-loose: 1.7;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  /* ---------- PRIMITIVE: SPACE (4px) ---------- */
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-5: 1.25rem;
+  --space-6: 1.5rem;  --space-8: 2rem;   --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem;
+
+  /* ---------- PRIMITIVE: RADIUS ---------- */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 999px;
+
+  /* ---------- MOTION ---------- */
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  /* ---------- LANDING ---------- */
+  --display-lg: clamp(2rem, 6vw, 4.5rem);          /* 72 */
+  --display-md: clamp(1.75rem, 3.5vw, 2.25rem);    /* 36 */
+  --display-sm: clamp(1.375rem, 2.2vw, 1.625rem);  /* 26 */
+  --tracking-tight: -0.02em;
+  --lp-max: 1200px;
+  --lp-gutter: clamp(1.25rem, 4vw, 3rem);
+  --lp-section: 5rem;   /* 80 */
+  --lp-block: 3rem;     /* 48 */
+
+  /* ============================================================
+     SEMANTIC — LIGHT
+     ============================================================ */
+  --color-bg-page: var(--gray-100);          /* canvas kem */
+  --color-bg-surface: var(--white);          /* card */
+  --color-bg-surface-raised: var(--white);
+  --color-bg-subtle: var(--gray-50);         /* pane, hàng hover */
+  --color-bg-muted: var(--gray-300);         /* badge, disabled */
+  --color-bg-brand: var(--brand-500);
+  --color-bg-brand-hover: var(--brand-600);
+  --color-bg-brand-active: var(--brand-600);
+  --color-bg-brand-subtle: var(--brand-50);
+  --color-bg-danger: var(--red-500);
+  --color-bg-danger-hover: var(--red-700);
+  --color-bg-danger-subtle: var(--red-100);
+  --color-bg-success-subtle: var(--green-100);
+  --color-bg-warning-subtle: var(--amber-100);
+  --color-bg-ink: var(--gray-900);           /* nút ink, khối đảo mực */
+
+  --color-text-primary: var(--gray-900);     /* ink */
+  --color-text-secondary: var(--gray-700);   /* body */
+  --color-text-muted: var(--gray-600);
+  --color-text-disabled: var(--gray-500);
+  --color-text-on-brand: var(--white);
+  --color-text-on-danger: var(--white);
+  --color-text-on-ink: var(--gray-100);
+  --color-text-brand: var(--brand-600);
+  --color-text-danger: var(--red-700);
+  --color-text-success: var(--green-700);
+  --color-text-warning: var(--amber-700);
+
+  --color-border-soft: var(--gray-200);      /* hairline-soft */
+  --color-border-default: var(--gray-300);   /* hairline */
+  --color-border-strong: var(--gray-400);    /* hairline-strong */
+  --color-border-brand: var(--brand-500);
+  --color-border-danger: var(--red-500);
+  --color-border-focus: var(--gray-900);     /* focus bằng mực */
+
+  /* depth bằng hairline, không bóng */
+  --shadow-sm: 0 0 0 1px var(--color-border-soft);
+  --shadow-md: 0 0 0 1px var(--color-border-default);
+  --shadow-lg: 0 0 0 1px var(--color-border-strong);
+  --focus-ring: 0 0 0 2px var(--color-bg-page), 0 0 0 4px color-mix(in srgb, var(--color-border-focus) 35%, transparent);
+
+  --color-bg-canvas: var(--gray-100);
+  --color-bg-canvas-deep: var(--gray-900);
+  --color-text-on-deep: var(--gray-100);
+  --color-text-on-deep-muted: var(--gray-500);
+}
+
+:root[data-theme="dark"] {
+  --color-bg-page: var(--gray-950);
+  --color-bg-surface: var(--gray-900);
+  --color-bg-surface-raised: var(--gray-800);
+  --color-bg-subtle: var(--gray-800);
+  --color-bg-muted: var(--gray-700);
+  --color-bg-brand: var(--brand-400);
+  --color-bg-brand-hover: var(--brand-300);
+  --color-bg-brand-active: var(--brand-300);
+  --color-bg-brand-subtle: var(--brand-900);
+  --color-bg-danger-subtle: #3a1a24;
+  --color-bg-success-subtle: #12301f;
+  --color-bg-warning-subtle: #342707;
+  --color-bg-ink: var(--gray-100);
+
+  --color-text-primary: var(--gray-100);
+  --color-text-secondary: var(--gray-300);
+  --color-text-muted: var(--gray-500);
+  --color-text-disabled: var(--gray-600);
+  --color-text-on-brand: var(--gray-950);
+  --color-text-on-ink: var(--gray-950);
+  --color-text-brand: var(--brand-300);
+  --color-text-danger: #f08aa2;
+  --color-text-success: #6fd3a8;
+  --color-text-warning: #e8b35e;
+
+  --color-border-soft: var(--gray-800);
+  --color-border-default: var(--gray-700);
+  --color-border-strong: var(--gray-600);
+  --color-border-brand: var(--brand-400);
+  --color-border-focus: var(--gray-100);
+
+  --color-bg-canvas: var(--gray-950);
+  --color-bg-canvas-deep: var(--gray-900);
+}

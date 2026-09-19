@@ -1,0 +1,16 @@
+@import '../Input/Input.css';
+.eb-radio-group { display: flex; flex-direction: column; gap: var(--space-2); }
+.eb-radio-group__items { display: flex; gap: var(--space-3); }
+.eb-radio-group__items--vertical { flex-direction: column; }
+.eb-radio-group__items--horizontal { flex-direction: row; flex-wrap: wrap; gap: var(--space-5); }
+.eb-radio { display: inline-flex; align-items: flex-start; gap: var(--space-2); cursor: pointer; }
+.eb-radio__dot { flex-shrink: 0; width: 18px; height: 18px; margin-top: 2px; border-radius: var(--radius-full); border: 1.5px solid var(--color-border-strong); background: var(--color-bg-surface); position: relative; transition: border-color var(--duration-fast) var(--ease-standard); }
+.eb-radio__dot::after { content: ''; position: absolute; inset: 4px; border-radius: var(--radius-full); background: var(--color-bg-brand); transform: scale(0); transition: transform var(--duration-fast) var(--ease-standard); }
+.eb-radio[data-selected] .eb-radio__dot { border-color: var(--color-bg-brand); }
+.eb-radio[data-selected] .eb-radio__dot::after { transform: scale(1); }
+.eb-radio[data-focus-visible] .eb-radio__dot { box-shadow: var(--focus-ring); }
+.eb-radio[data-disabled] { cursor: not-allowed; color: var(--color-text-disabled); }
+.eb-radio[data-disabled] .eb-radio__dot { background: var(--color-bg-subtle); border-color: var(--color-border-default); }
+.eb-radio-group[data-invalid] .eb-radio__dot { border-color: var(--color-border-danger); }
+.eb-radio__text { display: flex; flex-direction: column; gap: 2px; font-size: var(--text-sm); line-height: 1.4; }
+.eb-radio__desc { font-size: var(--text-xs); color: var(--color-text-muted); }

@@ -1,0 +1,10 @@
+@import '../Input/Input.css';
+.eb-combo__control { padding-right: var(--space-1); }
+.eb-combo__btn { display: inline-flex; width: 28px; height: 28px; align-items: center; justify-content: center; border: 0; background: transparent; border-radius: var(--radius-sm); color: var(--color-text-muted); cursor: pointer; }
+.eb-combo__btn svg { width: 16px; height: 16px; }
+.eb-combo__btn[data-hovered] { background: var(--color-bg-subtle); color: var(--color-text-primary); }
+.eb-combo__btn[data-focus-visible] { box-shadow: var(--focus-ring); outline: none; }
+.eb-combo__item { justify-content: flex-start; flex-direction: column; align-items: flex-start; gap: 0; padding-top: var(--space-2); padding-bottom: var(--space-2); }
+.eb-combo__desc { font-size: var(--text-xs); color: var(--color-text-muted); }
+.eb-list__item[data-selected] .eb-combo__desc { color: inherit; opacity: 0.8; }
+.eb-combo__empty { padding: var(--space-3); font-size: var(--text-sm); color: var(--color-text-muted); }

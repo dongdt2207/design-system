@@ -1,0 +1,10 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { ComboBox } from './ComboBox';
+const people = ['Nguyễn Văn An', 'Trần Thị Bình', 'Lê Hoàng Cường', 'Phạm Minh Dũng', 'Hoàng Thu Hà', 'Vũ Đức Hải', 'Đặng Ngọc Lan', 'Bùi Quang Minh', 'Đỗ Thị Nga', 'Ngô Văn Phúc', 'Lý Thanh Quân', 'Trịnh Mai Trang'].map((n, i) => ({ id: String(i), label: n, description: ['Kỹ thuật', 'Kinh doanh', 'Vận hành'][i % 3] }));
+const meta: Meta<typeof ComboBox> = { title: 'Components/ComboBox', component: ComboBox, tags: ['autodocs'], args: { label: 'Giao cho', options: people, placeholder: 'Gõ tên…' }, argTypes: { options: { control: false }, size: { control: 'radio', options: ['sm', 'md', 'lg'] } }, decorators: [(S) => <div style={{ width: 320 }}><S /></div>] };
+export default meta;
+type Story = StoryObj<typeof ComboBox>;
+export const Default: Story = {};
+export const Selected: Story = { args: { defaultSelected: '4' } };
+export const Error: Story = { args: { error: 'Chọn một người trong danh sách.' } };
+export const Disabled: Story = { args: { disabled: true, defaultSelected: '1' } };

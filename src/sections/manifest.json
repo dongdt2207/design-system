@@ -1,0 +1,149 @@
+{
+  "$comment": "Registry section landing. Agent đọc file này để biết được dùng gì, không đọc mò trong code. Thứ tự trong 'order' là thứ tự hợp lệ trên trang.",
+  "style": "landing-minimal",
+  "rules": "DESIGN-RULES.md#9.8",
+  "order": [
+    "nav",
+    "hero",
+    "manifesto",
+    "split",
+    "timeline",
+    "feature",
+    "comparison",
+    "pricing",
+    "testimonial",
+    "team",
+    "cta",
+    "footer"
+  ],
+  "optional": [
+    "manifesto",
+    "split",
+    "comparison",
+    "pricing",
+    "testimonial",
+    "timeline",
+    "team"
+  ],
+  "repeatable": {
+    "feature": {
+      "min": 1,
+      "max": 3
+    },
+    "testimonial": {
+      "min": 0,
+      "max": 2
+    }
+  },
+  "visuals": {
+    "terminal": "Khối dòng lệnh. lines[]: { text, tone?: 'dim'|'ok' }. Dùng để chứng minh tính năng kỹ thuật bằng output thật.",
+    "stats": "Lưới 4 số liệu. items[]: { value, label }. Dùng khi có con số cụ thể.",
+    "image": "Ảnh tràn khung, không bo góc. { src, alt }. Dùng khi có ảnh chụp sản phẩm thật."
+  },
+  "sections": {
+    "nav": {
+      "use": "Luôn có, đứng đầu.",
+      "props": {
+        "logo": "string",
+        "links": "{label,href}[] (3–5)",
+        "cta": "{label,href}",
+        "navLabel": "string? (aria-label của <nav>, mặc định 'Chính')"
+      }
+    },
+    "hero": {
+      "use": "Luôn có, ngay sau nav. Lời hứa của sản phẩm.",
+      "props": {
+        "eyebrow": "string? (viết thường)",
+        "title": "string (≤ 4 từ)",
+        "blocks": "{value,label,height?:'tall'|'mid'|'low',deep?:boolean}[] (4–6, đúng một deep)"
+      }
+    },
+    "manifesto": {
+      "use": "Một câu tuyên ngôn. Bỏ khi trang ngắn.",
+      "props": {
+        "text": "string (12–25 từ)",
+        "asideLeft": "string?",
+        "asideRight": "string?"
+      }
+    },
+    "split": {
+      "use": "Giải thích cách hoạt động. Bỏ khi trang ngắn.",
+      "props": {
+        "eyebrow": "string",
+        "text": "string (≤ 60 từ)",
+        "visual": "VisualSpec"
+      }
+    },
+    "feature": {
+      "use": "Mỗi tính năng chính một khối tối. Lặp 1–3 lần, đảo visualSide luân phiên.",
+      "props": {
+        "index": "string ('01','02','03')",
+        "title": "string (≤ 6 từ)",
+        "description": "string (≤ 40 từ)",
+        "visual": "VisualSpec",
+        "visualSide": "'right'|'left'"
+      }
+    },
+    "testimonial": {
+      "use": "Bằng chứng xã hội. single: một quote lớn. pair: hai quote nhỏ. Có thể dùng cả hai, single trước.",
+      "props": {
+        "variant": "'single'|'pair'",
+        "quotes": "{quote,author,role}[] (1 cho single, 2 cho pair)"
+      }
+    },
+    "cta": {
+      "use": "Luôn có, trước footer. Động từ + kết quả trong khung thời gian.",
+      "props": {
+        "title": "string",
+        "primary": "{label,href}",
+        "secondary": "{label,href}?",
+        "note": "string? (xoá rào cản)"
+      }
+    },
+    "footer": {
+      "use": "Luôn có, cuối trang.",
+      "props": {
+        "brand": "string",
+        "tagline": "string",
+        "columns": "{title,links:{label,href}[]}[] (2–3)",
+        "meta": "string?",
+        "place": "string? (địa danh góc phải dòng meta, mặc định 'Hà Nội')"
+      }
+    },
+    "comparison": {
+      "use": "So sánh trung thực với cách cũ. Bỏ khi không có gì để so.",
+      "props": {
+        "eyebrow": "string?",
+        "title": "string",
+        "columns": "[tiêu chí, tên ta, tên họ]",
+        "rows": "[string,string,string][] (3–7 hàng, không ✓/✗)"
+      }
+    },
+    "pricing": {
+      "use": "Bảng giá 2–4 tier, đúng một featured (đảo mực).",
+      "props": {
+        "eyebrow": "string?",
+        "title": "string",
+        "tiers": "{name,description,price,period?,features[],cta:{label,href},featured?}[]"
+      }
+    },
+    "timeline": {
+      "use": "Mốc theo thứ tự thời gian: lịch dự án theo tuần, hoặc chặng đường công ty. Bỏ khi trang ngắn.",
+      "props": {
+        "eyebrow": "string?",
+        "title": "string",
+        "items": "{marker,label,text}[] (3–6). marker là mốc thời gian thật (tuần/tháng/năm), label ≤ 6 từ, text ≤ 30 từ."
+      }
+    },
+    "team": {
+      "use": "Ảnh người làm việc thật + một cam kết kiểm chứng được. Đặt sau testimonial, trước CTA. Bỏ khi chưa có ảnh thật.",
+      "props": {
+        "image": "{src,alt}",
+        "title": "string (≤ 6 từ)",
+        "text": "string (≤ 40 từ)",
+        "link": "{label,href}?"
+      }
+    }
+  },
+  "placeholders": "Thiếu số liệu thật, tên thật, quote thật → ghi '[cần số thật]' / '[cần tên thật]' vào đúng chỗ. Không bịa."
+}

@@ -1,0 +1,8 @@
+.eb-popover--dialog { min-width: 240px; max-width: 360px; overflow: visible; }
+.eb-popover__dialog { padding: var(--space-4); outline: none; font-size: var(--text-sm); }
+.eb-popover__title { margin: 0 0 var(--space-3); font-size: var(--text-sm); font-weight: var(--weight-semibold); }
+.eb-popover__arrow svg { display: block; fill: var(--color-bg-surface-raised); stroke: var(--color-border-default); stroke-width: 1; }
+.eb-popover--dialog[data-placement^="bottom"] .eb-popover__arrow svg { transform: translateY(-1px); }
+.eb-popover--dialog[data-placement^="top"] .eb-popover__arrow svg { transform: rotate(180deg) translateY(-1px); }
+.eb-popover--dialog[data-placement^="left"] .eb-popover__arrow svg { transform: rotate(-90deg); }
+.eb-popover--dialog[data-placement^="right"] .eb-popover__arrow svg { transform: rotate(90deg); }

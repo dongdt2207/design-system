@@ -1,0 +1,415 @@
+{
+  "title": "Ebig CDN — Nhanh ở mọi nơi",
+  "sections": [
+    {
+      "type": "nav",
+      "props": {
+        "logo": "ebig cdn",
+        "links": [
+          {
+            "label": "Tính năng",
+            "href": "#features"
+          },
+          {
+            "label": "Giá",
+            "href": "#pricing"
+          },
+          {
+            "label": "Tài liệu",
+            "href": "#docs"
+          },
+          {
+            "label": "Trạng thái",
+            "href": "#status"
+          }
+        ],
+        "cta": {
+          "label": "Bắt đầu",
+          "href": "#start"
+        }
+      }
+    },
+    {
+      "type": "hero",
+      "props": {
+        "eyebrow": "Ebig CDN — phân phối nội dung trên mạng biên Cloudflare",
+        "title": "Nhanh ở mọi nơi",
+        "blocks": [
+          {
+            "value": "12 ms",
+            "label": "độ trễ trung vị, Việt Nam",
+            "height": "mid"
+          },
+          {
+            "value": "300+",
+            "label": "điểm biên toàn cầu",
+            "height": "low"
+          },
+          {
+            "value": "99.99%",
+            "label": "cam kết khả dụng",
+            "height": "tall",
+            "deep": true
+          },
+          {
+            "value": "JWT",
+            "label": "xác thực ngay tại biên",
+            "height": "mid"
+          },
+          {
+            "value": "Brotli",
+            "label": "nén sẵn cho mọi asset",
+            "height": "low"
+          }
+        ]
+      }
+    },
+    {
+      "type": "manifesto",
+      "props": {
+        "text": "Chúng tôi xây CDN để tệp đến tay người dùng nhanh nhất có thể, với ít cấu hình nhất có thể.",
+        "asideLeft": "2024",
+        "asideRight": "R2 + Workers"
+      }
+    },
+    {
+      "type": "split",
+      "props": {
+        "eyebrow": "Cách hoạt động",
+        "text": "Bạn đẩy tệp lên một bucket. Ebig CDN đặt tệp đó tại 300+ điểm biên, nén sẵn, kiểm tra quyền truy cập bằng JWT ngay tại biên, và trả về với header cache đúng chuẩn. Không có origin server để bảo trì, không có invalidation để chờ.",
+        "visual": {
+          "type": "stats",
+          "items": [
+            {
+              "value": "1",
+              "label": "lệnh để triển khai"
+            },
+            {
+              "value": "0",
+              "label": "origin server phải quản lý"
+            },
+            {
+              "value": "< 50 ms",
+              "label": "purge lan toàn cầu"
+            },
+            {
+              "value": "∞",
+              "label": "băng thông egress, không phí"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "feature",
+      "props": {
+        "index": "01",
+        "title": "Phục vụ từ điểm biên gần nhất",
+        "description": "Tệp nằm trên R2 và được cache tại mọi điểm biên Cloudflare. Người dùng ở Hà Nội, Tokyo hay Frankfurt đều lấy từ trạm cách họ vài chục km.",
+        "visualSide": "right",
+        "visual": {
+          "type": "terminal",
+          "lines": [
+            {
+              "text": "$ curl -sI https://cdn.ebig.co/app/main.js",
+              "tone": "dim"
+            },
+            {
+              "text": "HTTP/2 200"
+            },
+            {
+              "text": "cf-cache-status: HIT",
+              "tone": "ok"
+            },
+            {
+              "text": "cf-ray: 8c3f2a1b-HAN"
+            },
+            {
+              "text": "content-encoding: br"
+            },
+            {
+              "text": "x-response-time: 11ms",
+              "tone": "ok"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "feature",
+      "props": {
+        "index": "02",
+        "title": "Quyền truy cập kiểm tra tại biên",
+        "description": "Ký JWT ở phía bạn, Ebig CDN xác minh ngay tại điểm biên trước khi trả tệp. Tệp riêng tư không bao giờ rời trạm biên nếu chữ ký sai hoặc hết hạn.",
+        "visualSide": "left",
+        "visual": {
+          "type": "terminal",
+          "lines": [
+            {
+              "text": "$ curl -sI https://cdn.ebig.co/private/report.pdf",
+              "tone": "dim"
+            },
+            {
+              "text": "HTTP/2 401"
+            },
+            {
+              "text": "",
+              "tone": "dim"
+            },
+            {
+              "text": "$ curl -sI -H \"Authorization: Bearer $TOKEN\" \\",
+              "tone": "dim"
+            },
+            {
+              "text": "    https://cdn.ebig.co/private/report.pdf",
+              "tone": "dim"
+            },
+            {
+              "text": "HTTP/2 200",
+              "tone": "ok"
+            },
+            {
+              "text": "cache-control: private, max-age=0"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "feature",
+      "props": {
+        "index": "03",
+        "title": "Nén sẵn, không nén lúc chạy",
+        "description": "Mỗi asset được nén Brotli ở mức cao nhất lúc tải lên, không phải lúc phục vụ. Người dùng nhận tệp nhỏ hơn 20–30% so với gzip, còn điểm biên không tốn CPU.",
+        "visualSide": "right",
+        "visual": {
+          "type": "terminal",
+          "lines": [
+            {
+              "text": "$ ebig-cdn deploy ./dist",
+              "tone": "dim"
+            },
+            {
+              "text": "uploading 142 files"
+            },
+            {
+              "text": "brotli  main.js      412 KB → 98 KB",
+              "tone": "ok"
+            },
+            {
+              "text": "brotli  vendor.js    1.2 MB → 287 KB",
+              "tone": "ok"
+            },
+            {
+              "text": "brotli  style.css    88 KB → 14 KB",
+              "tone": "ok"
+            },
+            {
+              "text": "done in 3.4s · purge propagated to 312 edges"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "comparison",
+      "props": {
+        "eyebrow": "So với cách cũ",
+        "title": "Ít việc hơn để có cùng kết quả",
+        "columns": [
+          "Tiêu chí",
+          "Ebig CDN",
+          "Origin + CDN truyền thống"
+        ],
+        "rows": [
+          [
+            "Origin server phải quản lý",
+            "Không có",
+            "Một hoặc nhiều, tự vá và giám sát"
+          ],
+          [
+            "Xác thực tệp riêng tư",
+            "JWT kiểm tra tại biên",
+            "Qua origin, mỗi request tới server"
+          ],
+          [
+            "Nén",
+            "Brotli sẵn lúc tải lên",
+            "Gzip lúc phục vụ, tốn CPU biên"
+          ],
+          [
+            "Purge cache",
+            "< 50 ms toàn cầu",
+            "Vài phút, theo tag hoặc URL"
+          ],
+          [
+            "Phí băng thông ra",
+            "Không tính",
+            "Tính theo GB"
+          ]
+        ]
+      }
+    },
+    {
+      "type": "pricing",
+      "props": {
+        "eyebrow": "Giá",
+        "title": "Bắt đầu miễn phí, trả theo dung lượng",
+        "tiers": [
+          {
+            "name": "Miễn phí",
+            "description": "Dự án cá nhân, thử nghiệm.",
+            "price": "0 ₫",
+            "period": "tháng",
+            "features": [
+              "100 GB lưu trữ",
+              "Băng thông ra không giới hạn",
+              "1 domain riêng",
+              "Purge qua dashboard"
+            ],
+            "cta": {
+              "label": "Tạo tài khoản",
+              "href": "#start"
+            }
+          },
+          {
+            "name": "Team",
+            "description": "Sản phẩm đang chạy, nhiều môi trường.",
+            "price": "[cần số thật]",
+            "period": "tháng",
+            "features": [
+              "1 TB lưu trữ",
+              "JWT tại biên",
+              "5 domain riêng",
+              "Purge qua API",
+              "Log truy cập 30 ngày"
+            ],
+            "cta": {
+              "label": "Dùng thử 14 ngày",
+              "href": "#start"
+            },
+            "featured": true
+          },
+          {
+            "name": "Doanh nghiệp",
+            "description": "SLA, hỗ trợ riêng, hoá đơn VAT.",
+            "price": "Liên hệ",
+            "features": [
+              "Lưu trữ theo thoả thuận",
+              "SLA 99.99%",
+              "Hỗ trợ kỹ thuật riêng",
+              "Hoá đơn và hợp đồng"
+            ],
+            "cta": {
+              "label": "Liên hệ",
+              "href": "#contact"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "testimonial",
+      "props": {
+        "variant": "single",
+        "quotes": [
+          {
+            "quote": "Chúng tôi bỏ nginx origin và toàn bộ lớp cache tự viết. Thời gian tải trang giảm một nửa, còn đội hạ tầng bớt một việc phải trực.",
+            "author": "Trần Minh",
+            "role": "CTO, DigitalITM"
+          }
+        ]
+      }
+    },
+    {
+      "type": "testimonial",
+      "props": {
+        "variant": "pair",
+        "quotes": [
+          {
+            "quote": "Cấu hình mất mười phút. Hai tháng rồi chưa phải mở lại dashboard.",
+            "author": "Lê Hoàng Nam",
+            "role": "Lead engineer, Vinatrade"
+          },
+          {
+            "quote": "JWT tại biên là lý do chúng tôi chọn. Tệp hợp đồng của khách không đi qua server của chúng tôi nữa.",
+            "author": "Nguyễn Thu Hà",
+            "role": "Head of platform, Kova"
+          }
+        ]
+      }
+    },
+    {
+      "type": "cta",
+      "props": {
+        "title": "Triển khai tệp đầu tiên trong năm phút",
+        "primary": {
+          "label": "Tạo tài khoản miễn phí",
+          "href": "#start"
+        },
+        "secondary": {
+          "label": "Đọc tài liệu",
+          "href": "#docs"
+        },
+        "note": "Miễn phí 100 GB đầu tiên mỗi tháng. Không cần thẻ."
+      }
+    },
+    {
+      "type": "footer",
+      "props": {
+        "brand": "Ebig",
+        "tagline": "Hạ tầng cho sản phẩm số, xây trên Cloudflare.",
+        "columns": [
+          {
+            "title": "Sản phẩm",
+            "links": [
+              {
+                "label": "Ebig CDN",
+                "href": "#"
+              },
+              {
+                "label": "EBIG Meet",
+                "href": "#"
+              },
+              {
+                "label": "Social CRM",
+                "href": "#"
+              }
+            ]
+          },
+          {
+            "title": "Tài nguyên",
+            "links": [
+              {
+                "label": "Tài liệu",
+                "href": "#"
+              },
+              {
+                "label": "Trạng thái",
+                "href": "#"
+              },
+              {
+                "label": "Blog",
+                "href": "#"
+              }
+            ]
+          },
+          {
+            "title": "Công ty",
+            "links": [
+              {
+                "label": "Về Ebig",
+                "href": "#"
+              },
+              {
+                "label": "Liên hệ",
+                "href": "#"
+              }
+            ]
+          }
+        ],
+        "meta": "© 2026 Ebig"
+      }
+    }
+  ]
+}

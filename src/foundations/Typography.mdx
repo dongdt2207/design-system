@@ -1,0 +1,16 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { TypeScale } from './TokenBlocks';
+
+<Meta title="Foundations/Typography" />
+
+# Typography
+Một họ chữ (`--font-sans`, Inter), mono chỉ cho mã (`--font-mono`, JetBrains Mono). Đổi font ở `tokens.css`.
+
+## Scale
+<TypeScale sizes={['3xl', '2xl', 'xl', 'lg', 'md', 'sm', 'xs']} />
+
+## Weight
+Ba mức: regular (400) thân bài **và tiêu đề display**, medium (500) nhãn và nút, semibold (600) tiêu đề component. Không có bold — giọng tạp chí phụ thuộc vào điều này.
+
+## Display (landing)
+`--display-lg` 72 · `--display-md` 36 · `--display-sm` 26, weight 400, tracking `--tracking-tight` (-0.02em).

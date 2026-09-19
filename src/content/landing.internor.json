@@ -1,0 +1,381 @@
+{
+  "title": "Internor — Finished when we said",
+  "sections": [
+    {
+      "type": "nav",
+      "props": {
+        "logo": "internor",
+        "links": [],
+        "cta": {
+          "label": "Book a site visit",
+          "href": "#contact"
+        },
+        "navLabel": "Main"
+      }
+    },
+    {
+      "type": "hero",
+      "props": {
+        "eyebrow": "internor — interior design and build for apartments and townhouses",
+        "title": "Finished when we said",
+        "blocks": [
+          {
+            "value": "184",
+            "label": "homes delivered since 2019",
+            "height": "mid"
+          },
+          {
+            "value": "3 layouts",
+            "label": "floor plans to choose from before you sign",
+            "height": "low"
+          },
+          {
+            "value": "11 weeks",
+            "label": "median time from first visit to move-in",
+            "height": "tall",
+            "deep": true
+          },
+          {
+            "value": "12–20 weeks",
+            "label": "custom joinery lead time we schedule around",
+            "height": "mid"
+          },
+          {
+            "value": "1 contract",
+            "label": "design and build under one signature",
+            "height": "low"
+          }
+        ]
+      }
+    },
+    {
+      "type": "manifesto",
+      "props": {
+        "text": "We design interiors people move into and keep using, not rooms that photograph well and need fixing within a year.",
+        "asideLeft": "2019",
+        "asideRight": "Residential"
+      }
+    },
+    {
+      "type": "split",
+      "props": {
+        "eyebrow": "How we work",
+        "text": "One visit to measure the space and learn how you actually live in it. Three layouts to choose from. Then drawings, an itemised quote, and a schedule built around real supplier lead times — signed before anything is ordered. One team stays responsible from the first sketch to the final snag list.",
+        "visual": {
+          "type": "stats",
+          "items": [
+            {
+              "value": "1",
+              "label": "site visit before any drawing"
+            },
+            {
+              "value": "3",
+              "label": "layouts before you choose"
+            },
+            {
+              "value": "5 days",
+              "label": "from survey to drawings and quote"
+            },
+            {
+              "value": "1",
+              "label": "contract covering design and build"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "timeline",
+      "props": {
+        "eyebrow": "Schedule",
+        "title": "Eleven weeks, start to keys",
+        "items": [
+          {
+            "marker": "Week 0",
+            "label": "Survey and measure",
+            "text": "A morning in the space: every wall measured, every socket noted, and a record of how each room actually gets used."
+          },
+          {
+            "marker": "Week 1",
+            "label": "Three layouts",
+            "text": "Three floor plans and a first material palette. You pick one; it becomes the plan everything else is built from."
+          },
+          {
+            "marker": "Week 2",
+            "label": "Drawings and quote",
+            "text": "Technical drawings, finish schedule and a quote itemised per trade. Nothing is ordered until you sign it."
+          },
+          {
+            "marker": "Weeks 3–8",
+            "label": "Joinery off site",
+            "text": "Cabinets and wardrobes are built in the workshop while electrics and plumbing are re-routed in the flat."
+          },
+          {
+            "marker": "Weeks 9–11",
+            "label": "Install and snag list",
+            "text": "Everything goes in, we walk the rooms with you, and the list is closed before we hand over the keys."
+          }
+        ]
+      }
+    },
+    {
+      "type": "feature",
+      "props": {
+        "index": "01",
+        "title": "Drawings that match the site",
+        "description": "We re-measure every wall, outlet and ceiling height before drawing. The render you approve is the same plan the joiners work from, so what arrives in the room is what you signed off on.",
+        "visualSide": "right",
+        "visual": {
+          "type": "image",
+          "src": "/img/phong-khach.jpg",
+          "alt": "Living room with a long sofa, low coffee table and built-in wall shelving"
+        }
+      }
+    },
+    {
+      "type": "feature",
+      "props": {
+        "index": "02",
+        "title": "A kitchen built around cooking",
+        "description": "Counter height follows whoever cooks most. Sink, hob and fridge sit along the path you actually walk while making dinner, not the path a catalogue layout assumes.",
+        "visualSide": "left",
+        "visual": {
+          "type": "image",
+          "src": "/img/bep.jpg",
+          "alt": "Kitchen open to a dining area, with flat-front cabinetry and daylight from a large window"
+        }
+      }
+    },
+    {
+      "type": "feature",
+      "props": {
+        "index": "03",
+        "title": "Bedrooms dark enough to sleep",
+        "description": "Two-layer curtains, reading lights on their own switch, sockets at the head of the bed. Surfaces are chosen because they wipe clean — a bedroom is lived in daily, not photographed once.",
+        "visualSide": "right",
+        "visual": {
+          "type": "image",
+          "src": "/img/phong-ngu.jpg",
+          "alt": "Bedroom with an upholstered headboard, light bedding and reading lights on both sides"
+        }
+      }
+    },
+    {
+      "type": "comparison",
+      "props": {
+        "eyebrow": "Compared with the usual route",
+        "title": "One contract instead of three",
+        "columns": [
+          "What you compare",
+          "Internor",
+          "Separate designer and contractor"
+        ],
+        "rows": [
+          [
+            "Who is responsible",
+            "One team from drawings to handover",
+            "Designer and contractor point at each other"
+          ],
+          [
+            "Quote",
+            "Itemised per trade, signed before work starts",
+            "Lump sum, extras billed as they appear"
+          ],
+          [
+            "Materials",
+            "Model and supplier named in the contract",
+            "Described loosely, substituted on site"
+          ],
+          [
+            "Schedule",
+            "Dates set against real supplier lead times",
+            "Verbal promises that slip with the trades"
+          ],
+          [
+            "After handover",
+            "24-month warranty on joinery, electrics and plumbing",
+            "You find your own trades"
+          ]
+        ]
+      }
+    },
+    {
+      "type": "pricing",
+      "props": {
+        "eyebrow": "Pricing",
+        "title": "Priced per trade, not lump sum",
+        "tiers": [
+          {
+            "name": "Design only",
+            "description": "You have a contractor and need the drawings.",
+            "price": "$3,400",
+            "period": "room",
+            "features": [
+              "Measured survey on site",
+              "Three layout options",
+              "Renders room by room",
+              "Technical drawings and finish schedule"
+            ],
+            "cta": {
+              "label": "Request a quote",
+              "href": "#contact"
+            }
+          },
+          {
+            "name": "Full service",
+            "description": "Design and build on one contract.",
+            "price": "from $52,000",
+            "period": "home",
+            "features": [
+              "Everything in Design only",
+              "Joinery, electrics, plumbing and painting",
+              "Procurement tracked against lead times",
+              "Materials named in the contract",
+              "Handover date in writing",
+              "24-month warranty after sign-off"
+            ],
+            "cta": {
+              "label": "Book a site visit",
+              "href": "#contact"
+            },
+            "featured": true
+          },
+          {
+            "name": "Renovation",
+            "description": "You live there; we work room by room.",
+            "price": "Per trade",
+            "features": [
+              "Condition survey of the existing space",
+              "Rooms sequenced so you can stay",
+              "Site cleaned at the end of each day",
+              "Separate quote for each trade"
+            ],
+            "cta": {
+              "label": "Send us the space",
+              "href": "#contact"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "testimonial",
+      "props": {
+        "variant": "single",
+        "quotes": [
+          {
+            "quote": "We signed in March and slept in the finished flat eleven weeks later. Nothing on the handover list took more than a day to close out.",
+            "author": "Elin Sandoval",
+            "role": "Owner, two-bedroom flat, Harbour Row"
+          }
+        ]
+      }
+    },
+    {
+      "type": "testimonial",
+      "props": {
+        "variant": "pair",
+        "quotes": [
+          {
+            "quote": "The joinery quote never moved. Every line in the contract was the line we paid.",
+            "author": "Peter Laval",
+            "role": "Owner, townhouse renovation, Ashfield"
+          },
+          {
+            "quote": "They worked one room at a time so we could keep living here with a six-year-old.",
+            "author": "Nadia Brecht",
+            "role": "Owner, three-bedroom renovation, Linden Park"
+          }
+        ]
+      }
+    },
+    {
+      "type": "team",
+      "props": {
+        "image": {
+          "src": "/img/team.jpg",
+          "alt": "Designer at a kitchen counter comparing material and colour samples"
+        },
+        "title": "The crew is ours",
+        "text": "Joiners, electricians and painters are on our payroll, not hired per job. The site manager you meet at the survey is the one who signs off your handover list eleven weeks later.",
+        "link": {
+          "label": "Meet the studio",
+          "href": "#about"
+        }
+      }
+    },
+    {
+      "type": "cta",
+      "props": {
+        "title": "Book a site visit this week",
+        "primary": {
+          "label": "Book a site visit",
+          "href": "#contact"
+        },
+        "secondary": {
+          "label": "See delivered projects",
+          "href": "#projects"
+        },
+        "note": "The survey and the quote are free. No deposit before the contract is signed."
+      }
+    },
+    {
+      "type": "footer",
+      "props": {
+        "brand": "Internor",
+        "tagline": "Interior design and build for apartments and townhouses.",
+        "columns": [
+          {
+            "title": "Services",
+            "links": [
+              {
+                "label": "Design only",
+                "href": "#"
+              },
+              {
+                "label": "Full service",
+                "href": "#"
+              },
+              {
+                "label": "Renovation",
+                "href": "#"
+              }
+            ]
+          },
+          {
+            "title": "Reference",
+            "links": [
+              {
+                "label": "Delivered projects",
+                "href": "#"
+              },
+              {
+                "label": "Process",
+                "href": "#"
+              },
+              {
+                "label": "Materials",
+                "href": "#"
+              }
+            ]
+          },
+          {
+            "title": "Company",
+            "links": [
+              {
+                "label": "About Internor",
+                "href": "#"
+              },
+              {
+                "label": "Contact",
+                "href": "#"
+              }
+            ]
+          }
+        ],
+        "meta": "© 2026 Internor · Photos: Wikimedia Commons (CC0, CC BY 2.0)",
+        "place": "Rotterdam"
+      }
+    }
+  ]
+}
