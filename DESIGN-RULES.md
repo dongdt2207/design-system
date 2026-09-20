@@ -481,7 +481,7 @@ Footer              brand + tagline cột 1–4 · 3 cột link từ cột 7 · 
 Comparison        eyebrow + tiêu đề · bảng 3 cột (tiêu chí / ta / họ), 3–7 hàng sự thật kiểm chứng được, không ✓/✗, cột ta nền brand-subtle
 Pricing           eyebrow + tiêu đề · 2–4 tier, đúng một featured đảo mực, giá thật hoặc [cần số thật]
 ```
-Thứ tự: Nav → Hero → Manifesto → Split → Timeline → Feature×n → Comparison → Pricing → Testimonial → Team → CTA → Footer. Có thể bỏ Manifesto, Split, Timeline, Comparison, Pricing, Testimonial, Team khi trang ngắn. Không thêm section loại khác (logo strip, video) mà không định nghĩa trước theo cùng style.
+Thứ tự: Nav → Hero → Manifesto → Split → Timeline → Feature×n → Comparison → Pricing → Testimonial → Team → CTA → Footer. Có thể bỏ Manifesto, Split, Timeline, Comparison, Pricing, Testimonial, Team khi trang ngắn. CTAFinal mặc định luôn có; chỉ bỏ khi trang cố ý không có hành động nào, lúc đó footer là lối ra duy nhất. Không thêm section loại khác (logo strip, video) mà không định nghĩa trước theo cùng style.
 
 **Nội dung**
 

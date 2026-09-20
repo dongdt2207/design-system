@@ -23,7 +23,8 @@
     "pricing",
     "testimonial",
     "timeline",
-    "team"
+    "team",
+    "cta"
   ],
   "repeatable": {
     "feature": {
@@ -45,8 +46,8 @@
       "use": "Luôn có, đứng đầu.",
       "props": {
         "logo": "string",
-        "links": "{label,href}[] (3–5)",
-        "cta": "{label,href}",
+        "links": "{label,href}[] (3–5, [] khi trang không có menu)",
+        "cta": "{label,href}? (bỏ khi trang không có hành động ở đầu trang)",
         "navLabel": "string? (aria-label của <nav>, mặc định 'Chính')"
       }
     },
@@ -92,7 +93,7 @@
       }
     },
     "cta": {
-      "use": "Luôn có, trước footer. Động từ + kết quả trong khung thời gian.",
+      "use": "Mặc định luôn có, trước footer. Động từ + kết quả trong khung thời gian. Chỉ bỏ khi trang cố ý không có hành động nào — khi đó footer là lối ra duy nhất.",
       "props": {
         "title": "string",
         "primary": "{label,href}",

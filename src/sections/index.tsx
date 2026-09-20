@@ -13,13 +13,13 @@ export function renderVisual(v: VisualSpec) {
   }
 }
 
-export interface NavProps { logo: string; links: { label: string; href: string }[]; cta: { label: string; href: string }; /** aria-label của <nav>, đổi theo ngôn ngữ trang */ navLabel?: string }
+export interface NavProps { logo: string; links: { label: string; href: string }[]; cta?: { label: string; href: string }; /** aria-label của <nav>, đổi theo ngôn ngữ trang */ navLabel?: string }
 export function Nav({ logo, links, cta, navLabel = 'Chính' }: NavProps) {
   return (
     <header className="lp-nav"><nav className="lp-grid" aria-label={navLabel}>
       <a className="lp-nav__logo" href="#">{logo}</a>
       <ul className="lp-nav__links">{links.map((l) => <li key={l.label}><a href={l.href}>{l.label}</a></li>)}</ul>
-      <a className="lp-nav__cta" href={cta.href}>{cta.label}</a>
+      {cta && <a className="lp-nav__cta" href={cta.href}>{cta.label}</a>}
     </nav></header>
   );
 }

@@ -6,10 +6,6 @@
       "props": {
         "logo": "internor",
         "links": [],
-        "cta": {
-          "label": "Book a site visit",
-          "href": "#contact"
-        },
         "navLabel": "Main"
       }
     },
@@ -161,104 +157,6 @@
       }
     },
     {
-      "type": "comparison",
-      "props": {
-        "eyebrow": "Compared with the usual route",
-        "title": "One contract instead of three",
-        "columns": [
-          "What you compare",
-          "Internor",
-          "Separate designer and contractor"
-        ],
-        "rows": [
-          [
-            "Who is responsible",
-            "One team from drawings to handover",
-            "Designer and contractor point at each other"
-          ],
-          [
-            "Quote",
-            "Itemised per trade, signed before work starts",
-            "Lump sum, extras billed as they appear"
-          ],
-          [
-            "Materials",
-            "Model and supplier named in the contract",
-            "Described loosely, substituted on site"
-          ],
-          [
-            "Schedule",
-            "Dates set against real supplier lead times",
-            "Verbal promises that slip with the trades"
-          ],
-          [
-            "After handover",
-            "24-month warranty on joinery, electrics and plumbing",
-            "You find your own trades"
-          ]
-        ]
-      }
-    },
-    {
-      "type": "pricing",
-      "props": {
-        "eyebrow": "Pricing",
-        "title": "Priced per trade, not lump sum",
-        "tiers": [
-          {
-            "name": "Design only",
-            "description": "You have a contractor and need the drawings.",
-            "price": "$3,400",
-            "period": "room",
-            "features": [
-              "Measured survey on site",
-              "Three layout options",
-              "Renders room by room",
-              "Technical drawings and finish schedule"
-            ],
-            "cta": {
-              "label": "Request a quote",
-              "href": "#contact"
-            }
-          },
-          {
-            "name": "Full service",
-            "description": "Design and build on one contract.",
-            "price": "from $52,000",
-            "period": "home",
-            "features": [
-              "Everything in Design only",
-              "Joinery, electrics, plumbing and painting",
-              "Procurement tracked against lead times",
-              "Materials named in the contract",
-              "Handover date in writing",
-              "24-month warranty after sign-off"
-            ],
-            "cta": {
-              "label": "Book a site visit",
-              "href": "#contact"
-            },
-            "featured": true
-          },
-          {
-            "name": "Renovation",
-            "description": "You live there; we work room by room.",
-            "price": "Per trade",
-            "features": [
-              "Condition survey of the existing space",
-              "Rooms sequenced so you can stay",
-              "Site cleaned at the end of each day",
-              "Separate quote for each trade"
-            ],
-            "cta": {
-              "label": "Send us the space",
-              "href": "#contact"
-            }
-          }
-        ]
-      }
-    },
-    {
       "type": "testimonial",
       "props": {
         "variant": "single",
@@ -302,21 +200,6 @@
           "label": "Meet the studio",
           "href": "#about"
         }
-      }
-    },
-    {
-      "type": "cta",
-      "props": {
-        "title": "Book a site visit this week",
-        "primary": {
-          "label": "Book a site visit",
-          "href": "#contact"
-        },
-        "secondary": {
-          "label": "See delivered projects",
-          "href": "#projects"
-        },
-        "note": "The survey and the quote are free. No deposit before the contract is signed."
       }
     },
     {
