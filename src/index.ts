@@ -32,3 +32,9 @@ export { ChatMessage, type ChatMessageProps } from './components/ChatMessage/Cha
 export { AgentTrace, type AgentTraceProps, type TraceStep } from './components/AgentTrace/AgentTrace';
 export { PromptInput, type PromptInputProps } from './components/PromptInput/PromptInput';
 export { AgentAssistant, type AgentAssistantProps, type AgentConversation } from './components/AgentAssistant/AgentAssistant';
+export { ChartFrame, type ChartFrameProps, type ChartLegendItem } from './components/ChartFrame/ChartFrame';
+export { Sparkline, type SparklineProps } from './components/Sparkline/Sparkline';
+export { StatTile, type StatTileProps, type StatDelta } from './components/StatTile/StatTile';
+export { BarChart, type BarChartProps, type BarDatum } from './components/BarChart/BarChart';
+export { LineChart, type LineChartProps, type LineSeries } from './components/LineChart/LineChart';
+export { DonutChart, type DonutChartProps, type DonutDatum } from './components/DonutChart/DonutChart';

@@ -1,0 +1,14 @@
+.eb-bar { display: flex; flex-direction: column; gap: var(--space-3); }
+.eb-bar__row { display: grid; grid-template-columns: minmax(72px, 24%) 1fr auto; align-items: center; gap: var(--space-3); }
+.eb-bar__label { font-size: var(--text-xs); color: var(--color-text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.eb-bar__tracks { display: flex; flex-direction: column; gap: 2px; }
+.eb-bar__track { display: flex; gap: 2px; height: 20px; background: var(--color-bg-subtle); border-radius: var(--radius-xs); }
+.eb-bar__track--thin { height: 10px; }
+.eb-bar__fill { height: 100%; min-width: 2px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; transition: opacity var(--duration-fast) var(--ease-standard); }
+.eb-bar__fill:not(:last-child) { border-radius: 0; }
+.eb-bar__fill:hover { opacity: 0.85; }
+.eb-bar__value { font-size: var(--text-xs); color: var(--color-text-primary); font-variant-numeric: tabular-nums; }
+@media (max-width: 640px) {
+  .eb-bar__row { grid-template-columns: 1fr auto; }
+  .eb-bar__label { grid-column: 1 / -1; }
+}

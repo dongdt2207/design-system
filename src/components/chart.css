@@ -1,0 +1,17 @@
+/* Dùng chung cho mọi chart: tooltip, bảng số cho screen reader, trục, lưới.
+   Phần riêng của từng loại nằm trong CSS của component đó.
+   Chỉ token semantic, không viết màu. */
+
+/* Bảng số tương đương — mọi chart đều kèm, để không ai phải đọc bằng màu. */
+.eb-chart__table { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* Tooltip khi rê chuột. Không nhận sự kiện chuột để không tự che chính nó. */
+.eb-chart__tip { position: absolute; z-index: 1; pointer-events: none; transform: translate(-50%, calc(-100% - var(--space-2))); background: var(--color-bg-surface-raised); border: 1px solid var(--color-border-default); border-radius: var(--radius-sm); padding: var(--space-2) var(--space-3); font-size: var(--text-xs); color: var(--color-text-primary); white-space: nowrap; box-shadow: var(--shadow-md); }
+.eb-chart__tip-head { color: var(--color-text-muted); margin-bottom: var(--space-1); }
+.eb-chart__tip-row { display: flex; align-items: center; gap: var(--space-2); }
+.eb-chart__tip-row + .eb-chart__tip-row { margin-top: var(--space-1); }
+.eb-chart__tip-value { margin-left: var(--space-3); font-variant-numeric: tabular-nums; }
+
+.eb-chart__swatch { width: 10px; height: 10px; border-radius: var(--radius-xs); flex: none; }
+.eb-chart__axis { font-size: var(--text-xs); fill: var(--color-text-muted); font-variant-numeric: tabular-nums; }
+.eb-chart__grid { stroke: var(--color-border-soft); stroke-width: 1; }

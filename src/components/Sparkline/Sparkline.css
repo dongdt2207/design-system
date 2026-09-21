@@ -1,0 +1,6 @@
+.eb-spark { display: block; overflow: visible; }
+.eb-spark__path { fill: none; stroke: var(--viz-cat-1); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.eb-spark__area { fill: var(--viz-cat-1); stroke: none; opacity: 0.12; }
+.eb-spark__bar { fill: var(--viz-cat-1); rx: 1; }
+.eb-spark--neutral .eb-spark__path { stroke: var(--color-text-muted); }
+.eb-spark--neutral .eb-spark__bar, .eb-spark--neutral .eb-spark__area { fill: var(--color-text-muted); }
