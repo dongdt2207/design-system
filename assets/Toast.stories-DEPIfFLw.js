@@ -1,0 +1,16 @@
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{n as t,p as n}from"./iframe-cv3-HitV.js";import{n as r,t as i}from"./Button-CIf9on4F.js";function a(e,t={}){let n={id:++u,message:e,duration:5e3,tone:`neutral`,...t};return d=[n],p(),n.id}function o(){let e=(0,c.useSyncExternalStore)(m,()=>d,()=>d);return(0,l.jsx)(`div`,{className:`eb-toaster`,"aria-live":`polite`,children:e.map(e=>(0,l.jsx)(s,{item:e},e.id))})}function s({item:e}){let[t,n]=(0,c.useState)(!1);return(0,c.useEffect)(()=>{let t=setTimeout(()=>n(!0),(e.duration??5e3)-200),r=setTimeout(()=>a.dismiss(e.id),e.duration??5e3);return()=>{clearTimeout(t),clearTimeout(r)}},[e]),(0,l.jsxs)(`div`,{className:`eb-toast eb-toast--${e.tone}${t?` eb-toast--leaving`:``}`,role:e.tone===`danger`?`alert`:`status`,children:[(0,l.jsx)(`span`,{className:`eb-toast__dot`,"aria-hidden":`true`}),(0,l.jsx)(`span`,{className:`eb-toast__msg`,children:e.message}),e.action&&(0,l.jsx)(`button`,{className:`eb-toast__action`,onClick:()=>{e.action?.onClick(),a.dismiss(e.id)},children:e.action.label})]})}var c,l,u,d,f,p,m;function h(){return(h=e((()=>{c=n(),l=t(),u=0,d=[],f=new Set,p=()=>f.forEach(e=>e()),a.success=(e,t)=>a(e,{...t,tone:`success`}),a.error=(e,t)=>a(e,{...t,tone:`danger`,duration:8e3}),a.dismiss=e=>{d=e?d.filter(t=>t.id!==e):[],p()},m=e=>(f.add(e),()=>f.delete(e)),o.__docgenInfo={description:`Đặt một lần ở gốc app.`,methods:[],displayName:`Toaster`}})))()}var g,_,v,y;function b(){return(b=e((()=>{h(),r(),g=t(),_={title:`Components/Toast`,tags:[`autodocs`],parameters:{layout:`fullscreen`},decorators:[e=>(0,g.jsxs)(`div`,{style:{padding:32,minHeight:240},children:[(0,g.jsx)(e,{}),(0,g.jsx)(o,{})]})]},v={render:()=>(0,g.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,g.jsx)(i,{variant:`secondary`,onClick:()=>a(`Đã lưu thay đổi`),children:`Neutral`}),(0,g.jsx)(i,{variant:`secondary`,onClick:()=>a.success(`Đã gửi lời mời tới 3 người`),children:`Success`}),(0,g.jsx)(i,{variant:`secondary`,onClick:()=>a.error(`Không tải được danh sách. Thử lại hoặc kiểm tra kết nối.`),children:`Error`}),(0,g.jsx)(i,{variant:`secondary`,onClick:()=>a(`Đã lưu trữ dự án Alpha`,{action:{label:`Hoàn tác`,onClick:()=>a(`Đã khôi phục`)}}),children:`Có hoàn tác`})]})},y=[`Demo`],v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`{
+  render: () => <div style={{
+    display: 'flex',
+    gap: 8
+  }}>
+      <Button variant="secondary" onClick={() => toast('Đã lưu thay đổi')}>Neutral</Button>
+      <Button variant="secondary" onClick={() => toast.success('Đã gửi lời mời tới 3 người')}>Success</Button>
+      <Button variant="secondary" onClick={() => toast.error('Không tải được danh sách. Thử lại hoặc kiểm tra kết nối.')}>Error</Button>
+      <Button variant="secondary" onClick={() => toast('Đã lưu trữ dự án Alpha', {
+      action: {
+        label: 'Hoàn tác',
+        onClick: () => toast('Đã khôi phục')
+      }
+    })}>Có hoàn tác</Button>
+    </div>
+}`,...v.parameters?.docs?.source},description:{story:`Xác nhận sau hành động vừa xong. Không cần nếu kết quả đã nhìn thấy (mục mới hiện trong danh sách).`,...v.parameters?.docs?.description}}}})))()}b();export{v as Demo,y as __namedExportsOrder,_ as default};
