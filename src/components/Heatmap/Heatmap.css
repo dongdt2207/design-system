@@ -1,0 +1,10 @@
+.eb-heat { display: flex; flex-direction: column; gap: var(--space-3); overflow-x: auto; }
+.eb-heat__grid { display: grid; gap: 2px; }
+.eb-heat__cell { aspect-ratio: 1; border-radius: var(--radius-xs); min-width: 18px; }
+.eb-heat__cell--empty { background: var(--color-bg-subtle); }
+.eb-heat__colhead, .eb-heat__rowhead { font-size: var(--text-xs); color: var(--color-text-muted); display: flex; align-items: center; }
+.eb-heat__rowhead { justify-content: flex-end; padding-right: var(--space-2); white-space: nowrap; }
+.eb-heat__colhead { justify-content: center; }
+.eb-heat__scale { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-xs); color: var(--color-text-muted); }
+.eb-heat__swatches { display: flex; gap: 2px; }
+.eb-heat__swatches span { width: 16px; height: 10px; border-radius: var(--radius-xs); }

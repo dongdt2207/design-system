@@ -1,0 +1,7 @@
+.eb-funnel { display: flex; flex-direction: column; gap: var(--space-2); }
+.eb-funnel__row { display: grid; grid-template-columns: minmax(96px, 26%) 1fr auto; align-items: center; gap: var(--space-3); }
+.eb-funnel__label { font-size: var(--text-xs); color: var(--color-text-secondary); }
+.eb-funnel__track { height: 24px; background: var(--color-bg-subtle); border-radius: var(--radius-xs); }
+.eb-funnel__fill { height: 100%; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+.eb-funnel__value { font-size: var(--text-xs); color: var(--color-text-primary); font-variant-numeric: tabular-nums; }
+.eb-funnel__drop { grid-column: 2 / -1; font-size: var(--text-xs); color: var(--color-text-muted); padding-left: var(--space-2); }

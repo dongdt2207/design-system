@@ -1,0 +1,11 @@
+.eb-div { display: flex; flex-direction: column; gap: var(--space-3); }
+.eb-div__row { display: grid; grid-template-columns: minmax(72px, 22%) 1fr auto; align-items: center; gap: var(--space-3); }
+.eb-div__label { font-size: var(--text-xs); color: var(--color-text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.eb-div__track { position: relative; height: 20px; background: var(--color-bg-subtle); border-radius: var(--radius-xs); }
+.eb-div__zero { position: absolute; top: -2px; bottom: -2px; width: 1px; background: var(--color-border-strong); }
+.eb-div__fill { position: absolute; top: 0; height: 100%; min-width: 2px; }
+.eb-div__fill--pos { background: var(--viz-diverge-warm); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+.eb-div__fill--neg { background: var(--viz-diverge-cool); border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+.eb-div__value { font-size: var(--text-xs); color: var(--color-text-primary); font-variant-numeric: tabular-nums; }
+.eb-div__stack { display: flex; height: 20px; border-radius: var(--radius-xs); overflow: hidden; gap: 2px; }
+.eb-div__seg { height: 100%; }

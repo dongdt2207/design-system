@@ -1,0 +1,9 @@
+.eb-meter { display: flex; flex-direction: column; gap: var(--space-2); }
+.eb-meter__head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-3); }
+.eb-meter__label { font-size: var(--text-xs); color: var(--color-text-muted); }
+.eb-meter__value { font-size: var(--text-lg); color: var(--color-text-primary); font-variant-numeric: tabular-nums; }
+.eb-meter__track { position: relative; height: 10px; background: var(--color-bg-subtle); border-radius: var(--radius-full); overflow: hidden; }
+.eb-meter__fill { height: 100%; background: var(--viz-seq-500); border-radius: var(--radius-full); }
+.eb-meter--over .eb-meter__fill { background: var(--color-bg-danger); }
+.eb-meter__limit { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--color-text-primary); }
+.eb-meter__foot { display: flex; justify-content: space-between; font-size: var(--text-xs); color: var(--color-text-muted); font-variant-numeric: tabular-nums; }

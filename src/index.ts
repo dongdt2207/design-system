@@ -38,3 +38,9 @@ export { StatTile, type StatTileProps, type StatDelta } from './components/StatT
 export { BarChart, type BarChartProps, type BarDatum } from './components/BarChart/BarChart';
 export { LineChart, type LineChartProps, type LineSeries } from './components/LineChart/LineChart';
 export { DonutChart, type DonutChartProps, type DonutDatum } from './components/DonutChart/DonutChart';
+export { Meter, type MeterProps } from './components/Meter/Meter';
+export { Heatmap, type HeatmapProps } from './components/Heatmap/Heatmap';
+export { DivergingBar, type DivergingBarProps, type DivergingDatum } from './components/DivergingBar/DivergingBar';
+export { Dumbbell, type DumbbellProps, type DumbbellDatum } from './components/Dumbbell/Dumbbell';
+export { ScatterPlot, type ScatterPlotProps, type ScatterSeries, type ScatterPoint } from './components/ScatterPlot/ScatterPlot';
+export { FunnelChart, type FunnelChartProps, type FunnelStage } from './components/FunnelChart/FunnelChart';
