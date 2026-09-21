@@ -1,9 +1,10 @@
 import type { Preview } from '@storybook/react-vite';
 import '../src/index.css';
+import './preview.css';
 const preview: Preview = {
   parameters: {
     layout: 'centered', controls: { matchers: { color: /(background|color)$/i } }, a11y: { test: 'todo' }, backgrounds: { disable: true },
-    options: { storySort: { order: ['Foundations', ['Overview', 'Colors', 'Typography', 'Spacing', 'Radius & Shadow'], 'Components', 'Sections'] } },
+    options: { storySort: { order: ['Foundations', ['Overview', 'Colors', 'Typography', 'Spacing', 'Radius & Shadow', 'Data visualization'], 'Components', 'Sections'] } },
   },
   globalTypes: { theme: { description: 'Theme', toolbar: { icon: 'mirror', items: ['light', 'dark'], dynamicTitle: true } } },
   initialGlobals: { theme: 'light' },

@@ -1,0 +1,85 @@
+/*
+ * Trang docs (Foundations/*.mdx và autodocs) do Storybook tự vẽ, không dùng token của hệ:
+ * nó sơn nền trắng của docs theme đè lên `body`. Khi toolbar gạt sang dark thì token chữ
+ * đổi sang sáng nhưng nền docs vẫn trắng, nên chữ gần như biến mất.
+ *
+ * Ở đây chỉ kéo các bề mặt docs về đúng token, và chỉ trong dark — light vẫn để Storybook
+ * tự lo. Không đụng tới story: story thường đã đúng nhờ `body` trong base.css.
+ */
+:root[data-theme='dark'] .sbdocs-wrapper,
+:root[data-theme='dark'] .sbdocs.sbdocs-content,
+:root[data-theme='dark'] .sbdocs-preview,
+:root[data-theme='dark'] .docs-story,
+:root[data-theme='dark'] .sb-main-padded {
+  background: var(--color-bg-page);
+}
+
+:root[data-theme='dark'] .sbdocs,
+:root[data-theme='dark'] .sbdocs h1,
+:root[data-theme='dark'] .sbdocs h2,
+:root[data-theme='dark'] .sbdocs h3,
+:root[data-theme='dark'] .sbdocs h4,
+:root[data-theme='dark'] .sbdocs p,
+:root[data-theme='dark'] .sbdocs li,
+:root[data-theme='dark'] .sbdocs td,
+:root[data-theme='dark'] .sbdocs th {
+  color: var(--color-text-primary);
+}
+
+:root[data-theme='dark'] .sbdocs hr,
+:root[data-theme='dark'] .sbdocs table,
+:root[data-theme='dark'] .sbdocs td,
+:root[data-theme='dark'] .sbdocs th,
+:root[data-theme='dark'] .sbdocs-preview,
+:root[data-theme='dark'] .docs-story {
+  border-color: var(--color-border-default);
+}
+
+:root[data-theme='dark'] .sbdocs code,
+:root[data-theme='dark'] .sbdocs pre {
+  background: var(--color-bg-subtle);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-default);
+}
+
+/*
+ * Docblock — bảng args, khối source, empty block. Chúng là component emotion của
+ * Storybook, dùng bảng màu riêng nên không đổi theo `data-theme`: nền trắng giữ nguyên
+ * trong dark, làm tên prop (màu chữ đậm trên nền sáng) gần như biến mất.
+ *
+ * Phủ theo class chứ không dùng !important: selector ở đây có độ ưu tiên (0,3,1),
+ * cao hơn class đơn của emotion.
+ */
+:root[data-theme='dark'] .docblock-argstable,
+:root[data-theme='dark'] .docblock-argstable-head,
+:root[data-theme='dark'] .docblock-argstable-body,
+:root[data-theme='dark'] .docblock-argstable tr,
+:root[data-theme='dark'] .docblock-argstable td,
+:root[data-theme='dark'] .docblock-argstable th {
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-default);
+  box-shadow: none;
+}
+
+:root[data-theme='dark'] .docblock-argstable td span,
+:root[data-theme='dark'] .docblock-argstable td div,
+:root[data-theme='dark'] .docblock-argstable th span {
+  color: var(--color-text-primary);
+}
+
+:root[data-theme='dark'] .docblock-source,
+:root[data-theme='dark'] .docblock-source pre,
+:root[data-theme='dark'] .docblock-emptyblock,
+:root[data-theme='dark'] .docblock-code-toggle,
+:root[data-theme='dark'] .sbdocs-expandable {
+  background: var(--color-bg-subtle);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-default);
+}
+
+:root[data-theme='dark'] .sbdocs-title,
+:root[data-theme='dark'] .sbdocs-subtitle,
+:root[data-theme='dark'] .sbdocs-argcontrol-placeholder {
+  color: var(--color-text-primary);
+}

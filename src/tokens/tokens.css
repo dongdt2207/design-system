@@ -26,17 +26,51 @@
   --gray-900: #26251e;
   --gray-950: #16150f;
 
-  /* accent — PLACEHOLDER, thay bằng màu Ebig */
-  --brand-50:  #fff1ea;
-  --brand-100: #ffdcc9;
-  --brand-200: #ffb894;
-  --brand-300: #ff8f57;
-  --brand-400: #fb6a25;
-  --brand-500: #f54e00;
-  --brand-600: #d04200;
-  --brand-700: #a83600;
-  --brand-800: #7d2900;
-  --brand-900: #521b00;
+  /* accent — Cornflower Blue. #287CF0 là màu gốc, neo ở bậc 500; các bậc khác
+     sinh từ nó trong OKLCH (giữ nguyên hue 257.9°, đổi L, chroma thu ở hai đầu). */
+  --brand-50:  #f2f7fe;
+  --brand-100: #e0ecfe;
+  --brand-200: #c3dbff;
+  --brand-300: #98c1ff;
+  --brand-400: #65a3ff;
+  --brand-500: #287cf0;
+  --brand-600: #1b6bd7;
+  --brand-700: #0d52ac;
+  --brand-800: #093c81;
+  --brand-900: #06295a;
+
+  /* ---- Màu dữ liệu (chart) ----------------------------------------------
+     Ba việc khác nhau, ba bảng khác nhau — không dùng lẫn:
+       categorical  danh tính (series rời rạc). Gán theo THỨ TỰ CỐ ĐỊNH, không xoay vòng.
+       sequential   độ lớn liên tục (heatmap). Một tông, sáng → đậm.
+       diverging    hai cực đối nhau, điểm giữa xám trung tính.
+     Màu trạng thái (success/warning/danger) KHÔNG được dùng làm series.
+     Bản dark chọn riêng cho nền tối, không lật ngược từ light.
+     Đã chấm bằng validator: dải sáng, sàn chroma, tách màu cho người mù màu
+     (protan/deutan), sàn thị lực thường, tương phản với nền. */
+  --viz-cat-1: #287cf0;  /* xanh — trùng brand, series đầu tiên */
+  --viz-cat-2: #eb6834;  /* cam */
+  --viz-cat-3: #1baf7a;  /* ngọc */
+  --viz-cat-4: #eda100;  /* vàng */
+  --viz-cat-5: #e87ba4;  /* hồng */
+  --viz-cat-6: #008300;  /* lục */
+  --viz-cat-7: #4a3aa7;  /* tím */
+  --viz-cat-8: #e34948;  /* đỏ */
+
+  /* Sequential: dùng cả dải 100→700 cho độ lớn liên tục.
+     Với bậc rời rạc (ordinal: phễu, hạng) thì trên nền sáng bắt đầu từ 400 —
+     bậc 300 chỉ đạt 1.89:1, dưới sàn 2:1. */
+  --viz-seq-100: #d8e8fe;
+  --viz-seq-200: #b3d1ff;
+  --viz-seq-300: #88b8fe;
+  --viz-seq-400: #569bff;
+  --viz-seq-500: #287cf0;
+  --viz-seq-600: #0d62cd;
+  --viz-seq-700: #024ba3;
+
+  --viz-diverge-cool: #287cf0;
+  --viz-diverge-mid:  #efeee8;
+  --viz-diverge-warm: #e34948;
 
   --green-100: #dcf2e8; --green-500: #1f8a65; --green-700: #16644a;
   --amber-100: #f8ecd3; --amber-500: #c08532; --amber-700: #8a5e20;
@@ -172,4 +206,19 @@
 
   --color-bg-canvas: var(--gray-950);
   --color-bg-canvas-deep: var(--gray-900);
+
+  /* Màu dữ liệu bản dark — cùng 8 hue, chọn lại bậc cho nền tối.
+     Ordinal trên nền tối: dừng ở bậc 600, bậc 700 chỉ còn 1.5:1. */
+  --viz-cat-1: #4a90f5;
+  --viz-cat-2: #d95926;
+  --viz-cat-3: #199e70;
+  --viz-cat-4: #c98500;
+  --viz-cat-5: #d55181;
+  --viz-cat-6: #008300;
+  --viz-cat-7: #9085e9;
+  --viz-cat-8: #e66767;
+
+  --viz-diverge-cool: #4a90f5;
+  --viz-diverge-mid:  #3d3b35;
+  --viz-diverge-warm: #e66767;
 }

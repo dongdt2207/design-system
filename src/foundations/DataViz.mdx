@@ -1,0 +1,59 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { SemanticColors } from './TokenBlocks';
+
+<Meta title="Foundations/Data visualization" />
+
+# Màu dữ liệu
+
+Ba việc khác nhau, ba bảng khác nhau. Chọn theo **việc màu đang làm**, không theo thẩm mỹ.
+
+| Bảng | Việc nó làm | Dùng cho |
+|---|---|---|
+| Categorical | danh tính — phân biệt series rời rạc | cột, đường, lát bánh |
+| Sequential | độ lớn liên tục | heatmap, choropleth |
+| Diverging | hai cực đối nhau quanh một mốc | chênh lệch, tăng/giảm so với 0 |
+
+Màu trạng thái (`--color-text-success`, `--color-text-danger`…) **không được dùng làm series**. Chúng có nghĩa riêng, và luôn đi kèm icon + nhãn chứ không đứng một mình bằng màu.
+
+## Categorical — 8 bậc
+
+Gán theo **thứ tự cố định**, không xoay vòng: series thứ nhất luôn lấy `--viz-cat-1`. Lọc bỏ bớt series thì các series còn lại **giữ nguyên màu cũ** — màu bám vào thực thể, không bám vào thứ hạng. Cần series thứ 9 thì gộp thành "Khác" hoặc tách thành nhiều biểu đồ nhỏ, không sinh thêm hue.
+
+<SemanticColors names={['--viz-cat-1', '--viz-cat-2', '--viz-cat-3', '--viz-cat-4', '--viz-cat-5', '--viz-cat-6', '--viz-cat-7', '--viz-cat-8']} />
+
+Bậc 1 chính là brand `#287CF0`. Gạt sang dark để thấy bộ màu dark — **chọn riêng cho nền tối**, không phải lật ngược từ light.
+
+## Sequential — một tông, sáng → đậm
+
+<SemanticColors names={['--viz-seq-100', '--viz-seq-200', '--viz-seq-300', '--viz-seq-400', '--viz-seq-500', '--viz-seq-600', '--viz-seq-700']} />
+
+Dùng **cả dải** cho độ lớn liên tục, ở đó bậc nhạt nhất nghĩa là "gần bằng không" nên được phép chìm vào nền. Với **bậc rời rạc** (phễu, hạng, nhóm có thứ tự) thì đầu gần nền phải tách khỏi nền: trên nền sáng bắt đầu từ `--viz-seq-400`, trên nền tối dừng ở `--viz-seq-600`.
+
+## Diverging — hai cực, giữa là xám
+
+<SemanticColors names={['--viz-diverge-cool', '--viz-diverge-mid', '--viz-diverge-warm']} />
+
+Xanh ↔ đỏ, hai cực đọc ra là đối nghịch. Điểm giữa phải là **xám trung tính** — nó nghĩa là "không có gì", nên không được là một hue. Hai cánh chia đều số bậc.
+
+## Quy tắc khi vẽ
+
+- **Một trục.** Không bao giờ hai thang y trên cùng một biểu đồ. Hai đại lượng khác thang thì tách hai biểu đồ, hoặc quy về cùng một mốc chỉ số.
+- **Từ 2 series trở lên luôn có legend**, và từ 4 series trở xuống thì gắn nhãn trực tiếp — danh tính không bao giờ chỉ dựa vào màu. Một series thì tiêu đề đã gọi tên nó, không cần legend.
+- **Chữ mặc chữ.** Số liệu, nhãn, legend dùng `--color-text-primary/secondary/muted`, không tô theo màu series. Ô màu nhỏ bên cạnh mới là thứ mang danh tính.
+- Mark mảnh, lưới và trục lùi về sau, không ghi số lên mọi điểm.
+
+## Bốn màu cần nhãn kèm trên nền sáng
+
+`--viz-cat-2` (2.98:1), `--viz-cat-3` (2.62:1), `--viz-cat-4` (2.02:1), `--viz-cat-5` (2.51:1) nằm dưới 3:1 so với nền kem. Chúng vẫn hợp lệ, nhưng **bắt buộc có nhãn nhìn thấy được hoặc bảng số kèm theo** — không được để người đọc chỉ dựa vào màu. Trên nền tối cả 8 bậc đều đạt ≥ 3:1.
+
+## Kết quả kiểm tra
+
+Bảng màu được chấm bằng máy, không ước lượng bằng mắt.
+
+| Phép kiểm | Light (nền `#f7f7f4`) | Dark (nền `#16150f`) |
+|---|---|---|
+| Dải sáng OKLCH | đạt, cả 8 trong 0.43–0.77 | đạt, cả 8 trong 0.48–0.67 |
+| Sàn chroma ≥ 0.10 | đạt | đạt |
+| Tách màu cho người mù màu (cặp kề) | ΔE 9.1 — đạt mốc 8 | ΔE 8.4 — đạt |
+| Sàn thị lực thường (cặp kề) | ΔE 19.6 — đạt sàn 15 | ΔE 19.3 — đạt |
+| Tương phản với nền | 4 bậc dưới 3:1, cần nhãn kèm | cả 8 đạt ≥ 3:1 |
