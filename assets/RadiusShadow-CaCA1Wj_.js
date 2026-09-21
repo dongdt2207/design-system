@@ -1,0 +1,8 @@
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{n as t}from"./iframe-CCKs4X5K.js";import{i as n,r}from"./react-CM_ILeOv.js";import{a as i,o as a}from"./blocks-BBUlm_LH.js";import{i as o,n as s,s as c}from"./TokenBlocks-WprxEyJr.js";function l(e){let t={code:`code`,h1:`h1`,h2:`h2`,p:`p`,...n(),...e.components};return(0,d.jsxs)(d.Fragment,{children:[(0,d.jsx)(i,{title:`Foundations/Radius & Shadow`}),`
+`,(0,d.jsx)(t.h1,{id:`radius--shadow`,children:`Radius & Shadow`}),`
+`,(0,d.jsx)(t.h2,{id:`radius`,children:`Radius`}),`
+`,(0,d.jsxs)(t.p,{children:[(0,d.jsx)(t.code,{children:`sm`}),` 6 checkbox, tag · `,(0,d.jsx)(t.code,{children:`md`}),` 8 nút, ô nhập · `,(0,d.jsx)(t.code,{children:`lg`}),` 12 card, modal, dropdown · `,(0,d.jsx)(t.code,{children:`xl`}),` 16 card lớn (hiếm) · `,(0,d.jsx)(t.code,{children:`full`}),` badge, avatar.`]}),`
+`,(0,d.jsx)(s,{steps:[`sm`,`md`,`lg`,`xl`,`full`]}),`
+`,(0,d.jsx)(t.h2,{id:`shadow--hệ-này-không-có-bóng`,children:`Shadow — hệ này không có bóng`}),`
+`,(0,d.jsxs)(t.p,{children:[`Depth bằng hairline: `,(0,d.jsx)(t.code,{children:`--shadow-sm/md/lg`}),` là viền 1px với ba độ đậm, không phải bóng đổ. Card nổi lên nhờ trắng-trên-kem.`]}),`
+`,(0,d.jsx)(o,{steps:[`sm`,`md`,`lg`]})]})}function u(e={}){let{wrapper:t}={...n(),...e.components};return t?(0,d.jsx)(t,{...e,children:(0,d.jsx)(l,{...e})}):l(e)}var d;function f(){return(f=e((()=>{d=t(),r(),a(),c()})))()}f();export{u as default};
