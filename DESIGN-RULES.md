@@ -341,6 +341,9 @@ Không dùng khi: cần bấm Lưu (Checkbox); lựa chọn không phải nhị 
 - **Slider** kèm giá trị hiển thị; cần chính xác thì thêm ô số.
 - **Accordion** cho FAQ/nâng cao; không giấu thông tin bắt buộc.
 - **Skeleton** theo hình dạng thật, nhấp nháy nhẹ; **EmptyState** theo 9.3.
+- **ChatMessage**: một lượt hội thoại. `user` là bong bóng ngắn bên phải (`--color-bg-subtle`), `agent` là khối chữ rộng bên trái, không bong bóng. Trạng thái: `sending`, `streaming` (con trỏ ở cuối, vùng nội dung `aria-live="polite"`), `error` (inline notification theo 9.4). Hành động trên tin hiện khi hover hoặc focus.
+- **AgentTrace**: nhật ký bước chạy của agent, đặt trên câu trả lời, đóng mặc định. Mỗi bước có trạng thái bằng icon + `aria-label`, không chỉ bằng màu; tham số dùng font mono. Không đặt thông tin bắt buộc trong này.
+- **PromptInput**: ô soạn câu hỏi. Enter gửi, Shift + Enter xuống dòng, cao dần tới 8 dòng rồi cuộn. Nút Gửi khoá khi rỗng; khi trợ lý đang trả lời đổi thành Dừng. Bật `voice` để thêm ghi âm: khi đang ghi, ô gõ nhường chỗ cho dải trạng thái (chấm đỏ + đồng hồ), nút thành Huỷ / Xong; bản ghi chỉ thành chữ trong ô, không tự gửi.
 
 ### Component chưa có — quy tắc chung khi thêm
 
@@ -494,6 +497,18 @@ Thứ tự: Nav → Hero → Manifesto → Split → Timeline → Feature×n →
 - CTA cuối: động từ + kết quả trong khung thời gian. Ghi chú bên phải xoá rào cản (miễn phí, không cần thẻ).
 
 **Cho AI**: landing là dữ liệu, không phải code. Đọc `src/sections/manifest.json`, sinh `src/content/landing.<tên>.json` theo schema `LandingSpec`, chạy `npm run validate:landing` đến khi sạch lỗi. Không tạo section, không viết layout, không dùng visual ngoài manifest. Thiếu dữ liệu thật → `[cần số thật]`, không bịa. Quy trình đầy đủ trong `CLAUDE.md`.
+
+### 9.9 Trợ lý agent
+
+Màn hình hỏi đáp với agent: sidebar hội thoại 240px, header 56px, luồng tin nhắn cuộn, ô soạn dưới cùng. Component `AgentAssistant`.
+
+- Một primary mỗi màn hình: nút Gửi trong ô soạn. "Hội thoại mới" là `secondary`, hành động trên tin là `ghost`.
+- Luồng tin nhắn rộng tối đa 800px; nội dung một tin tối đa 70 ký tự mỗi dòng (60 với tin của người dùng).
+- Bốn trạng thái bắt buộc: đang tải (skeleton hình dạng tin nhắn), rỗng (EmptyState + tối đa 4 gợi ý câu hỏi), lỗi tải (EmptyState + Thử lại, khoá ô soạn), đang trả lời (AgentTrace chạy + con trỏ + nút Dừng).
+- Lỗi một lượt không xoá các lượt trước: hiện inline trong tin đó kèm "Trả lời lại".
+- Ghi âm là cách nhập thay bàn phím, không phải hành động riêng: kết quả rơi vào ô soạn để người dùng sửa rồi mới gửi. Luôn còn đường gõ tay; lỗi micro nói cách cấp quyền.
+- Không tự cuộn ngược lên khi người dùng đang đọc; không hiện spinner toàn màn hình.
+- Dưới lg, sidebar ẩn thành Drawer mở từ header (mục 3.3).
 
 ---
 

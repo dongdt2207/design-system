@@ -1,0 +1,36 @@
+.eb-msg { display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-3) 0; }
+.eb-msg--user { flex-direction: row-reverse; }
+
+.eb-msg__main { min-width: 0; max-width: 70ch; display: flex; flex-direction: column; gap: var(--space-2); }
+.eb-msg--user .eb-msg__main { align-items: flex-end; max-width: 60ch; }
+
+.eb-msg__meta { display: flex; align-items: baseline; gap: var(--space-2); margin: 0; font-size: var(--text-xs); }
+.eb-msg__author { font-weight: var(--weight-medium); color: var(--color-text-secondary); }
+.eb-msg__time { color: var(--color-text-muted); }
+
+.eb-msg__body { font-size: var(--text-md); line-height: var(--leading-loose); color: var(--color-text-primary); overflow-wrap: anywhere; }
+.eb-msg__body > :first-child { margin-top: 0; }
+.eb-msg__body > :last-child { margin-bottom: 0; }
+.eb-msg__body p { margin: 0 0 var(--space-3); }
+.eb-msg__body ul, .eb-msg__body ol { margin: 0 0 var(--space-3); padding-left: var(--space-5); }
+.eb-msg__body li { margin-bottom: var(--space-1); }
+.eb-msg__body code { font-family: var(--font-mono); font-size: var(--text-sm); background: var(--color-bg-subtle); border: 1px solid var(--color-border-soft); border-radius: var(--radius-sm); padding: 0 var(--space-1); }
+.eb-msg__body pre { font-family: var(--font-mono); font-size: var(--text-sm); line-height: var(--leading-normal); background: var(--color-bg-subtle); border: 1px solid var(--color-border-soft); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); margin: 0 0 var(--space-3); overflow-x: auto; }
+.eb-msg__body pre code { background: none; border: 0; padding: 0; }
+
+.eb-msg--user .eb-msg__body { background: var(--color-bg-subtle); border: 1px solid var(--color-border-soft); border-radius: var(--radius-lg); padding: var(--space-3) var(--space-4); font-size: var(--text-sm); line-height: var(--leading-normal); }
+
+.eb-msg__trace { align-self: stretch; }
+
+/* Con trỏ trả lời — chỉ chạy trong lúc streaming, tắt theo prefers-reduced-motion (base.css). */
+.eb-msg__caret { display: inline-block; width: 2px; height: 1em; margin-left: var(--space-1); vertical-align: -2px; background: var(--color-text-muted); animation: eb-msg-caret 1s steps(2, start) infinite; }
+@keyframes eb-msg-caret { 50% { opacity: 0; } }
+
+.eb-msg__note { margin: 0; font-size: var(--text-xs); color: var(--color-text-muted); }
+
+.eb-msg__error { display: flex; align-items: flex-start; gap: var(--space-2); margin: 0; padding: var(--space-2) var(--space-3); border-left: 3px solid var(--color-text-danger); border-radius: var(--radius-sm); background: var(--color-bg-danger-subtle); color: var(--color-text-danger); font-size: var(--text-sm); }
+.eb-msg__error svg { flex: none; width: 16px; height: 16px; margin-top: 2px; }
+
+.eb-msg__actions { display: flex; gap: var(--space-2); opacity: 0; transition: opacity var(--duration-fast) var(--ease-standard); }
+.eb-msg:hover .eb-msg__actions, .eb-msg:focus-within .eb-msg__actions { opacity: 1; }
+@media (hover: none) { .eb-msg__actions { opacity: 1; } }

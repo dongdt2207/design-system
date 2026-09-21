@@ -28,3 +28,7 @@ export { Progress, type ProgressProps } from './components/Progress/Progress';
 export { Slider, type SliderProps } from './components/Slider/Slider';
 export { Accordion, type AccordionProps, type AccordionItem } from './components/Accordion/Accordion';
 export { Drawer, type DrawerProps } from './components/Drawer/Drawer';
+export { ChatMessage, type ChatMessageProps } from './components/ChatMessage/ChatMessage';
+export { AgentTrace, type AgentTraceProps, type TraceStep } from './components/AgentTrace/AgentTrace';
+export { PromptInput, type PromptInputProps } from './components/PromptInput/PromptInput';
+export { AgentAssistant, type AgentAssistantProps, type AgentConversation } from './components/AgentAssistant/AgentAssistant';

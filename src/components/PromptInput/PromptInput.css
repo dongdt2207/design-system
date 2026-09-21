@@ -1,0 +1,26 @@
+.eb-prompt { display: flex; flex-direction: column; gap: var(--space-1); }
+.eb-prompt__label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.eb-prompt__box { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-3); background: var(--color-bg-surface); border: 1px solid var(--color-border-strong); border-radius: var(--radius-lg); transition: border-color var(--duration-fast) var(--ease-standard); }
+.eb-prompt__box:focus-within { border-color: var(--color-border-brand); }
+.eb-prompt--error .eb-prompt__box { border-color: var(--color-border-danger); }
+.eb-prompt--disabled .eb-prompt__box { background: var(--color-bg-muted); border-color: var(--color-border-default); }
+
+.eb-prompt__input { width: 100%; border: 0; padding: 0; background: none; color: var(--color-text-primary); font-size: var(--text-sm); line-height: var(--leading-normal); resize: none; outline: none; overflow-y: auto; }
+.eb-prompt__input::placeholder { color: var(--color-text-muted); }
+.eb-prompt__input:disabled { color: var(--color-text-disabled); cursor: not-allowed; }
+
+.eb-prompt__bar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+.eb-prompt__tools, .eb-prompt__end { display: flex; align-items: center; gap: var(--space-2); }
+.eb-prompt__count { font-size: var(--text-xs); color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
+
+.eb-prompt__hint, .eb-prompt__error { margin: 0; padding: 0 var(--space-1); font-size: var(--text-xs); }
+.eb-prompt__hint { color: var(--color-text-muted); }
+.eb-prompt__error { color: var(--color-text-danger); }
+
+/* ---------- Ghi âm ---------- */
+.eb-prompt--listening .eb-prompt__box { background: var(--color-bg-subtle); }
+.eb-prompt__voice { display: flex; align-items: center; gap: var(--space-2); min-height: 21px; margin: 0; font-size: var(--text-sm); color: var(--color-text-secondary); }
+.eb-prompt__rec { flex: none; width: 8px; height: 8px; border-radius: var(--radius-full); background: var(--color-text-danger); }
+.eb-prompt__rec--off { background: var(--color-text-muted); }
+.eb-prompt__voice-time { color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
