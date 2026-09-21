@@ -3,7 +3,7 @@ import { LineChart } from './LineChart';
 
 const months = ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9'];
 
-const meta: Meta<typeof LineChart> = { title: 'Components/LineChart', component: LineChart, parameters: { layout: 'padded' }, tags: ['autodocs'] };
+const meta: Meta<typeof LineChart> = { title: 'Components/Charts/LineChart', component: LineChart, parameters: { layout: 'padded' }, tags: ['autodocs'] };
 export default meta;
 type Story = StoryObj<typeof LineChart>;
 

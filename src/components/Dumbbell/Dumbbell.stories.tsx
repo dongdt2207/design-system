@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Dumbbell } from './Dumbbell';
 
-const meta: Meta<typeof Dumbbell> = { title: 'Components/Dumbbell', component: Dumbbell, parameters: { layout: 'padded' }, tags: ['autodocs'] };
+const meta: Meta<typeof Dumbbell> = { title: 'Components/Charts/Dumbbell', component: Dumbbell, parameters: { layout: 'padded' }, tags: ['autodocs'] };
 export default meta;
 type Story = StoryObj<typeof Dumbbell>;
 

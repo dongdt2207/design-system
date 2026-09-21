@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { StatTile } from './StatTile';
 
-const meta: Meta<typeof StatTile> = { title: 'Components/StatTile', component: StatTile, parameters: { layout: 'padded' }, tags: ['autodocs'] };
+const meta: Meta<typeof StatTile> = { title: 'Components/Charts/StatTile', component: StatTile, parameters: { layout: 'padded' }, tags: ['autodocs'] };
 export default meta;
 type Story = StoryObj<typeof StatTile>;
 

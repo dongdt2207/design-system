@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FunnelChart } from './FunnelChart';
 
-const meta: Meta<typeof FunnelChart> = { title: 'Components/FunnelChart', component: FunnelChart, parameters: { layout: 'padded' }, tags: ['autodocs'] };
+const meta: Meta<typeof FunnelChart> = { title: 'Components/Charts/FunnelChart', component: FunnelChart, parameters: { layout: 'padded' }, tags: ['autodocs'] };
 export default meta;
 type Story = StoryObj<typeof FunnelChart>;
 

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Meter } from './Meter';
 
-const meta: Meta<typeof Meter> = { title: 'Components/Meter', component: Meter, parameters: { layout: 'padded' }, tags: ['autodocs'] };
+const meta: Meta<typeof Meter> = { title: 'Components/Charts/Meter', component: Meter, parameters: { layout: 'padded' }, tags: ['autodocs'] };
 export default meta;
 type Story = StoryObj<typeof Meter>;
 

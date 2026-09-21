@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { DivergingBar } from './DivergingBar';
 
-const meta: Meta<typeof DivergingBar> = { title: 'Components/DivergingBar', component: DivergingBar, parameters: { layout: 'padded' }, tags: ['autodocs'] };
+const meta: Meta<typeof DivergingBar> = { title: 'Components/Charts/DivergingBar', component: DivergingBar, parameters: { layout: 'padded' }, tags: ['autodocs'] };
 export default meta;
 type Story = StoryObj<typeof DivergingBar>;
 

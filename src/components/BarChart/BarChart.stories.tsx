@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { BarChart } from './BarChart';
 
-const meta: Meta<typeof BarChart> = { title: 'Components/BarChart', component: BarChart, parameters: { layout: 'padded' }, tags: ['autodocs'] };
+const meta: Meta<typeof BarChart> = { title: 'Components/Charts/BarChart', component: BarChart, parameters: { layout: 'padded' }, tags: ['autodocs'] };
 export default meta;
 type Story = StoryObj<typeof BarChart>;
 

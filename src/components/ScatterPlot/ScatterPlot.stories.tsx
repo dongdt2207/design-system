@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ScatterPlot } from './ScatterPlot';
 
-const meta: Meta<typeof ScatterPlot> = { title: 'Components/ScatterPlot', component: ScatterPlot, parameters: { layout: 'padded' }, tags: ['autodocs'] };
+const meta: Meta<typeof ScatterPlot> = { title: 'Components/Charts/ScatterPlot', component: ScatterPlot, parameters: { layout: 'padded' }, tags: ['autodocs'] };
 export default meta;
 type Story = StoryObj<typeof ScatterPlot>;
 

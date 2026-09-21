@@ -5,7 +5,7 @@ const gio = ['0h', '3h', '6h', '9h', '12h', '15h', '18h', '21h'];
 const ngay = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'];
 const rows = ngay.map((d, i) => ({ label: d, values: gio.map((_, h) => Math.round(20 + 60 * Math.sin((h + i) / 2.2) ** 2 + (i > 4 ? -15 : 0))) }));
 
-const meta: Meta<typeof Heatmap> = { title: 'Components/Heatmap', component: Heatmap, parameters: { layout: 'padded' }, tags: ['autodocs'] };
+const meta: Meta<typeof Heatmap> = { title: 'Components/Charts/Heatmap', component: Heatmap, parameters: { layout: 'padded' }, tags: ['autodocs'] };
 export default meta;
 type Story = StoryObj<typeof Heatmap>;
 

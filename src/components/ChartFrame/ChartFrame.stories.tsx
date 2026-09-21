@@ -9,7 +9,7 @@ const data = [
 ];
 
 const meta: Meta<typeof ChartFrame> = {
-  title: 'Components/ChartFrame',
+  title: 'Components/Charts/ChartFrame',
   component: ChartFrame,
   parameters: { layout: 'padded' },
   tags: ['autodocs'],

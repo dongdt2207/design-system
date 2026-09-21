@@ -3,7 +3,7 @@ import { Sparkline } from './Sparkline';
 
 const week = [12, 18, 15, 22, 19, 28, 31];
 
-const meta: Meta<typeof Sparkline> = { title: 'Components/Sparkline', component: Sparkline, tags: ['autodocs'] };
+const meta: Meta<typeof Sparkline> = { title: 'Components/Charts/Sparkline', component: Sparkline, tags: ['autodocs'] };
 export default meta;
 type Story = StoryObj<typeof Sparkline>;
 
