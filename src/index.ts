@@ -44,3 +44,7 @@ export { DivergingBar, type DivergingBarProps, type DivergingDatum } from './com
 export { Dumbbell, type DumbbellProps, type DumbbellDatum } from './components/Dumbbell/Dumbbell';
 export { ScatterPlot, type ScatterPlotProps, type ScatterSeries, type ScatterPoint } from './components/ScatterPlot/ScatterPlot';
 export { FunnelChart, type FunnelChartProps, type FunnelStage } from './components/FunnelChart/FunnelChart';
+export { SelectableCard, type SelectableCardProps } from './components/SelectableCard/SelectableCard';
+export { ActionCard, type ActionCardProps } from './components/ActionCard/ActionCard';
+export type { CardMedia } from './components/Card/Card';
+

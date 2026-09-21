@@ -512,6 +512,45 @@ Màn hình hỏi đáp với agent: sidebar hội thoại 240px, header 56px, lu
 
 ---
 
+### 9.10 Biểu đồ
+
+Ba bảng màu, ba việc khác nhau — chi tiết và số đo ở trang Foundations/Data visualization.
+
+- **Chọn dạng theo việc người đọc cần làm**, không theo thẩm mỹ: một con số → `StatTile`; xu hướng trong ô bảng → `Sparkline`; tỉ lệ so với mốc → `Meter`; so sánh hạng mục → `BarChart`; theo thời gian → `LineChart`; phần trên tổng → `BarChart` cộng dồn hoặc `DonutChart`; lưới hai chiều → `Heatmap`; trên/dưới mốc → `DivergingBar`; trước → sau → `Dumbbell`; quan hệ hai đại lượng → `ScatterPlot`; các bước trong luồng → `FunnelChart`.
+- **Một trục y duy nhất.** Không có biểu đồ hai thang y — hai đại lượng khác thang thì tách hai biểu đồ. Đây là lỗi biểu đồ phổ biến nhất.
+- **Màu series gán theo thứ tự cố định**, không xoay vòng. Lọc bớt series thì các series còn lại giữ nguyên màu: màu bám vào thực thể, không bám vào thứ hạng. Quá 8 series thì gộp "Khác" hoặc tách nhiều biểu đồ nhỏ.
+- **Từ 2 series trở lên luôn có legend**; từ 4 trở xuống gắn nhãn trực tiếp. Danh tính không bao giờ chỉ dựa vào màu.
+- **Mọi biểu đồ kèm bảng số** cho người dùng screen reader — các component đã dựng sẵn, đừng gỡ.
+- **Chữ mặc token chữ**, không tô theo màu series. Ô màu nhỏ bên cạnh mới mang danh tính.
+- Màu trạng thái (success/warning/danger) **không được dùng làm màu series**.
+- Bốn bậc categorical trên nền sáng dưới 3:1 — dùng chúng thì phải có nhãn nhìn thấy hoặc bảng số kèm theo.
+- Không dùng: đồng hồ kim, radar, pie quá 5 lát, biểu đồ 3D.
+
+### 9.11 Card — chọn loại nào
+
+Mười loại, xem đủ ví dụ ở story `Patterns/Card`.
+
+| Loại | Component | Dùng khi |
+|---|---|---|
+| Nội dung | `Card` | mặc định: tiêu đề, mô tả, một hành động phụ |
+| Số liệu | `StatTile` | một con số dẫn dắt + mức thay đổi |
+| Biểu đồ | `ChartFrame` | biểu đồ kèm tiêu đề, legend, trạng thái |
+| Rỗng | `Card` + `EmptyState` | chưa có dữ liệu |
+| Có ảnh | `Card media` | ảnh là thứ nhận ra trước |
+| Dải ngang | `Card orientation="horizontal"` | danh sách dọc, quét nhanh |
+| Sản phẩm | ghép `Card` + `Badge` + `Button` | thương mại — không đóng thành component |
+| Hồ sơ | ghép `Card` + `Avatar` | người — không đóng thành component |
+| Hành động | `ActionCard` | một thẻ một việc, đúng một CTA |
+| Chọn được | `SelectableCard` | chọn một trong nhiều, cả thẻ là vùng bấm |
+
+- **Card không phải mặc định.** Dữ liệu cần quét theo cột, so sánh giữa các dòng, hoặc sắp xếp thì dùng `Table` (mục 9.6). Card làm mắt phải nhảy ngang dọc để so cùng một trường.
+- **Thẻ bấm được phải là phần tử bấm được thật** — `SelectableCard` đặt input thật dưới lớp hình, không phải `div` gắn `onClick`. Bàn phím, nhóm radio và đọc màn hình đi theo đó.
+- **Một primary mỗi thẻ.** Header chỉ nhận Badge hoặc nút ghost/secondary sm. Cần hai việc ngang nhau thì đó là hai thẻ.
+- **Ảnh trong cùng một lưới giữ cùng tỉ lệ khung**, nếu không hàng sẽ so le. `alt` rỗng chỉ khi ảnh thuần trang trí.
+- Không có bóng đổ: phân tầng bằng hairline, `raised` là viền đậm hơn chứ không phải shadow.
+
+---
+
 ## 10. Content
 
 ### 10.1 Giọng
