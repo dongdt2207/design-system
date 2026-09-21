@@ -1,5 +1,0 @@
-import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{n as t}from"./iframe-BI5Y47fd.js";import{i as n,r}from"./react-C76-7CZq.js";import{a as i,o as a}from"./blocks-CGvaD6mW.js";import{a as o,s}from"./TokenBlocks-BZy286m_.js";function c(e){let t={code:`code`,h1:`h1`,p:`p`,...n(),...e.components};return(0,u.jsxs)(u.Fragment,{children:[(0,u.jsx)(i,{title:`Foundations/Spacing`}),`
-`,(0,u.jsx)(t.h1,{id:`spacing`,children:`Spacing`}),`
-`,(0,u.jsx)(t.p,{children:`Lưới 4px. Trong Figma đặt auto-layout theo đúng các mốc này.`}),`
-`,(0,u.jsx)(o,{steps:[1,2,3,4,5,6,8,10,12,16]}),`
-`,(0,u.jsxs)(t.p,{children:[`Landing: nhịp section 80px (`,(0,u.jsx)(t.code,{children:`--lp-section`}),`), khối 48px (`,(0,u.jsx)(t.code,{children:`--lp-block`}),`), container 1200px.`]})]})}function l(e={}){let{wrapper:t}={...n(),...e.components};return t?(0,u.jsx)(t,{...e,children:(0,u.jsx)(c,{...e})}):c(e)}var u;function d(){return(d=e((()=>{u=t(),r(),a(),s()})))()}d();export{l as default};
