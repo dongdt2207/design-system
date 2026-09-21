@@ -1,9 +1,0 @@
-import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{n as t}from"./iframe-cv3-HitV.js";import{i as n,r}from"./react-Duphcgii.js";import{a as i,o as a}from"./blocks-B-yTZdz6.js";import{o,s}from"./TokenBlocks-CyYvSX13.js";function c(e){let t={code:`code`,h1:`h1`,h2:`h2`,p:`p`,strong:`strong`,...n(),...e.components};return(0,u.jsxs)(u.Fragment,{children:[(0,u.jsx)(i,{title:`Foundations/Typography`}),`
-`,(0,u.jsx)(t.h1,{id:`typography`,children:`Typography`}),`
-`,(0,u.jsxs)(t.p,{children:[`Một họ chữ (`,(0,u.jsx)(t.code,{children:`--font-sans`}),`, Inter), mono chỉ cho mã (`,(0,u.jsx)(t.code,{children:`--font-mono`}),`, JetBrains Mono). Đổi font ở `,(0,u.jsx)(t.code,{children:`tokens.css`}),`.`]}),`
-`,(0,u.jsx)(t.h2,{id:`scale`,children:`Scale`}),`
-`,(0,u.jsx)(o,{sizes:[`3xl`,`2xl`,`xl`,`lg`,`md`,`sm`,`xs`]}),`
-`,(0,u.jsx)(t.h2,{id:`weight`,children:`Weight`}),`
-`,(0,u.jsxs)(t.p,{children:[`Ba mức: regular (400) thân bài `,(0,u.jsx)(t.strong,{children:`và tiêu đề display`}),`, medium (500) nhãn và nút, semibold (600) tiêu đề component. Không có bold — giọng tạp chí phụ thuộc vào điều này.`]}),`
-`,(0,u.jsx)(t.h2,{id:`display-landing`,children:`Display (landing)`}),`
-`,(0,u.jsxs)(t.p,{children:[(0,u.jsx)(t.code,{children:`--display-lg`}),` 72 · `,(0,u.jsx)(t.code,{children:`--display-md`}),` 36 · `,(0,u.jsx)(t.code,{children:`--display-sm`}),` 26, weight 400, tracking `,(0,u.jsx)(t.code,{children:`--tracking-tight`}),` (-0.02em).`]})]})}function l(e={}){let{wrapper:t}={...n(),...e.components};return t?(0,u.jsx)(t,{...e,children:(0,u.jsx)(c,{...e})}):c(e)}var u;function d(){return(d=e((()=>{u=t(),r(),a(),s()})))()}d();export{l as default};
