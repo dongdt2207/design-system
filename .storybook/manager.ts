@@ -1,26 +1,26 @@
 import { addons } from 'storybook/manager-api';
 import { create } from 'storybook/theming';
 
-/** Logo Ebig — trích từ public/favicon.svg, giữ nguyên tỉ lệ 48×46. */
+/** Ebig logo — taken from public/favicon.svg, keeping the 48×46 ratio. */
 const logo = `<svg width="20" height="19" viewBox="0 0 48 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex:none"><path fill="#863bff" d="M25.946 44.938c-.664.845-2.021.375-2.021-.698V33.937a2.26 2.26 0 0 0-2.262-2.262H10.287c-.92 0-1.456-1.04-.92-1.788l7.48-10.471c1.07-1.497 0-3.578-1.842-3.578H1.237c-.92 0-1.456-1.04-.92-1.788L10.013.474c.214-.297.556-.474.92-.474h28.894c.92 0 1.456 1.04.92 1.788l-7.48 10.471c-1.07 1.498 0 3.579 1.842 3.579h11.377c.943 0 1.473 1.088.89 1.83L25.947 44.94z"/></svg>`;
 
 /*
- * `create()` KHÔNG tự theo hệ điều hành: bỏ trống `base` thì nó trả về `base: "light"`
- * cứng, nên khung manager (sidebar, thanh công cụ) luôn trắng kể cả khi máy đang dark.
- * Hàm đọc `prefers-color-scheme` nằm trong `convert()` của Storybook, và `convert()` chỉ
- * dùng mặc định đó khi KHÔNG truyền theme nào — vừa khai `theme:` là mất đường ấy.
- * Vì vậy đọc lấy ở đây rồi truyền `base` vào.
+ * `create()` does NOT follow the operating system: leave `base` empty and it hard-codes
+ * `base: "light"`, so the manager chrome (sidebar, toolbar) stays white even on a dark machine.
+ * Storybook reads `prefers-color-scheme` inside `convert()`, and `convert()` only applies that
+ * default when NO theme is passed at all — declaring `theme:` loses it.
+ * So we read the preference here and pass `base` in ourselves.
  *
- * `setConfig` chỉ chạy lúc nạp manager: đổi theme hệ điều hành khi đang mở thì phải tải
- * lại trang. Toolbar theme trong preview.tsx là thứ khác — nó đổi `data-theme` cho khung
- * xem story, không đụng tới khung manager.
+ * `setConfig` runs only while the manager loads: changing the OS theme with Storybook open
+ * needs a page reload. The toolbar theme in preview.tsx is a different thing — it swaps
+ * `data-theme` for the story frame and never touches the manager chrome.
  */
 const prefersDark = typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)').matches;
 
 addons.setConfig({
   theme: create({
     base: prefersDark ? 'dark' : 'light',
-    // brandImage bỏ trống ⇒ brandTitle được render dưới dạng HTML.
+    // With brandImage empty, brandTitle renders as HTML.
     brandTitle: `<span style="display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;letter-spacing:-0.01em">${logo}Ebig</span>`,
     brandUrl: './',
     brandTarget: '_self',

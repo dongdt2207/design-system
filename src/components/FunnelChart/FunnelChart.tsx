@@ -3,18 +3,18 @@ import './FunnelChart.css';
 
 export interface FunnelStage { label: string; value: number }
 export interface FunnelChartProps {
-  /** Các bước theo thứ tự, giá trị giảm dần. */
+  /** Steps in order, with decreasing values. */
   stages: FunnelStage[];
   formatValue?: (n: number) => string;
-  /** Hiện mức rơi giữa hai bước — thường mới là thứ người đọc cần. */
+  /** Show the drop between steps — usually the number the reader actually wants. */
   showDrop?: boolean;
 }
 
-/* Bậc rời rạc dùng thang một tông, bắt đầu từ bậc 400 để bước cuối không chìm vào nền. */
+/* Ordinal steps use one hue, starting at step 400 so the last stage doesn't sink into the background. */
 const STEPS = ['var(--viz-seq-700)', 'var(--viz-seq-600)', 'var(--viz-seq-500)', 'var(--viz-seq-400)'];
 
-/** Các bước trong một luồng, kèm mức rơi giữa các bước. */
-export function FunnelChart({ stages, formatValue = (n) => n.toLocaleString('vi-VN'), showDrop = true }: FunnelChartProps) {
+/** The steps in a flow, with the drop between them. */
+export function FunnelChart({ stages, formatValue = (n) => n.toLocaleString('en-US'), showDrop = true }: FunnelChartProps) {
   const top = stages[0]?.value || 1;
   return (
     <div className="eb-funnel">
@@ -31,14 +31,14 @@ export function FunnelChart({ stages, formatValue = (n) => n.toLocaleString('vi-
               <span className="eb-funnel__value">{formatValue(s.value)} · {Math.round((s.value / top) * 100)}%</span>
             </div>
             {showDrop && prev !== null && drop > 0 && (
-              <span className="eb-funnel__drop">rơi {formatValue(drop)} ({Math.round((drop / prev) * 100)}%) so với bước trên</span>
+              <span className="eb-funnel__drop">dropped {formatValue(drop)} ({Math.round((drop / prev) * 100)}%) from the step above</span>
             )}
           </div>
         );
       })}
       <table className="eb-chart__table">
-        <caption>Số liệu dạng bảng</caption>
-        <thead><tr><th scope="col">Bước</th><th scope="col">Số lượng</th><th scope="col">So với bước đầu</th></tr></thead>
+        <caption>Data table</caption>
+        <thead><tr><th scope="col">Step</th><th scope="col">Count</th><th scope="col">Share of first step</th></tr></thead>
         <tbody>{stages.map((s) => <tr key={s.label}><th scope="row">{s.label}</th><td>{formatValue(s.value)}</td><td>{Math.round((s.value / top) * 100)}%</td></tr>)}</tbody>
       </table>
     </div>

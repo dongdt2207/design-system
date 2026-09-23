@@ -5,6 +5,6 @@ const Icon = () => <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" st
 const meta: Meta<typeof EmptyState> = { title: 'Components/EmptyState', component: EmptyState, tags: ['autodocs'], argTypes: { icon: { control: false }, action: { control: false }, size: { control: 'radio', options: ['default', 'compact'] } }, decorators: [(S) => <div style={{ width: 480, border: '1px dashed var(--color-border-default)', borderRadius: 12 }}><S /></div>] };
 export default meta;
 type Story = StoryObj<typeof EmptyState>;
-export const FirstTime: Story = { args: { title: 'Chưa có thành viên nào', description: 'Mời đồng nghiệp để bắt đầu làm việc chung.', icon: <Icon />, action: <Button>Mời thành viên</Button> } };
-export const NoResults: Story = { args: { title: 'Không tìm thấy "hà minh"', description: 'Thử tên ngắn hơn hoặc bỏ bộ lọc.', action: <Button variant="secondary">Bỏ bộ lọc</Button> } };
-export const LoadError: Story = { args: { title: 'Không tải được danh sách', description: 'Kiểm tra kết nối rồi thử lại.', action: <Button variant="secondary">Thử lại</Button>, size: 'compact' } };
+export const FirstTime: Story = { args: { title: 'No members yet', description: 'Invite a colleague to start working together.', icon: <Icon />, action: <Button>Invite member</Button> } };
+export const NoResults: Story = { args: { title: 'No results for "morgan lee"', description: 'Try a shorter name, or clear the filters.', action: <Button variant="secondary">Clear filters</Button> } };
+export const LoadError: Story = { args: { title: 'Couldn\u2019t load the list', description: 'Check your connection, then try again.', action: <Button variant="secondary">Try again</Button>, size: 'compact' } };

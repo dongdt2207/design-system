@@ -3,39 +3,39 @@ import { Button } from '../Button/Button';
 import './PromptInput.css';
 
 export interface PromptInputProps {
-  /** Nhãn cho trình đọc màn hình. Mặc định "Câu hỏi cho trợ lý". */
+  /** Label for screen readers. Defaults to "Question for the assistant". */
   label?: string;
   placeholder?: string;
   value?: string;
   defaultValue?: string;
   onValueChange?: (value: string) => void;
-  /** Gọi khi bấm Gửi hoặc nhấn Enter. Nhận nội dung đã cắt khoảng trắng. */
+  /** Called on Send or Enter. Receives the trimmed content. */
   onSend?: (value: string) => void;
-  /** Trợ lý đang trả lời — nút Gửi đổi thành Dừng. */
+  /** The assistant is answering — Send becomes Stop. */
   busy?: boolean;
   onStop?: () => void;
   disabled?: boolean;
   maxLength?: number;
-  /** Điều cần biết trước khi gõ. Mặc định nói phím tắt. */
+  /** What to know before typing. Defaults to the keyboard shortcut. */
   hint?: string;
-  /** Cái gì sai + cách sửa. */
+  /** What went wrong plus how to fix it. */
   error?: string;
-  /** Nút phụ bên trái: chọn mô hình, đính kèm tệp. Dùng Button ghost/secondary size sm. */
+  /** Secondary controls on the left: model picker, attachments. Use sm ghost/secondary Buttons. */
   toolbar?: ReactNode;
-  /** Số dòng tối đa trước khi ô tự cuộn. */
+  /** Maximum rows before the field starts scrolling. */
   maxRows?: number;
-  /** Hiện nút ghi âm. Việc thu âm và chuyển thành chữ do bên gọi làm. */
+  /** Show the record button. Capturing audio and transcribing it is the caller's job. */
   voice?: boolean;
-  /** Trạng thái ghi âm — bên gọi điều khiển. */
+  /** Recording state — controlled by the caller. */
   voiceState?: 'idle' | 'recording' | 'transcribing' | 'error';
-  /** Số giây đã ghi, hiện dạng 0:07. */
+  /** Seconds recorded so far, shown as 0:07. */
   voiceDuration?: number;
-  /** Cái gì sai + cách sửa khi không ghi âm được. */
+  /** What went wrong plus how to fix it when recording fails. */
   voiceError?: string;
   onVoiceStart?: () => void;
-  /** Kết thúc ghi và chuyển thành chữ. */
+  /** Stop recording and transcribe. */
   onVoiceStop?: () => void;
-  /** Bỏ bản ghi, không chuyển thành chữ. */
+  /** Discard the recording without transcribing. */
   onVoiceCancel?: () => void;
 }
 
@@ -45,10 +45,10 @@ const MicIcon = () => <svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
 
 const clock = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
 
-/** Ô soạn câu hỏi gửi cho trợ lý. Enter gửi, Shift + Enter xuống dòng, ô cao dần theo nội dung tới `maxRows`. Bật `voice` để thêm ghi âm. */
+/** The composer for questions to the assistant. Enter sends, Shift + Enter adds a line, the field grows to `maxRows`. Set `voice` to add dictation. */
 export function PromptInput({
-  label = 'Câu hỏi cho trợ lý', placeholder = 'Hỏi trợ lý một việc…', value, defaultValue = '', onValueChange, onSend,
-  busy = false, onStop, disabled = false, maxLength, hint = 'Enter để gửi, Shift + Enter để xuống dòng.', error, toolbar, maxRows = 8,
+  label = 'Question for the assistant', placeholder = 'Ask the assistant to do something…', value, defaultValue = '', onValueChange, onSend,
+  busy = false, onStop, disabled = false, maxLength, hint = 'Enter to send, Shift + Enter for a new line.', error, toolbar, maxRows = 8,
   voice = false, voiceState = 'idle', voiceDuration = 0, voiceError, onVoiceStart, onVoiceStop, onVoiceCancel,
 }: PromptInputProps) {
   const id = useId(); const descId = `${id}-desc`;
@@ -60,8 +60,8 @@ export function PromptInput({
   const recording = voice && voiceState === 'recording';
   const transcribing = voice && voiceState === 'transcribing';
   const listening = recording || transcribing;
-  const shownError = voice && voiceState === 'error' ? voiceError ?? 'Không ghi âm được. Cấp quyền micro cho trình duyệt rồi thử lại.' : error;
-  const shownHint = recording ? 'Nói xong bấm Xong, hoặc Huỷ để bỏ bản ghi.' : transcribing ? 'Đang chuyển lời nói thành chữ.' : hint;
+  const shownError = voice && voiceState === 'error' ? voiceError ?? 'Couldn’t record. Grant microphone access in your browser, then try again.' : error;
+  const shownHint = recording ? 'Press Done when you finish, or Cancel to discard.' : transcribing ? 'Turning speech into text.' : hint;
 
   useEffect(() => {
     const el = ref.current; if (!el) return;
@@ -89,7 +89,7 @@ export function PromptInput({
         {listening ? (
           <p className="eb-prompt__voice" aria-live="polite">
             <span className={`eb-prompt__rec${transcribing ? ' eb-prompt__rec--off' : ''}`} aria-hidden="true" />
-            <span className="eb-prompt__voice-label">{recording ? 'Đang nghe' : 'Đang chuyển thành chữ'}</span>
+            <span className="eb-prompt__voice-label">{recording ? 'Listening' : 'Transcribing'}</span>
             {recording && <span className="eb-prompt__voice-time">{clock(voiceDuration)}</span>}
           </p>
         ) : (
@@ -101,21 +101,21 @@ export function PromptInput({
         )}
         <div className="eb-prompt__bar">
           <div className="eb-prompt__tools">
-            {voice && !listening && <Button variant="ghost" size="sm" iconStart={<MicIcon />} aria-label="Ghi âm câu hỏi" onClick={onVoiceStart} disabled={disabled} />}
+            {voice && !listening && <Button variant="ghost" size="sm" iconStart={<MicIcon />} aria-label="Record a question" onClick={onVoiceStart} disabled={disabled} />}
             {!listening && toolbar}
           </div>
           <div className="eb-prompt__end">
             {listening ? (
               <>
-                <Button variant="ghost" size="sm" onClick={onVoiceCancel}>Huỷ</Button>
-                <Button variant="primary" size="sm" onClick={onVoiceStop} loading={transcribing}>Xong</Button>
+                <Button variant="ghost" size="sm" onClick={onVoiceCancel}>Cancel</Button>
+                <Button variant="primary" size="sm" onClick={onVoiceStop} loading={transcribing}>Done</Button>
               </>
             ) : (
               <>
                 {maxLength && <span className="eb-prompt__count">{text.length}/{maxLength}</span>}
                 {busy
-                  ? <Button variant="secondary" size="sm" iconStart={<StopIcon />} onClick={onStop}>Dừng</Button>
-                  : <Button variant="primary" size="sm" iconStart={<SendIcon />} onClick={send} disabled={!canSend}>Gửi</Button>}
+                  ? <Button variant="secondary" size="sm" iconStart={<StopIcon />} onClick={onStop}>Stop</Button>
+                  : <Button variant="primary" size="sm" iconStart={<SendIcon />} onClick={send} disabled={!canSend}>Send</Button>}
               </>
             )}
           </div>

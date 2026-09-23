@@ -1,7 +1,7 @@
 import { forwardRef, useId, type InputHTMLAttributes } from 'react';
 import './Checkbox.css';
 export interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
-  /** Câu khẳng định, không phải câu hỏi. */
+  /** An affirmative statement, not a question. */
   label: string; description?: string;
 }
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Checkbox({ label, description, id, className, ...rest }, ref) {

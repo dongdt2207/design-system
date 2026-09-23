@@ -5,8 +5,8 @@ const meta: Meta<typeof Meter> = { title: 'Components/Charts/Meter', component: 
 export default meta;
 type Story = StoryObj<typeof Meter>;
 
-export const HanMuc: Story = { name: 'Trong hạn mức', args: { label: 'Dung lượng đã dùng', value: 412, max: 1000, limit: 800, formatValue: (n) => `${n} GB` } };
-export const SapCham: Story = { name: 'Sắp chạm mốc', args: { label: 'Dung lượng đã dùng', value: 760, max: 1000, limit: 800, formatValue: (n) => `${n} GB` } };
-export const VuotMoc: Story = { name: 'Đã vượt mốc', args: { label: 'Dung lượng đã dùng', value: 910, max: 1000, limit: 800, formatValue: (n) => `${n} GB` } };
-export const ChiTieu: Story = { name: 'Vượt mốc là tốt (chỉ tiêu)', args: { label: 'Doanh số quý', value: 1240, max: 1500, limit: 1000, overIs: 'good', formatValue: (n) => `${n} triệu` } };
-export const KhongMoc: Story = { name: 'Không có mốc', args: { label: 'Tiến độ nhập liệu', value: 48, max: 120, formatValue: (n) => `${n} hồ sơ` } };
+export const WithinQuota: Story = { name: 'Within quota', args: { label: 'Storage used', value: 412, max: 1000, limit: 800, formatValue: (n) => `${n} GB` } };
+export const NearLimit: Story = { name: 'Close to the limit', args: { label: 'Storage used', value: 760, max: 1000, limit: 800, formatValue: (n) => `${n} GB` } };
+export const OverLimit: Story = { name: 'Over the limit', args: { label: 'Storage used', value: 910, max: 1000, limit: 800, formatValue: (n) => `${n} GB` } };
+export const Target: Story = { name: 'Over is good (a target)', args: { label: 'Quarterly sales', value: 1240, max: 1500, limit: 1000, overIs: 'good', formatValue: (n) => `$${n}K` } };
+export const NoLimit: Story = { name: 'No limit', args: { label: 'Records entered', value: 48, max: 120, formatValue: (n) => `${n} records` } };

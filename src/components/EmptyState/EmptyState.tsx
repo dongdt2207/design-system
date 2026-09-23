@@ -1,14 +1,14 @@
 import type { ReactNode } from 'react';
 import './EmptyState.css';
 export interface EmptyStateProps {
-  /** Nói chưa có gì + có thể làm gì: "Chưa có thành viên nào". */
+  /** Says what is missing plus what can be done: "No members yet". */
   title: string;
-  /** Một câu. */
+  /** One sentence. */
   description?: string;
   icon?: ReactNode;
-  /** Hành động primary nếu người dùng tạo được dữ liệu; gợi ý sửa tìm kiếm nếu là kết quả rỗng. */
+  /** A primary action when the user can create data; a search suggestion when results are empty. */
   action?: ReactNode;
-  /** compact cho vùng nhỏ trong card/bảng. */
+  /** compact for small areas inside a card or table. */
   size?: 'default' | 'compact';
 }
 export function EmptyState({ title, description, icon, action, size = 'default' }: EmptyStateProps) {

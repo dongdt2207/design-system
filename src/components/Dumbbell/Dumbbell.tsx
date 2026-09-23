@@ -4,13 +4,13 @@ import './Dumbbell.css';
 export interface DumbbellDatum { label: string; from: number; to: number }
 export interface DumbbellProps {
   data: DumbbellDatum[];
-  /** Tên hai mốc thời gian: "Tháng 8" → "Tháng 9". */
+  /** The two period names: "August" → "September". */
   labels?: { from: string; to: string };
   formatValue?: (n: number) => string;
 }
 
-/** Trước → sau của từng hạng mục. Đọc được độ dịch chuyển, thứ hai thanh cột không cho thấy. */
-export function Dumbbell({ data, labels = { from: 'Trước', to: 'Sau' }, formatValue = (n) => n.toLocaleString('vi-VN') }: DumbbellProps) {
+/** Before → after per category. It shows the shift, which two bars side by side do not. */
+export function Dumbbell({ data, labels = { from: 'Before', to: 'After' }, formatValue = (n) => n.toLocaleString('en-US') }: DumbbellProps) {
   const all = data.flatMap((d) => [d.from, d.to]);
   const min = Math.min(...all), max = Math.max(...all), span = max - min || 1;
   const pos = (v: number) => ((v - min) / span) * 100;
@@ -35,8 +35,8 @@ export function Dumbbell({ data, labels = { from: 'Trước', to: 'Sau' }, forma
         );
       })}
       <table className="eb-chart__table">
-        <caption>Số liệu dạng bảng</caption>
-        <thead><tr><th scope="col">Hạng mục</th><th scope="col">{labels.from}</th><th scope="col">{labels.to}</th><th scope="col">Chênh lệch</th></tr></thead>
+        <caption>Data table</caption>
+        <thead><tr><th scope="col">Category</th><th scope="col">{labels.from}</th><th scope="col">{labels.to}</th><th scope="col">Variance</th></tr></thead>
         <tbody>{data.map((d) => <tr key={d.label}><th scope="row">{d.label}</th><td>{formatValue(d.from)}</td><td>{formatValue(d.to)}</td><td>{d.to - d.from > 0 ? '+' : ''}{formatValue(d.to - d.from)}</td></tr>)}</tbody>
       </table>
     </div>

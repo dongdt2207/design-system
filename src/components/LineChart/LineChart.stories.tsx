@@ -8,7 +8,7 @@ export default meta;
 type Story = StoryObj<typeof LineChart>;
 
 export const MotSeries: Story = {
-  name: 'Một series, có vùng tô',
+  name: 'One series, with an area fill',
   args: { labels: months, area: true, series: [{ name: 'Doanh thu', values: [620, 680, 720, 700, 810, 860, 940, 1020, 1240] }] },
 };
 export const BaSeries: Story = {
@@ -17,13 +17,13 @@ export const BaSeries: Story = {
     labels: months,
     series: [
       { name: 'Trực tuyến', values: [320, 380, 420, 410, 480, 520, 580, 640, 780] },
-      { name: 'Tại quầy', values: [220, 230, 240, 220, 250, 260, 280, 300, 330] },
-      { name: 'Đại lý', values: [80, 70, 60, 70, 80, 80, 80, 80, 130] },
+      { name: 'In store', values: [220, 230, 240, 220, 250, 260, 280, 300, 330] },
+      { name: 'Resellers', values: [80, 70, 60, 70, 80, 80, 80, 80, 130] },
     ],
   },
 };
 export const KhongTuKhong: Story = {
-  name: 'Trục y không bắt đầu từ 0',
-  args: { labels: months, zeroBased: false, series: [{ name: 'Tỉ lệ hoàn tất (%)', values: [94.2, 94.6, 94.1, 95.0, 95.4, 95.1, 95.8, 96.2, 96.0] }] },
+  name: 'Y-axis not starting at 0',
+  args: { labels: months, zeroBased: false, series: [{ name: 'Completion rate (%)', values: [94.2, 94.6, 94.1, 95.0, 95.4, 95.1, 95.8, 96.2, 96.0] }] },
 };
 export const MotDiem: Story = { name: 'Dữ liệu ngắn', args: { labels: ['T8', 'T9'], series: [{ name: 'Doanh thu', values: [1020, 1240] }] } };

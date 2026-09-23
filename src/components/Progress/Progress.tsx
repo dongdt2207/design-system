@@ -1,7 +1,7 @@
 import { ProgressBar } from 'react-aria-components';
 import './Progress.css';
-export interface ProgressProps { /** 0–100; bỏ trống = không xác định. */ value?: number; label?: string; /** Hiện % bên phải. */ showValue?: boolean; size?: 'sm' | 'md' }
-/** Tiến trình có thể đo. Dưới 300ms không cần hiện; trên 10s thêm thông báo. */
+export interface ProgressProps { /** 0–100; omit for indeterminate. */ value?: number; label?: string; /** Show the percentage on the right. */ showValue?: boolean; size?: 'sm' | 'md' }
+/** Measurable progress. Under 300ms, show nothing; over 10s, add a message. */
 export function Progress({ value, label, showValue, size = 'md' }: ProgressProps) {
   return (
     <ProgressBar className={`eb-progress eb-progress--${size}`} value={value} isIndeterminate={value == null} aria-label={label ?? 'Tiến trình'}>

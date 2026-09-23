@@ -9,9 +9,9 @@ export const NhomRadio: Story = {
   name: 'Nhóm radio — chọn một',
   render: () => (
     <div style={{ display: 'grid', gap: 'var(--space-3)', maxWidth: 420 }}>
-      <SelectableCard name="goi" value="design" title="Chỉ thiết kế" description="Bạn đã có thầu thi công, chỉ cần bản vẽ." meta="3.400 $ / phòng" defaultChecked />
-      <SelectableCard name="goi" value="full" title="Trọn gói" description="Thiết kế và thi công trên một hợp đồng." meta="từ 52.000 $ / căn" />
-      <SelectableCard name="goi" value="reno" title="Cải tạo" description="Làm từng phòng, gia chủ vẫn ở lại." meta="báo giá theo hạng mục" />
+      <SelectableCard name="package" value="design" title="Design only" description="You have a builder already and just need drawings." meta="$3,400 per room" defaultChecked />
+      <SelectableCard name="package" value="full" title="Full package" description="Design and build under one contract." meta="from $52,000 per home" />
+      <SelectableCard name="package" value="reno" title="Renovation" description="Room by room, with the owners still living there." meta="quoted per item" />
     </div>
   ),
 };
@@ -19,19 +19,19 @@ export const NhieuLuaChon: Story = {
   name: 'Checkbox — chọn nhiều',
   render: () => (
     <div style={{ display: 'grid', gap: 'var(--space-3)', maxWidth: 420 }}>
-      <SelectableCard type="checkbox" name="them" value="mocs" title="Đồ mộc đặt riêng" description="Tủ bếp, tủ áo, kệ âm tường." defaultChecked />
-      <SelectableCard type="checkbox" name="them" value="dien" title="Đi lại điện nước" />
-      <SelectableCard type="checkbox" name="them" value="rem" title="Rèm và vải bọc" />
+      <SelectableCard type="checkbox" name="extras" value="joinery" title="Custom joinery" description="Kitchen units, wardrobes, built-in shelving." defaultChecked />
+      <SelectableCard type="checkbox" name="extras" value="services" title="Rewiring and plumbing" />
+      <SelectableCard type="checkbox" name="extras" value="soft" title="Curtains and upholstery" />
     </div>
   ),
 };
 export const Khoa: Story = {
-  name: 'Bị khoá',
+  name: 'Disabled option',
   render: () => (
     <div style={{ display: 'grid', gap: 'var(--space-3)', maxWidth: 420 }}>
-      <SelectableCard name="kho" value="a" title="Gói tiêu chuẩn" description="Còn nhận đơn trong tháng này." defaultChecked />
-      <SelectableCard name="kho" value="b" title="Gói cao cấp" description="Đã kín lịch tới tháng 12." disabled />
+      <SelectableCard name="availability" value="a" title="Standard package" description="Still taking bookings this month." defaultChecked />
+      <SelectableCard name="availability" value="b" title="Premium package" description="Fully booked through December." disabled />
     </div>
   ),
 };
-export const MotThe: Story = { name: 'Một thẻ đơn lẻ', args: { name: 'don', value: 'x', title: 'Nhận bản tin hàng tháng', description: 'Một email mỗi tháng, huỷ bất cứ lúc nào.', type: 'checkbox' } };
+export const SingleCard: Story = { name: 'A single card', args: { name: 'newsletter', value: 'x', title: 'Get the monthly newsletter', description: 'One email a month, unsubscribe anytime.', type: 'checkbox' } };

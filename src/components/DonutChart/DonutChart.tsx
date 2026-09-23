@@ -3,9 +3,9 @@ import './DonutChart.css';
 
 export interface DonutDatum { label: string; value: number }
 export interface DonutChartProps {
-  /** Tối đa 5 phần. Nhiều hơn thì gộp phần nhỏ thành "Khác" trước khi truyền vào. */
+  /** At most 5 slices. Beyond that, group the small ones into "Other" before passing them in. */
   data: DonutDatum[];
-  /** Chữ dưới số ở giữa: "đơn hàng", "người dùng". */
+  /** The word under the center figure: "orders", "users". */
   caption?: string;
   /** Tổng hiển thị ở giữa. Bỏ trống = cộng dữ liệu. */
   total?: number;
@@ -15,17 +15,17 @@ export interface DonutChartProps {
 
 const colorOf = (i: number) => `var(--viz-cat-${(i % 8) + 1})`;
 
-/** Tỉ trọng của một tổng. Cần so sánh chính xác giữa các phần thì dùng BarChart. */
-export function DonutChart({ data, caption, total, formatValue = (n) => n.toLocaleString('vi-VN'), size = 160 }: DonutChartProps) {
+/** Share of a total. When slices need precise comparison, use BarChart. */
+export function DonutChart({ data, caption, total, formatValue = (n) => n.toLocaleString('en-US'), size = 160 }: DonutChartProps) {
   const sum = data.reduce((a, d) => a + d.value, 0) || 1;
   const r = (size - 18) / 2, C = 2 * Math.PI * r;
-  const GAP = 2; // khe 2px giữa các phần, để hai màu cạnh nhau không dính vào nhau
+  const GAP = 2; // a 2px gap between slices so neighboring colors don't touch
   let offset = 0;
 
   return (
     <div className="eb-donut">
       <div className="eb-donut__wrap" style={{ width: size, height: size }}>
-        <svg className="eb-donut__svg" width={size} height={size} role="img" aria-label={`Biểu đồ tỉ trọng, ${data.length} phần`}>
+        <svg className="eb-donut__svg" width={size} height={size} role="img" aria-label={`Share chart, ${data.length} slices`}>
           {data.map((d, i) => {
             const len = (d.value / sum) * C;
             const seg = (
@@ -61,8 +61,8 @@ export function DonutChart({ data, caption, total, formatValue = (n) => n.toLoca
       </ul>
 
       <table className="eb-chart__table">
-        <caption>Số liệu dạng bảng</caption>
-        <thead><tr><th scope="col">Phần</th><th scope="col">Giá trị</th><th scope="col">Tỉ lệ</th></tr></thead>
+        <caption>Data table</caption>
+        <thead><tr><th scope="col">Slice</th><th scope="col">Value</th><th scope="col">Share</th></tr></thead>
         <tbody>{data.map((d) => <tr key={d.label}><th scope="row">{d.label}</th><td>{formatValue(d.value)}</td><td>{Math.round((d.value / sum) * 100)}%</td></tr>)}</tbody>
       </table>
     </div>

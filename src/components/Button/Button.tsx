@@ -2,10 +2,10 @@ import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from 'react';
 import './Button.css';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  /** Kiểu hiển thị. Tên trùng Figma property "variant". `ink` = CTA lớn nền mực, không thêm màu accent. */
+  /** Appearance. Matches the Figma "variant" property. `ink` = large CTA on an ink background, no extra accent. */
   variant?: 'primary' | 'ink' | 'secondary' | 'ghost' | 'danger';
   size?: 'sm' | 'md' | 'lg';
-  /** Đang xử lý — spinner, khoá tương tác. */
+  /** Working — spinner, interaction blocked. */
   loading?: boolean;
   fullWidth?: boolean;
   iconStart?: ReactNode;

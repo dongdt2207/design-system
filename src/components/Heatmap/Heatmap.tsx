@@ -3,25 +3,26 @@ import '../chart.css';
 import './Heatmap.css';
 
 export interface HeatmapProps {
-  /** Nhãn cột, ví dụ giờ trong ngày. */
+  /** Column labels, for example hours of the day. */
   columns: string[];
-  /** Mỗi hàng: nhãn + một giá trị cho mỗi cột. null = không có dữ liệu. */
+  /** Each row: a label plus one value per column. null = no data. */
   rows: { label: string; values: (number | null)[] }[];
   max?: number;
   formatValue?: (n: number) => string;
   unit?: string;
 }
 
-/** Độ lớn trên một lưới hai chiều. Thang một tông, đậm = lớn — không dùng cầu vồng. */
+/** Magnitude on a two-dimensional grid. One hue, darker = larger — never a rainbow. */
 const STEPS = ['var(--viz-seq-100)', 'var(--viz-seq-200)', 'var(--viz-seq-300)', 'var(--viz-seq-400)', 'var(--viz-seq-500)', 'var(--viz-seq-600)', 'var(--viz-seq-700)'];
 
-export function Heatmap({ columns, rows, max, formatValue = (n) => n.toLocaleString('vi-VN'), unit = '' }: HeatmapProps) {
+export function Heatmap({ columns, rows, max, formatValue = (n) => n.toLocaleString('en-US'), unit = '' }: HeatmapProps) {
   const all = rows.flatMap((r) => r.values).filter((v): v is number => v !== null);
   const ceiling = max ?? Math.max(...all, 1);
   const stepOf = (v: number) => STEPS[Math.min(STEPS.length - 1, Math.floor((v / ceiling) * STEPS.length))];
 
   return (
     <div className="eb-heat">
+      <div className="eb-heat__scroll" tabIndex={0} role="group" aria-label="Heatmap grid — scrolls sideways when narrow">
       <div className="eb-heat__grid" style={{ gridTemplateColumns: `auto repeat(${columns.length}, minmax(18px, 1fr))` }}>
         <span />
         {columns.map((c) => <span className="eb-heat__colhead" key={c}>{c}</span>)}
@@ -33,11 +34,12 @@ export function Heatmap({ columns, rows, max, formatValue = (n) => n.toLocaleStr
                 key={`${r.label}-${i}`}
                 className={`eb-heat__cell${v === null ? ' eb-heat__cell--empty' : ''}`}
                 style={v === null ? undefined : { background: stepOf(v) }}
-                title={v === null ? `${r.label} · ${columns[i]}: không có dữ liệu` : `${r.label} · ${columns[i]}: ${formatValue(v)}${unit}`}
+                title={v === null ? `${r.label} · ${columns[i]}: no data` : `${r.label} · ${columns[i]}: ${formatValue(v)}${unit}`}
               />
             ))}
           </Fragment>
         ))}
+      </div>
       </div>
 
       <div className="eb-heat__scale">
@@ -47,8 +49,8 @@ export function Heatmap({ columns, rows, max, formatValue = (n) => n.toLocaleStr
       </div>
 
       <table className="eb-chart__table">
-        <caption>Số liệu dạng bảng</caption>
-        <thead><tr><th scope="col">Hàng</th>{columns.map((c) => <th scope="col" key={c}>{c}</th>)}</tr></thead>
+        <caption>Data table</caption>
+        <thead><tr><th scope="col">Row</th>{columns.map((c) => <th scope="col" key={c}>{c}</th>)}</tr></thead>
         <tbody>{rows.map((r) => <tr key={r.label}><th scope="row">{r.label}</th>{r.values.map((v, i) => <td key={i}>{v === null ? '—' : formatValue(v) + unit}</td>)}</tr>)}</tbody>
       </table>
     </div>

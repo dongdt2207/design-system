@@ -2,7 +2,7 @@ import { TooltipTrigger, Tooltip as ATooltip, OverlayArrow, Focusable } from 're
 import type { ReactNode } from 'react';
 import './Tooltip.css';
 export interface TooltipProps {
-  /** Một dòng, không có hành động. Không giấu thông tin quan trọng trong tooltip. */
+  /** One line, no actions. Never hide important information in a tooltip. */
   content: string;
   placement?: 'top' | 'bottom' | 'left' | 'right';
   delay?: number;

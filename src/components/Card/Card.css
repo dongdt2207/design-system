@@ -1,4 +1,4 @@
-.eb-card { background: var(--color-bg-surface); border-radius: var(--radius-lg); overflow: hidden; }
+.eb-card { container-type: inline-size; background: var(--color-bg-surface); border-radius: var(--radius-lg); overflow: hidden; }
 .eb-card--flat { border: 1px solid var(--color-border-default); }
 .eb-card--raised { border: 1px solid var(--color-border-strong); }
 .eb-card__header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-4); padding: var(--space-6) var(--space-6) 0; }
@@ -10,16 +10,17 @@
 .eb-card__header + .eb-card__body { padding-top: var(--space-4); }
 .eb-card__footer { display: flex; justify-content: flex-end; gap: var(--space-2); padding: var(--space-4) var(--space-6); border-top: 1px solid var(--color-border-default); background: var(--color-bg-subtle); }
 
-/* Ảnh dẫn đầu — không bo góc riêng, không bóng; khung card đã bo sẵn. */
+/* Leading image — no radius of its own, no shadow; the card frame already rounds it. */
 .eb-card__media { overflow: hidden; background: var(--color-bg-subtle); }
 .eb-card__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .eb-card__stack { display: flex; flex-direction: column; }
 .eb-card__stack > .eb-card__body { flex: 1; }
 
-/* Ngang: ảnh trái, chữ phải. Dùng trong danh sách dọc, không dùng trong lưới. */
+/* Horizontal: image left, text right. For vertical lists, not for grids. */
 .eb-card--horizontal { display: grid; grid-template-columns: minmax(96px, 32%) 1fr; align-items: stretch; }
 .eb-card--horizontal .eb-card__media { height: 100%; }
-@media (max-width: 640px) {
+/* A narrow horizontal card stacks the image on top — follows the CARD width, not the window (section 3.5). */
+@container (max-width: 639px) {
   .eb-card--horizontal { grid-template-columns: 1fr; }
   .eb-card--horizontal .eb-card__media { aspect-ratio: 16 / 9; height: auto; }
 }

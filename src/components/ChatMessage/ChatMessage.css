@@ -1,4 +1,4 @@
-.eb-msg { display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-3) 0; }
+.eb-msg { container-type: inline-size; display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-3) 0; }
 .eb-msg--user { flex-direction: row-reverse; }
 
 .eb-msg__main { min-width: 0; max-width: 70ch; display: flex; flex-direction: column; gap: var(--space-2); }
@@ -22,7 +22,7 @@
 
 .eb-msg__trace { align-self: stretch; }
 
-/* Con trỏ trả lời — chỉ chạy trong lúc streaming, tắt theo prefers-reduced-motion (base.css). */
+/* Answer caret — runs only while streaming, disabled by prefers-reduced-motion (base.css). */
 .eb-msg__caret { display: inline-block; width: 2px; height: 1em; margin-left: var(--space-1); vertical-align: -2px; background: var(--color-text-muted); animation: eb-msg-caret 1s steps(2, start) infinite; }
 @keyframes eb-msg-caret { 50% { opacity: 0; } }
 
@@ -34,3 +34,12 @@
 .eb-msg__actions { display: flex; gap: var(--space-2); opacity: 0; transition: opacity var(--duration-fast) var(--ease-standard); }
 .eb-msg:hover .eb-msg__actions, .eb-msg:focus-within .eb-msg__actions { opacity: 1; }
 @media (hover: none) { .eb-msg__actions { opacity: 1; } }
+
+/* Narrow: the user bubble spans the full width and text drops to body-compact.
+   The message declares its own container, so this also works outside the assistant screen (section 3.5). */
+@container (max-width: 639px) {
+  .eb-msg__main { gap: var(--space-1); }
+  .eb-msg--user .eb-msg__main { max-width: 100%; }
+  .eb-msg__body { font-size: var(--text-sm); line-height: var(--leading-normal); }
+  .eb-msg--user .eb-msg__body { padding: var(--space-2) var(--space-3); }
+}

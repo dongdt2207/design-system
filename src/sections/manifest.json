@@ -1,5 +1,5 @@
 {
-  "$comment": "Registry section landing. Agent đọc file này để biết được dùng gì, không đọc mò trong code. Thứ tự trong 'order' là thứ tự hợp lệ trên trang.",
+  "$comment": "Registry of landing sections. Agents read this file to learn what is available instead of guessing from the code. The sequence in 'order' is the valid order on a page.",
   "style": "landing-minimal",
   "rules": "DESIGN-RULES.md#9.8",
   "order": [
@@ -37,91 +37,91 @@
     }
   },
   "visuals": {
-    "terminal": "Khối dòng lệnh. lines[]: { text, tone?: 'dim'|'ok' }. Dùng để chứng minh tính năng kỹ thuật bằng output thật.",
-    "stats": "Lưới 4 số liệu. items[]: { value, label }. Dùng khi có con số cụ thể.",
-    "image": "Ảnh tràn khung, không bo góc. { src, alt }. Dùng khi có ảnh chụp sản phẩm thật."
+    "terminal": "A command-line block. lines[]: { text, tone?: 'dim'|'ok' }. Use it to prove a technical claim with real output.",
+    "stats": "A grid of 4 figures. items[]: { value, label }. Use it when you have concrete numbers.",
+    "image": "A full-bleed image with no radius. { src, alt }. Use it when you have a real product photograph."
   },
   "sections": {
     "nav": {
-      "use": "Luôn có, đứng đầu.",
+      "use": "Always present, first on the page.",
       "props": {
         "logo": "string",
-        "links": "{label,href}[] (3–5, [] khi trang không có menu)",
-        "cta": "{label,href}? (bỏ khi trang không có hành động ở đầu trang)",
-        "navLabel": "string? (aria-label của <nav>, mặc định 'Chính')"
+        "links": "{label,href}[] (3–5, or [] when the page has no menu)",
+        "cta": "{label,href}? (omit when the page has no action in the header)",
+        "navLabel": "string? (aria-label for the <nav>, defaults to 'Main')"
       }
     },
     "hero": {
-      "use": "Luôn có, ngay sau nav. Lời hứa của sản phẩm.",
+      "use": "Always present, straight after the nav. The product promise.",
       "props": {
-        "eyebrow": "string? (viết thường)",
-        "title": "string (≤ 4 từ)",
-        "blocks": "{value,label,height?:'tall'|'mid'|'low',deep?:boolean}[] (4–6, đúng một deep)"
+        "eyebrow": "string? (lowercase)",
+        "title": "string (≤ 4 words)",
+        "blocks": "{value,label,height?:'tall'|'mid'|'low',deep?:boolean}[] (4–6, exactly one deep)"
       }
     },
     "manifesto": {
-      "use": "Một câu tuyên ngôn. Bỏ khi trang ngắn.",
+      "use": "A single statement sentence. Drop it on short pages.",
       "props": {
-        "text": "string (12–25 từ)",
+        "text": "string (12–25 words)",
         "asideLeft": "string?",
         "asideRight": "string?"
       }
     },
     "split": {
-      "use": "Giải thích cách hoạt động. Bỏ khi trang ngắn.",
+      "use": "Explains how it works. Drop it on short pages.",
       "props": {
         "eyebrow": "string",
-        "text": "string (≤ 60 từ)",
+        "text": "string (≤ 60 words)",
         "visual": "VisualSpec"
       }
     },
     "feature": {
-      "use": "Mỗi tính năng chính một khối tối. Lặp 1–3 lần, đảo visualSide luân phiên.",
+      "use": "One dark block per main feature. Repeat 1–3 times, alternating visualSide.",
       "props": {
         "index": "string ('01','02','03')",
-        "title": "string (≤ 6 từ)",
-        "description": "string (≤ 40 từ)",
+        "title": "string (≤ 6 words)",
+        "description": "string (≤ 40 words)",
         "visual": "VisualSpec",
         "visualSide": "'right'|'left'"
       }
     },
     "testimonial": {
-      "use": "Bằng chứng xã hội. single: một quote lớn. pair: hai quote nhỏ. Có thể dùng cả hai, single trước.",
+      "use": "Social proof. single: one large quote. pair: two smaller quotes. Both may appear, with single first.",
       "props": {
         "variant": "'single'|'pair'",
-        "quotes": "{quote,author,role}[] (1 cho single, 2 cho pair)"
+        "quotes": "{quote,author,role}[] (1 for single, 2 for pair)"
       }
     },
     "cta": {
-      "use": "Mặc định luôn có, trước footer. Động từ + kết quả trong khung thời gian. Chỉ bỏ khi trang cố ý không có hành động nào — khi đó footer là lối ra duy nhất.",
+      "use": "Present by default, before the footer. Verb plus outcome within a time frame. Drop it only when the page deliberately has no action — then the footer is the only way out.",
       "props": {
         "title": "string",
         "primary": "{label,href}",
         "secondary": "{label,href}?",
-        "note": "string? (xoá rào cản)"
+        "note": "string? (removes a barrier)"
       }
     },
     "footer": {
-      "use": "Luôn có, cuối trang.",
+      "use": "Always present, at the end of the page.",
       "props": {
         "brand": "string",
         "tagline": "string",
         "columns": "{title,links:{label,href}[]}[] (2–3)",
         "meta": "string?",
-        "place": "string? (địa danh góc phải dòng meta, mặc định 'Hà Nội')"
+        "place": "string? (place name at the right of the meta line, defaults to 'Portland')"
       }
     },
     "comparison": {
-      "use": "So sánh trung thực với cách cũ. Bỏ khi không có gì để so.",
+      "use": "An honest comparison with the old way. Drop it when there is nothing to compare.",
       "props": {
         "eyebrow": "string?",
         "title": "string",
-        "columns": "[tiêu chí, tên ta, tên họ]",
-        "rows": "[string,string,string][] (3–7 hàng, không ✓/✗)"
+        "columns": "[criterion, our name, their name]",
+        "rows": "[string,string,string][] (3–7 rows, no ✓/✗)"
       }
     },
     "pricing": {
-      "use": "Bảng giá 2–4 tier, đúng một featured (đảo mực).",
+      "use": "A price table of 2–4 tiers, exactly one featured (inverted ink).",
       "props": {
         "eyebrow": "string?",
         "title": "string",
@@ -129,22 +129,22 @@
       }
     },
     "timeline": {
-      "use": "Mốc theo thứ tự thời gian: lịch dự án theo tuần, hoặc chặng đường công ty. Bỏ khi trang ngắn.",
+      "use": "Milestones in chronological order: a project schedule by week, or a company history. Drop it on short pages.",
       "props": {
         "eyebrow": "string?",
         "title": "string",
-        "items": "{marker,label,text}[] (3–6). marker là mốc thời gian thật (tuần/tháng/năm), label ≤ 6 từ, text ≤ 30 từ."
+        "items": "{marker,label,text}[] (3–6). marker is a real point in time (week/month/year), label ≤ 6 words, text ≤ 30 words."
       }
     },
     "team": {
-      "use": "Ảnh người làm việc thật + một cam kết kiểm chứng được. Đặt sau testimonial, trước CTA. Bỏ khi chưa có ảnh thật.",
+      "use": "A photo of people actually working plus one verifiable commitment. Place it after testimonial, before the CTA. Drop it when there is no real photo.",
       "props": {
         "image": "{src,alt}",
-        "title": "string (≤ 6 từ)",
-        "text": "string (≤ 40 từ)",
+        "title": "string (≤ 6 words)",
+        "text": "string (≤ 40 words)",
         "link": "{label,href}?"
       }
     }
   },
-  "placeholders": "Thiếu số liệu thật, tên thật, quote thật → ghi '[cần số thật]' / '[cần tên thật]' vào đúng chỗ. Không bịa."
+  "placeholders": "Missing a real figure, name, or quote → write '[real number needed]' / '[real name needed]' in its place. Never invent one."
 }

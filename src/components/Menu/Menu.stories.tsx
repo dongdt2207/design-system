@@ -3,14 +3,14 @@ import { Menu } from './Menu';
 import { Button } from '../Button/Button';
 const items = [
   { id: 'edit', label: 'Chỉnh sửa', shortcut: 'E' },
-  { id: 'dup', label: 'Nhân bản', shortcut: '⌘D' },
-  { id: 'move', label: 'Chuyển thư mục' },
+  { id: 'dup', label: 'Duplicate', shortcut: '⌘D' },
+  { id: 'move', label: 'Move to folder' },
   { type: 'separator' as const },
-  { id: 'archive', label: 'Lưu trữ' },
-  { id: 'delete', label: 'Xoá', danger: true },
+  { id: 'archive', label: 'Archive' },
+  { id: 'delete', label: 'Delete', danger: true },
 ];
 const meta: Meta<typeof Menu> = { title: 'Components/Menu', component: Menu, tags: ['autodocs'], args: { items, placement: 'bottom start' }, argTypes: { items: { control: false }, trigger: { control: false }, placement: { control: 'radio', options: ['bottom start', 'bottom end', 'top start', 'top end'] } } };
 export default meta;
 type Story = StoryObj<typeof Menu>;
-export const Default: Story = { render: (a) => <Menu {...a} trigger={<Button variant="secondary">Hành động</Button>} /> };
-export const WithSections: Story = { render: (a) => <Menu {...a} trigger={<Button variant="secondary">Sắp xếp</Button>} items={[{ type: 'section', title: 'Theo thời gian', items: [{ id: 'new', label: 'Mới nhất' }, { id: 'old', label: 'Cũ nhất' }] }, { type: 'section', title: 'Theo tên', items: [{ id: 'az', label: 'A → Z' }, { id: 'za', label: 'Z → A' }] }]} /> };
+export const Default: Story = { render: (a) => <Menu {...a} trigger={<Button variant="secondary">Actions</Button>} /> };
+export const WithSections: Story = { render: (a) => <Menu {...a} trigger={<Button variant="secondary">Sort</Button>} items={[{ type: 'section', title: 'By time', items: [{ id: 'new', label: 'Newest' }, { id: 'old', label: 'Oldest' }] }, { type: 'section', title: 'By name', items: [{ id: 'az', label: 'A → Z' }, { id: 'za', label: 'Z → A' }] }]} /> };

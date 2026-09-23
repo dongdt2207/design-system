@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Accordion } from './Accordion';
 const items = [
-  { id: 'a', title: 'Ebig CDN có tính phí băng thông không?', content: 'Không. 100 GB đầu mỗi tháng miễn phí, sau đó tính theo dung lượng lưu trữ, không tính egress.' },
-  { id: 'b', title: 'Có dùng được với domain riêng không?', content: 'Có. Trỏ CNAME về cdn.ebig.co, chứng chỉ TLS tự cấp trong vài phút.' },
-  { id: 'c', title: 'Purge cache mất bao lâu?', content: 'Dưới 50 ms lan toàn cầu, gọi qua API hoặc dashboard.' },
+  { id: 'a', title: 'Does Ebig CDN charge for bandwidth?', content: 'No. The first 100 GB each month is free, after that you pay for storage, not egress.' },
+  { id: 'b', title: 'Can I use my own domain?', content: 'Yes. Point a CNAME at cdn.ebig.co and the TLS certificate issues itself within minutes.' },
+  { id: 'c', title: 'How long does a cache purge take?', content: 'Under 50 ms worldwide, triggered from the API or the dashboard.' },
 ];
 const meta: Meta<typeof Accordion> = { title: 'Components/Accordion', component: Accordion, tags: ['autodocs'], args: { items, defaultExpanded: ['a'] }, argTypes: { items: { control: false } }, decorators: [(S) => <div style={{ width: 520 }}><S /></div>] };
 export default meta;

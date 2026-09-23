@@ -3,9 +3,9 @@ import { ChartFrame } from './ChartFrame';
 import { BarChart } from '../BarChart/BarChart';
 
 const data = [
-  { label: 'Hà Nội', values: [1240] },
+  { label: 'Portland', values: [1240] },
   { label: 'TP.HCM', values: [1890] },
-  { label: 'Đà Nẵng', values: [640] },
+  { label: 'Boulder', values: [640] },
 ];
 
 const meta: Meta<typeof ChartFrame> = {
@@ -18,17 +18,17 @@ export default meta;
 type Story = StoryObj<typeof ChartFrame>;
 
 export const Ready: Story = {
-  args: { title: 'Đơn hàng theo chi nhánh', subtitle: 'Tháng 9/2026 · đơn vị: đơn', children: <BarChart data={data} /> },
+  args: { title: 'Orders by branch', subtitle: 'September 2026 · unit: orders', children: <BarChart data={data} /> },
 };
 export const CoLegend: Story = {
-  name: 'Có legend (2 series trở lên)',
+  name: 'With a legend (2+ series)',
   args: {
-    title: 'Đơn hàng theo kênh',
-    subtitle: 'Tháng 9/2026',
-    legend: [{ name: 'Trực tuyến', color: 'var(--viz-cat-1)' }, { name: 'Tại quầy', color: 'var(--viz-cat-2)' }],
-    children: <BarChart series={['Trực tuyến', 'Tại quầy']} stacked data={[{ label: 'Hà Nội', values: [820, 420] }, { label: 'TP.HCM', values: [1190, 700] }]} />,
+    title: 'Orders by channel',
+    subtitle: 'September 2026',
+    legend: [{ name: 'Online', color: 'var(--viz-cat-1)' }, { name: 'In store', color: 'var(--viz-cat-2)' }],
+    children: <BarChart series={['Online', 'In store']} stacked data={[{ label: 'Portland', values: [820, 420] }, { label: 'Austin', values: [1190, 700] }]} />,
   },
 };
-export const DangTai: Story = { name: 'Đang tải', args: { title: 'Đơn hàng theo chi nhánh', state: 'loading' } };
-export const Rong: Story = { name: 'Rỗng', args: { title: 'Đơn hàng theo chi nhánh', state: 'empty' } };
-export const Loi: Story = { name: 'Lỗi tải', args: { title: 'Đơn hàng theo chi nhánh', state: 'error', onRetry: () => {} } };
+export const Loading: Story = { name: 'Loading', args: { title: 'Orders by branch', state: 'loading' } };
+export const Empty: Story = { name: 'Empty', args: { title: 'Orders by branch', state: 'empty' } };
+export const LoadError: Story = { name: 'Load error', args: { title: 'Orders by branch', state: 'error', onRetry: () => {} } };

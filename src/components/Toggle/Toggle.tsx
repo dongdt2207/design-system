@@ -1,10 +1,10 @@
 import { forwardRef, useId, type InputHTMLAttributes } from 'react';
 import './Toggle.css';
 export interface ToggleProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'> {
-  /** Thứ được bật: "Chế độ tối", không "Bật chế độ tối". */
+  /** The thing being switched on: "Dark mode", not "Turn on dark mode". */
   label: string; size?: 'sm' | 'md';
 }
-/** Công tắc có hiệu lực ngay. Cần Lưu thì dùng Checkbox. */
+/** A switch that takes effect immediately. When a Save button is needed, use Checkbox. */
 export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(function Toggle({ label, size = 'md', id, className, ...rest }, ref) {
   const autoId = useId(); const inputId = id ?? autoId;
   return (

@@ -129,6 +129,24 @@ Quy tắc:
 
 ---
 
+### 3.5 Co giãn
+
+Nguyên tắc: **component co theo khung chứa nó, không theo cửa sổ.** Cùng một component còn nằm trong drawer, split view, cột hẹp, iframe preview — bề rộng cửa sổ không nói được nó đang đứng trong chỗ rộng bao nhiêu.
+
+- Component chiếm cả vùng nội dung (màn hình, panel, bảng, biểu đồ, card lớn) khai báo `container-type: inline-size` ở phần tử ngoài cùng và đổi bố cục bằng `@container`. Đặt container ở phần tử ngoài, layout ở phần tử con — một phần tử không tự truy vấn chính nó.
+- Phần tử đã khai `container-type: inline-size` **không tự co theo nội dung nữa** (`contain: inline-size`). Nó phải nhận bề rộng từ layout bên ngoài: block trong luồng thường, một track của grid, hoặc flex item có `flex-basis`/`width` rõ ràng. Thả nó làm flex item co giãn theo nội dung thì nó sập về 0.
+- `@media` chỉ còn dùng cho hai việc: khung trang (header, sidebar, lề trang) và đặc tính thiết bị (`hover: none`, `prefers-reduced-motion`, `prefers-color-scheme`).
+- Ngưỡng lấy từ mục 3.2, viết dạng `max-width`: **1023** (dưới lg) và **639** (dưới md). Không đặt ngưỡng riêng cho một component; cần ngưỡng khác thì nói rõ lý do khi review.
+- Thứ tự việc phải làm khi hẹp lại: (1) nhiều cột → một cột; (2) vùng phụ ẩn thành Drawer hoặc Accordion; (3) padding tụt một bậc trên thang (`6` → `4` → `3`); (4) type set tụt một bậc, chỉ display và heading (mục 4.3); (5) nhóm nút/chip ngang → dọc. Không đổi thứ tự đọc, không ẩn nội dung bắt buộc.
+- Chiều rộng cố định bằng px chỉ dành cho: icon, avatar, checkbox, track toggle, sidebar 240, và `max-width` của dòng văn bản. Mọi chiều rộng khác dùng `%`, `min()`, `minmax()` hoặc token.
+- **Không bao giờ cuộn ngang cả trang.** Cuộn ngang chỉ được phép bên trong một vùng có viền rõ (bảng, khối mã, dải thẻ), và vùng đó phải cuộn được bằng bàn phím (`tabindex="0"` + nhãn).
+- Bảng nhiều cột dưới 640 chuyển thành danh sách card (mục 9.6). Không thu nhỏ chữ để nhét vừa cột.
+- Thiết bị chạm (`hover: none`): mọi vùng bấm ≥ 40×40; hành động chỉ hiện khi hover phải hiện sẵn.
+- Ảnh và biểu đồ giữ khung bằng `aspect-ratio`, không đặt chiều cao cố định.
+- **Kiểm được**: component chiếm cả vùng nội dung phải có story ở khung cố định **390px** (thêm story **820px** nếu bố cục còn đổi ở mốc lg). Dùng helper `frame(390)` trong `src/story-frame.tsx` — khung tự đặt trong story, không phụ thuộc bề rộng cửa sổ trình duyệt.
+
+---
+
 ## 4. Typography
 
 ### 4.1 Font
@@ -508,7 +526,10 @@ Màn hình hỏi đáp với agent: sidebar hội thoại 240px, header 56px, lu
 - Lỗi một lượt không xoá các lượt trước: hiện inline trong tin đó kèm "Trả lời lại".
 - Ghi âm là cách nhập thay bàn phím, không phải hành động riêng: kết quả rơi vào ô soạn để người dùng sửa rồi mới gửi. Luôn còn đường gõ tay; lỗi micro nói cách cấp quyền.
 - Không tự cuộn ngược lên khi người dùng đang đọc; không hiện spinner toàn màn hình.
-- Dưới lg, sidebar ẩn thành Drawer mở từ header (mục 3.3).
+- Co giãn theo mục 3.5 (bám khung chứa, không bám cửa sổ):
+  - < 1024: sidebar ẩn thành Drawer mở từ header (mục 3.3), padding content còn `4`.
+  - < 640: header gọn lại, tiêu đề xuống `--text-md`, padding `3`, tin nhắn dùng `body-compact-01`, bong bóng người dùng rộng hết khung, gợi ý xếp dọc mỗi dòng một câu.
+  - Thiết bị chạm (`hover: none`): mọi mục trong danh sách, chip gợi ý và nút trong ô soạn cao tối thiểu 40px.
 
 ---
 
@@ -588,10 +609,12 @@ Công thức: **cái gì sai** + **làm gì để sửa**.
 
 ### 10.5 Định dạng
 
-- Ngày: `17/09/2026` (Việt Nam) hoặc tương đối khi dưới 7 ngày ("2 giờ trước", "Hôm qua").
-- Giờ: `09:00`, 24 giờ.
-- Số: dấu chấm phân cách nghìn, dấu phẩy thập phân: `1.250,50`.
-- Tiền: `1.250.000 ₫`, ký hiệu sau số, cách một khoảng.
+Giao diện dùng quy ước Anh — Mỹ (chữ trong sản phẩm viết tiếng Anh; tài liệu này viết tiếng Việt).
+
+- Ngày: `Sep 17, 2026`, hoặc tương đối khi dưới 7 ngày ("2 hours ago", "Yesterday").
+- Giờ: `9:00 AM`, 12 giờ.
+- Số: dấu phẩy phân cách nghìn, dấu chấm thập phân: `1,250.50`.
+- Tiền: `$1,250.00`, ký hiệu trước số, không cách.
 
 ---
 
@@ -625,8 +648,9 @@ Khi sinh giao diện, component, hoặc màn hình cho hệ Ebig, AI phải:
 5. **Áp pattern (mục 9)** khi sinh form, modal, empty state, notification, bảng, navigation. Không sáng tạo cấu trúc mới cho những thứ đã có pattern.
 6. **Viết chữ theo mục 10.** Sentence case, động từ cho nút, lỗi có cách sửa, nhất quán từ ngữ.
 7. **Đảm bảo mục 11** trong mọi output: keyboard, focus, aria, contrast.
-8. **Không thêm**: gradient, bóng trang trí, animation tự chạy, viết hoa toàn bộ, emoji trong giao diện, icon không có nghĩa.
-9. **Khi không chắc** một quyết định có token hoặc quy tắc tương ứng không: hỏi, hoặc nêu rõ giả định trong output để người review thấy.
-10. **Output của AI luôn kèm story** nếu là component, và kèm danh sách trạng thái đã xử lý nếu là màn hình (loading / rỗng / lỗi / dữ liệu dài).
+8. **Co giãn theo mục 3.5**: container query cho component, media query cho khung trang và đặc tính thiết bị; ngưỡng 1023 / 639; kèm story 390px và 820px cho thứ chiếm cả vùng nội dung.
+9. **Không thêm**: gradient, bóng trang trí, animation tự chạy, viết hoa toàn bộ, emoji trong giao diện, icon không có nghĩa.
+10. **Khi không chắc** một quyết định có token hoặc quy tắc tương ứng không: hỏi, hoặc nêu rõ giả định trong output để người review thấy.
+11. **Output của AI luôn kèm story** nếu là component, và kèm danh sách trạng thái đã xử lý nếu là màn hình (loading / rỗng / lỗi / dữ liệu dài).
 
 Cách nạp: đặt file này ở gốc repo và tham chiếu từ `CLAUDE.md` (`Đọc DESIGN-RULES.md trước khi sinh bất kỳ UI nào`), hoặc đóng gói thành skill cùng `tokens.css` và một component mẫu.

@@ -7,7 +7,7 @@ export type MenuEntry =
   | { type: 'separator' }
   | { type: 'section'; title: string; items: { id: string; label: string; shortcut?: string; disabled?: boolean; danger?: boolean }[] };
 export interface MenuProps {
-  /** Nút mở menu — thường là Button ghost/secondary hoặc nút icon "⋯". */
+  /** The trigger — usually a ghost/secondary Button or a "⋯" icon button. */
   trigger: ReactNode;
   items: MenuEntry[];
   onAction?: (id: string) => void;
@@ -18,7 +18,7 @@ const Item = (i: { id: string; label: string; shortcut?: string; disabled?: bool
     <span>{i.label}</span>{i.shortcut && <kbd className="eb-menu__kbd">{i.shortcut}</kbd>}
   </MenuItem>
 );
-/** Danh sách hành động trên một đối tượng. Trong menu chỉ một từ ngữ (động từ hoặc danh từ), hành động xoá ở cuối, tách bằng separator. */
+/** A list of actions on one object. Keep one kind of wording per menu (verbs or nouns), put delete last, separated by a divider. */
 export function Menu({ trigger, items, onAction, placement = 'bottom start' }: MenuProps) {
   return (
     <MenuTrigger>

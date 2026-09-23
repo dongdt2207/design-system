@@ -2,28 +2,28 @@ import './StatTile.css';
 import { Sparkline } from '../Sparkline/Sparkline';
 
 export interface StatDelta {
-  /** Đã định dạng sẵn: "+12,4%". */
+  /** Pre-formatted: "+12.4%". */
   value: string;
   direction: 'up' | 'down' | 'flat';
-  /** Tăng không phải lúc nào cũng tốt (tỉ lệ rời bỏ tăng là xấu). Mặc định up = tốt. */
+  /** Up isn't always good (rising churn is bad). Default: up = good. */
   meaning?: 'good' | 'bad' | 'neutral';
 }
 export interface StatTileProps {
   label: string;
-  /** Đã định dạng sẵn, kèm đơn vị. */
+  /** Pre-formatted, including the unit. */
   value: string;
   delta?: StatDelta;
-  /** So với kỳ nào — luôn nói rõ, "+12%" một mình là vô nghĩa. */
+  /** Against which period — always say it; "+12%" alone means nothing. */
   caption?: string;
   spark?: number[];
 }
 
-/** Một con số là đủ thì đừng vẽ biểu đồ. Mũi tên + chữ mang nghĩa, màu chỉ là lớp thứ hai. */
+/** When one number is enough, don't draw a chart. The arrow and the word carry the meaning; color is the second layer. */
 export function StatTile({ label, value, delta, caption, spark }: StatTileProps) {
   const meaning = delta ? (delta.meaning ?? (delta.direction === 'flat' ? 'neutral' : delta.direction === 'up' ? 'good' : 'bad')) : undefined;
   const tone = meaning === 'good' ? 'good' : meaning === 'bad' ? 'bad' : 'flat';
   const arrow = delta?.direction === 'up' ? '↑' : delta?.direction === 'down' ? '↓' : '→';
-  const word = delta?.direction === 'up' ? 'tăng' : delta?.direction === 'down' ? 'giảm' : 'đi ngang';
+  const word = delta?.direction === 'up' ? 'up' : delta?.direction === 'down' ? 'down' : 'flat';
   return (
     <div className="eb-stat">
       <span className="eb-stat__label">{label}</span>
@@ -39,7 +39,7 @@ export function StatTile({ label, value, delta, caption, spark }: StatTileProps)
           )}
           {caption && <div className="eb-stat__caption">{caption}</div>}
         </div>
-        {spark && spark.length > 1 && <Sparkline data={spark} label={`Xu hướng ${label}`} width={72} height={20} />}
+        {spark && spark.length > 1 && <Sparkline data={spark} label={`${label} trend`} width={72} height={20} />}
       </div>
     </div>
   );

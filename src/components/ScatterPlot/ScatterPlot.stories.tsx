@@ -5,67 +5,67 @@ const meta: Meta<typeof ScatterPlot> = { title: 'Components/Charts/ScatterPlot',
 export default meta;
 type Story = StoryObj<typeof ScatterPlot>;
 
-const chiNhanh = [
-  { label: 'Hà Nội', x: 42, y: 1240 }, { label: 'TP.HCM', x: 68, y: 1890 }, { label: 'Đà Nẵng', x: 28, y: 640 },
-  { label: 'Cần Thơ', x: 16, y: 310 }, { label: 'Hải Phòng', x: 24, y: 520 }, { label: 'Huế', x: 12, y: 280 },
+const branches = [
+  { label: 'Portland', x: 42, y: 1240 }, { label: 'Austin', x: 68, y: 1890 }, { label: 'Boulder', x: 28, y: 640 },
+  { label: 'Tucson', x: 16, y: 310 }, { label: 'Reno', x: 24, y: 520 }, { label: 'Fresno', x: 12, y: 280 },
 ];
 
 export const MotNhom: Story = {
   name: 'Một nhóm',
-  args: { xLabel: 'Số nhân viên', yLabel: 'Đơn hàng', series: [{ name: 'Chi nhánh', points: chiNhanh }] },
+  args: { xLabel: 'Headcount', yLabel: 'Orders', series: [{ name: 'Branches', points: branches }] },
 };
 export const BaNhom: Story = {
-  name: 'Ba nhóm (trần của dạng này)',
+  name: 'Three series (the ceiling for this form)',
   args: {
-    xLabel: 'Số nhân viên', yLabel: 'Đơn hàng',
+    xLabel: 'Headcount', yLabel: 'Orders',
     series: [
-      { name: 'Miền Bắc', points: chiNhanh.slice(0, 2) },
-      { name: 'Miền Trung', points: chiNhanh.slice(2, 4) },
-      { name: 'Miền Nam', points: chiNhanh.slice(4) },
+      { name: 'Miền Bắc', points: branches.slice(0, 2) },
+      { name: 'Miền Trung', points: branches.slice(2, 4) },
+      { name: 'Miền Nam', points: branches.slice(4) },
     ],
   },
 };
 
-const thiTruong = [
-  { label: 'Hà Nội', x: 42, y: 1240, size: 980 },
+const markets = [
+  { label: 'Portland', x: 42, y: 1240, size: 980 },
   { label: 'TP.HCM', x: 68, y: 1890, size: 1640 },
-  { label: 'Đà Nẵng', x: 28, y: 640, size: 420 },
-  { label: 'Cần Thơ', x: 16, y: 310, size: 180 },
-  { label: 'Hải Phòng', x: 24, y: 520, size: 310 },
+  { label: 'Boulder', x: 28, y: 640, size: 420 },
+  { label: 'Tucson', x: 16, y: 310, size: 180 },
+  { label: 'Reno', x: 24, y: 520, size: 310 },
   { label: 'Huế', x: 12, y: 280, size: 140 },
 ];
 
 export const BongBong: Story = {
-  name: 'Bong bóng (bubble) — ba đại lượng',
+  name: 'Bubble — three quantities',
   args: {
-    xLabel: 'Số nhân viên',
-    yLabel: 'Đơn hàng',
+    xLabel: 'Headcount',
+    yLabel: 'Orders',
     sizeLabel: 'Doanh thu (triệu ₫)',
-    series: [{ name: 'Chi nhánh', points: thiTruong }],
+    series: [{ name: 'Branches', points: markets }],
   },
 };
 
 export const BongBongNhieuNhom: Story = {
   name: 'Bong bóng — ba nhóm',
   args: {
-    xLabel: 'Số nhân viên',
-    yLabel: 'Đơn hàng',
+    xLabel: 'Headcount',
+    yLabel: 'Orders',
     sizeLabel: 'Doanh thu (triệu ₫)',
     series: [
-      { name: 'Miền Bắc', points: thiTruong.slice(0, 2) },
-      { name: 'Miền Trung', points: thiTruong.slice(2, 4) },
-      { name: 'Miền Nam', points: thiTruong.slice(4) },
+      { name: 'Miền Bắc', points: markets.slice(0, 2) },
+      { name: 'Miền Trung', points: markets.slice(2, 4) },
+      { name: 'Miền Nam', points: markets.slice(4) },
     ],
   },
 };
 
 export const BongBongChenhLech: Story = {
-  name: 'Bong bóng — chênh lệch lớn giữa các giá trị',
+  name: 'Bubble — a wide spread of values',
   args: {
-    xLabel: 'Số nhân viên',
-    yLabel: 'Đơn hàng',
+    xLabel: 'Headcount',
+    yLabel: 'Orders',
     sizeLabel: 'Doanh thu (triệu ₫)',
-    series: [{ name: 'Chi nhánh', points: [...thiTruong, { label: 'Trung tâm', x: 96, y: 2400, size: 9800 }] }],
+    series: [{ name: 'Branches', points: [...markets, { label: 'Downtown', x: 96, y: 2400, size: 9800 }] }],
   },
 };
 

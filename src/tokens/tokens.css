@@ -1,19 +1,19 @@
 /* ============================================================
    EBIG DESIGN TOKENS
-   Nguồn sự thật về màu, chữ, khoảng cách. Figma Variables trùng tên với đây.
-   Phong cách: editorial calm — nền kem, mực ấm, một accent, display 400, không bóng.
-   Tham chiếu: docs/style-reference.md
+   The source of truth for color, type, and spacing. Figma Variables share these names.
+   Style: editorial calm — cream background, warm ink, one accent, display 400, no shadows.
+   Reference: docs/style-reference.md
 
-   2 tầng:
-   1. Primitive — giá trị thô. Không dùng trực tiếp trong component.
-   2. Semantic  — ý nghĩa. Component CHỈ dùng tầng này.
+   2 layers:
+   1. Primitive — raw values. Never used directly in a component.
+   2. Semantic  — meaning. Components use ONLY this layer.
    ============================================================ */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
 
 :root {
   /* ---------- PRIMITIVE: COLOR ---------- */
   --white: #ffffff;
-  /* neutral ấm */
+  /* warm neutrals */
   --gray-50:  #fafaf7;
   --gray-100: #f7f7f4;
   --gray-200: #efeee8;
@@ -26,8 +26,8 @@
   --gray-900: #26251e;
   --gray-950: #16150f;
 
-  /* accent — Cornflower Blue. #287CF0 là màu gốc, neo ở bậc 500; các bậc khác
-     sinh từ nó trong OKLCH (giữ nguyên hue 257.9°, đổi L, chroma thu ở hai đầu). */
+  /* accent — Cornflower Blue. #287CF0 is the source color, anchored at step 500; the other
+     steps derive from it in OKLCH (hue held at 257.9°, L varied, chroma pulled in at both ends). */
   --brand-50:  #f2f7fe;
   --brand-100: #e0ecfe;
   --brand-200: #c3dbff;
@@ -39,27 +39,27 @@
   --brand-800: #093c81;
   --brand-900: #06295a;
 
-  /* ---- Màu dữ liệu (chart) ----------------------------------------------
-     Ba việc khác nhau, ba bảng khác nhau — không dùng lẫn:
-       categorical  danh tính (series rời rạc). Gán theo THỨ TỰ CỐ ĐỊNH, không xoay vòng.
-       sequential   độ lớn liên tục (heatmap). Một tông, sáng → đậm.
-       diverging    hai cực đối nhau, điểm giữa xám trung tính.
-     Màu trạng thái (success/warning/danger) KHÔNG được dùng làm series.
-     Bản dark chọn riêng cho nền tối, không lật ngược từ light.
-     Đã chấm bằng validator: dải sáng, sàn chroma, tách màu cho người mù màu
-     (protan/deutan), sàn thị lực thường, tương phản với nền. */
-  --viz-cat-1: #287cf0;  /* xanh — trùng brand, series đầu tiên */
-  --viz-cat-2: #eb6834;  /* cam */
-  --viz-cat-3: #1baf7a;  /* ngọc */
-  --viz-cat-4: #eda100;  /* vàng */
-  --viz-cat-5: #e87ba4;  /* hồng */
-  --viz-cat-6: #008300;  /* lục */
-  --viz-cat-7: #4a3aa7;  /* tím */
-  --viz-cat-8: #e34948;  /* đỏ */
+  /* ---- Data colors (charts) ----------------------------------------------
+     Three different jobs, three different palettes — never mixed:
+       categorical  identity (discrete series). Assigned in FIXED ORDER, never cycled.
+       sequential   continuous magnitude (heatmap). One hue, light → dark.
+       diverging    two opposing poles with a neutral gray midpoint.
+     Status colors (success/warning/danger) are NOT series colors.
+     The dark set is chosen for dark backgrounds, not flipped from the light one.
+     Checked with the validator: lightness range, chroma floor, separation for color
+     blindness (protan/deutan), low-vision floor, and contrast against the background. */
+  --viz-cat-1: #287cf0;  /* blue — same as brand, the first series */
+  --viz-cat-2: #eb6834;  /* orange */
+  --viz-cat-3: #1baf7a;  /* teal */
+  --viz-cat-4: #eda100;  /* yellow */
+  --viz-cat-5: #e87ba4;  /* pink */
+  --viz-cat-6: #008300;  /* green */
+  --viz-cat-7: #4a3aa7;  /* purple */
+  --viz-cat-8: #e34948;  /* red */
 
-  /* Sequential: dùng cả dải 100→700 cho độ lớn liên tục.
-     Với bậc rời rạc (ordinal: phễu, hạng) thì trên nền sáng bắt đầu từ 400 —
-     bậc 300 chỉ đạt 1.89:1, dưới sàn 2:1. */
+  /* Sequential: use the full 100→700 range for continuous magnitude.
+     For ordinal steps (funnels, rankings) on a light background, start at 400 —
+     step 300 only reaches 1.89:1, below the 2:1 floor. */
   --viz-seq-100: #d8e8fe;
   --viz-seq-200: #b3d1ff;
   --viz-seq-300: #88b8fe;
@@ -125,11 +125,11 @@
   /* ============================================================
      SEMANTIC — LIGHT
      ============================================================ */
-  --color-bg-page: var(--gray-100);          /* canvas kem */
+  --color-bg-page: var(--gray-100);          /* cream canvas */
   --color-bg-surface: var(--white);          /* card */
   --color-bg-surface-raised: var(--white);
-  --color-bg-subtle: var(--gray-50);         /* pane, hàng hover */
-  --color-bg-muted: var(--gray-300);         /* badge, disabled */
+  --color-bg-subtle: var(--gray-50);         /* panes, hovered rows */
+  --color-bg-muted: var(--gray-300);         /* badges, disabled */
   --color-bg-brand: var(--brand-500);
   --color-bg-brand-hover: var(--brand-600);
   --color-bg-brand-active: var(--brand-600);
@@ -139,7 +139,7 @@
   --color-bg-danger-subtle: var(--red-100);
   --color-bg-success-subtle: var(--green-100);
   --color-bg-warning-subtle: var(--amber-100);
-  --color-bg-ink: var(--gray-900);           /* nút ink, khối đảo mực */
+  --color-bg-ink: var(--gray-900);           /* ink buttons, inverted ink blocks */
 
   --color-text-primary: var(--gray-900);     /* ink */
   --color-text-secondary: var(--gray-700);   /* body */
@@ -158,9 +158,9 @@
   --color-border-strong: var(--gray-400);    /* hairline-strong */
   --color-border-brand: var(--brand-500);
   --color-border-danger: var(--red-500);
-  --color-border-focus: var(--gray-900);     /* focus bằng mực */
+  --color-border-focus: var(--gray-900);     /* focus drawn in ink */
 
-  /* depth bằng hairline, không bóng */
+  /* depth from hairlines, no shadows */
   --shadow-sm: 0 0 0 1px var(--color-border-soft);
   --shadow-md: 0 0 0 1px var(--color-border-default);
   --shadow-lg: 0 0 0 1px var(--color-border-strong);
@@ -207,8 +207,8 @@
   --color-bg-canvas: var(--gray-950);
   --color-bg-canvas-deep: var(--gray-900);
 
-  /* Màu dữ liệu bản dark — cùng 8 hue, chọn lại bậc cho nền tối.
-     Ordinal trên nền tối: dừng ở bậc 600, bậc 700 chỉ còn 1.5:1. */
+  /* Dark data colors — the same 8 hues, with steps re-picked for dark backgrounds.
+     Ordinal on dark: stop at step 600; step 700 drops to 1.5:1. */
   --viz-cat-1: #4a90f5;
   --viz-cat-2: #d95926;
   --viz-cat-3: #199e70;

@@ -1,4 +1,4 @@
-/* Các khối hiển thị token cho trang Foundations. Đọc giá trị thật từ CSS variables đang chạy. */
+/* Token display blocks for the Foundations pages. Reads real values from the live CSS variables. */
 import { useEffect, useState, type CSSProperties } from 'react';
 
 function useCssVar(name: string) {
@@ -72,7 +72,7 @@ function TypeRow({ name }: { name: string }) {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '120px 1fr', alignItems: 'baseline', gap: 16 }}>
       <div style={cell}>{name} · {v}</div>
-      <div style={{ fontSize: `var(${name})`, lineHeight: 1.2 }}>Họp tuần lúc 9:00 sáng thứ Hai</div>
+      <div style={{ fontSize: `var(${name})`, lineHeight: 1.2 }}>Weekly meeting at 9:00 AM on Monday</div>
     </div>
   );
 }

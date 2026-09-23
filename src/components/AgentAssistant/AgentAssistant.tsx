@@ -8,41 +8,41 @@ import './AgentAssistant.css';
 
 export interface AgentConversation {
   id: string;
-  /** Danh từ, tóm tắt việc đang hỏi: "Doanh thu quý 3". */
+  /** A noun summarizing the question: "Q3 revenue". */
   title: string;
-  /** Thời gian tương đối hoặc số lượt: "2 giờ trước". */
+  /** Relative time or turn count: "2 hours ago". */
   meta?: string;
-  /** Tiêu đề nhóm trong danh sách: "Hôm nay", "7 ngày trước". */
+  /** Group heading in the list: "Today", "Previous 7 days". */
   group?: string;
 }
 
 export interface AgentAssistantProps {
-  /** Tiêu đề hội thoại đang mở (heading-03 theo mục 3.3). */
+  /** Title of the open conversation (heading-03 per section 3.3). */
   title: string;
-  /** Badge cạnh tiêu đề: mô hình đang dùng hoặc trạng thái kết nối. */
+  /** Badge beside the title: the model in use, or connection status. */
   status?: ReactNode;
-  /** Hành động phụ bên phải header: Menu "⋯", nút chia sẻ. Không đặt primary ở đây. */
+  /** Secondary actions on the right of the header: a "⋯" menu, a share button. Never a primary here. */
   headerActions?: ReactNode;
   conversations?: AgentConversation[];
   activeConversation?: string;
   onSelectConversation?: (id: string) => void;
   onNewConversation?: () => void;
-  /** Trạng thái vùng hội thoại: `ready` hiện `children`. */
+  /** State of the thread area: `ready` renders `children`. */
   state?: 'ready' | 'loading' | 'empty' | 'error';
-  /** Chuỗi `<ChatMessage />`. */
+  /** A sequence of `<ChatMessage />`. */
   children?: ReactNode;
-  /** Câu hỏi gợi ý cho trạng thái rỗng. Tối đa 4. */
+  /** Suggested questions for the empty state. At most 4. */
   suggestions?: string[];
   onSuggestion?: (text: string) => void;
-  /** Thử lại khi `state="error"`. */
+  /** Retry when `state="error"`. */
   onRetry?: () => void;
-  /** Trợ lý đang trả lời — ô soạn đổi nút Gửi thành Dừng. */
+  /** The assistant is answering — the composer swaps Send for Stop. */
   busy?: boolean;
   onSend?: (text: string) => void;
   onStop?: () => void;
-  /** Nút phụ trong ô soạn: chọn mô hình, đính kèm. */
+  /** Secondary controls in the composer: model picker, attachments. */
   composerToolbar?: ReactNode;
-  /** Truyền thêm cho ô soạn (placeholder, maxLength, error). Ghi âm bật sẵn — tắt bằng `{ voice: false }`. */
+  /** Extra props for the composer (placeholder, maxLength, error). Dictation is on by default — turn it off with `{ voice: false }`. */
   promptProps?: Partial<PromptInputProps>;
 }
 
@@ -60,7 +60,7 @@ const groupBy = (items: AgentConversation[]) => {
   return out;
 };
 
-/** Màn hình trợ lý agent: danh sách hội thoại, luồng tin nhắn, ô soạn. Ghép từ component có sẵn — nội dung luồng truyền vào qua `children`. */
+/** The agent assistant screen: conversation list, message thread, composer. Composed from existing components — thread content comes in through `children`. */
 export function AgentAssistant({
   title, status, headerActions, conversations = [], activeConversation, onSelectConversation, onNewConversation,
   state = 'ready', children, suggestions = [], onSuggestion, onRetry, busy = false, onSend, onStop, composerToolbar, promptProps,
@@ -85,7 +85,7 @@ export function AgentAssistant({
           </ul>
         </div>
       ))}
-      {conversations.length === 0 && <p className="eb-agent__group-title">Chưa có hội thoại nào.</p>}
+      {conversations.length === 0 && <p className="eb-agent__group-title">No conversations yet.</p>}
     </>
   );
 
@@ -101,12 +101,12 @@ export function AgentAssistant({
       </div>
     );
     if (state === 'error') return (
-      <EmptyState title="Không tải được hội thoại" description="Kiểm tra kết nối rồi thử lại." action={<Button variant="secondary" onClick={onRetry}>Thử lại</Button>} />
+      <EmptyState title="Couldn’t load the conversation" description="Check your connection, then try again." action={<Button variant="secondary" onClick={onRetry}>Try again</Button>} />
     );
     if (state === 'empty') return (
       <div className="eb-agent__empty">
         <EmptyState
-          icon={<ChatIcon />} title="Chưa có câu hỏi nào" description="Hỏi trợ lý một việc, hoặc bắt đầu từ một gợi ý bên dưới."
+          icon={<ChatIcon />} title="No questions yet" description="Ask the assistant something, or start from one of the suggestions below."
           action={suggestions.length > 0 ? (
             <ul className="eb-agent__chips">
               {suggestions.slice(0, 4).map((s) => (
@@ -122,34 +122,36 @@ export function AgentAssistant({
 
   return (
     <div className="eb-agent">
-      <aside className="eb-agent__side">
-        <div className="eb-agent__side-head">
-          <span className="eb-agent__side-title">Hội thoại</span>
-          <Button variant="secondary" size="sm" iconStart={<PlusIcon />} onClick={onNewConversation}>Hội thoại mới</Button>
-        </div>
-        <nav className="eb-agent__nav" aria-label="Hội thoại gần đây">{list()}</nav>
-      </aside>
-
-      <div className="eb-agent__main">
-        <header className="eb-agent__head">
-          <div className="eb-agent__head-start">
-            <span className="eb-agent__side-open">
-              <Drawer side="bottom" size="lg" title="Hội thoại" trigger={<Button variant="ghost" size="md" iconStart={<ListIcon />} aria-label="Mở danh sách hội thoại" />}>
-                {(close) => <nav className="eb-agent__nav" aria-label="Hội thoại gần đây">{list(close)}</nav>}
-              </Drawer>
-            </span>
-            <h1 className="eb-agent__title">{title}</h1>
-            {status}
+      <div className="eb-agent__shell">
+        <aside className="eb-agent__side">
+          <div className="eb-agent__side-head">
+            <span className="eb-agent__side-title">Conversations</span>
+            <Button variant="secondary" size="sm" iconStart={<PlusIcon />} onClick={onNewConversation}>New conversation</Button>
           </div>
-          {headerActions && <div className="eb-agent__head-end">{headerActions}</div>}
-        </header>
+          <nav className="eb-agent__nav" aria-label="Recent conversations">{list()}</nav>
+        </aside>
 
-        <div className="eb-agent__thread" tabIndex={0} role="log" aria-label="Nội dung hội thoại" aria-busy={busy || state === 'loading' || undefined}>
-          {thread()}
-        </div>
+        <div className="eb-agent__main">
+          <header className="eb-agent__head">
+            <div className="eb-agent__head-start">
+              <span className="eb-agent__side-open">
+                <Drawer side="bottom" size="lg" title="Conversations" trigger={<Button variant="ghost" size="md" iconStart={<ListIcon />} aria-label="Open the conversation list" />}>
+                  {(close) => <nav className="eb-agent__nav" aria-label="Recent conversations">{list(close)}</nav>}
+                </Drawer>
+              </span>
+              <h1 className="eb-agent__title">{title}</h1>
+              {status}
+            </div>
+            {headerActions && <div className="eb-agent__head-end">{headerActions}</div>}
+          </header>
 
-        <div className="eb-agent__composer">
-          <PromptInput voice busy={busy} onSend={onSend} onStop={onStop} toolbar={composerToolbar} disabled={state === 'error'} {...promptProps} />
+          <div className="eb-agent__thread" tabIndex={0} role="log" aria-label="Conversation content" aria-busy={busy || state === 'loading' || undefined}>
+            {thread()}
+          </div>
+
+          <div className="eb-agent__composer">
+            <PromptInput voice busy={busy} onSend={onSend} onStop={onStop} toolbar={composerToolbar} disabled={state === 'error'} {...promptProps} />
+          </div>
         </div>
       </div>
     </div>

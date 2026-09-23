@@ -7,12 +7,12 @@ export interface DatePickerProps {
   value?: DateValue | null; defaultValue?: DateValue; onChange?: (v: DateValue | null) => void;
   minValue?: DateValue; maxValue?: DateValue;
   size?: 'sm' | 'md' | 'lg'; disabled?: boolean;
-  /** Mặc định vi-VN: dd/mm/yyyy, tuần bắt đầu thứ Hai. */
+  /** Defaults to en-US: Sep 17, 2026, weeks starting Sunday. */
   locale?: string;
 }
 const Chevron = ({ dir }: { dir: 'l' | 'r' }) => <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">{dir === 'l' ? <path d="M10 4l-4 4 4 4" /> : <path d="M6 4l4 4-4 4" />}</svg>;
-/** Chọn ngày. Gõ trực tiếp từng phần hoặc mở lịch. Định dạng theo locale, không tự viết parser. */
-export function DatePicker({ label, hint, error, value, defaultValue, onChange, minValue, maxValue, size = 'md', disabled, locale = 'vi-VN' }: DatePickerProps) {
+/** Date selection. Type each segment directly, or open the calendar. Formatting follows the locale — never hand-write a parser. */
+export function DatePicker({ label, hint, error, value, defaultValue, onChange, minValue, maxValue, size = 'md', disabled, locale = 'en-US' }: DatePickerProps) {
   const cls = ['eb-field', `eb-field--${size}`, error && 'eb-field--error', disabled && 'eb-field--disabled'].filter(Boolean).join(' ');
   return (
     <I18nProvider locale={locale}>

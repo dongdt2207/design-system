@@ -7,11 +7,11 @@ type Story = StoryObj<typeof DonutChart>;
 
 export const MacDinh: Story = {
   name: 'Bốn phần',
-  args: { caption: 'đơn hàng', data: [{ label: 'Trực tuyến', value: 2410 }, { label: 'Tại quầy', value: 1360 }, { label: 'Đại lý', value: 530 }, { label: 'Khác', value: 180 }] },
+  args: { caption: 'orders', data: [{ label: 'Online', value: 2410 }, { label: 'In store', value: 1360 }, { label: 'Resellers', value: 530 }, { label: 'Other', value: 180 }] },
 };
-export const HaiPhan: Story = { name: 'Hai phần', args: { caption: 'người dùng', data: [{ label: 'Đang hoạt động', value: 8420 }, { label: 'Ngủ đông', value: 1580 }] } };
+export const TwoSlices: Story = { name: 'Two slices', args: { caption: 'users', data: [{ label: 'Active', value: 8420 }, { label: 'Dormant', value: 1580 }] } };
 export const GomKhac: Story = {
-  name: 'Năm phần — phần nhỏ gộp thành Khác',
-  args: { caption: 'phiên truy cập', data: [{ label: 'Trực tiếp', value: 4200 }, { label: 'Tìm kiếm', value: 3100 }, { label: 'Giới thiệu', value: 1400 }, { label: 'Mạng xã hội', value: 900 }, { label: 'Khác', value: 400 }] },
+  name: 'Five slices — small ones grouped into Other',
+  args: { caption: 'sessions', data: [{ label: 'Direct', value: 4200 }, { label: 'Search', value: 3100 }, { label: 'Referral', value: 1400 }, { label: 'Social', value: 900 }, { label: 'Other', value: 400 }] },
 };
-export const MotPhanApDao: Story = { name: 'Một phần áp đảo', args: { caption: 'đơn hàng', data: [{ label: 'Trực tuyến', value: 9200 }, { label: 'Tại quầy', value: 480 }, { label: 'Đại lý', value: 320 }] } };
+export const OneDominant: Story = { name: 'One dominant slice', args: { caption: 'orders', data: [{ label: 'Online', value: 9200 }, { label: 'In store', value: 480 }, { label: 'Resellers', value: 320 }] } };

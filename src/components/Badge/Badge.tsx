@@ -2,7 +2,7 @@ import type { HTMLAttributes, ReactNode } from 'react';
 import './Badge.css';
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   tone?: 'neutral' | 'brand' | 'success' | 'warning' | 'danger';
-  /** Chấm tròn — cho trạng thái thay đổi theo thời gian thực. */
+  /** Status dot — for statuses that change in real time. */
   dot?: boolean;
   children: ReactNode;
 }

@@ -3,57 +3,57 @@ import { SemanticColors } from './TokenBlocks';
 
 <Meta title="Foundations/Data visualization" />
 
-# Màu dữ liệu
+# Data colors
 
-Ba việc khác nhau, ba bảng khác nhau. Chọn theo **việc màu đang làm**, không theo thẩm mỹ.
+Three different jobs, three different palettes. Choose by **the job the color is doing**, not by taste.
 
-| Bảng | Việc nó làm | Dùng cho |
+| Palette | What it does | Used for |
 |---|---|---|
-| Categorical | danh tính — phân biệt series rời rạc | cột, đường, lát bánh |
-| Sequential | độ lớn liên tục | heatmap, choropleth |
-| Diverging | hai cực đối nhau quanh một mốc | chênh lệch, tăng/giảm so với 0 |
+| Categorical | identity — separating discrete series | bars, lines, slices |
+| Sequential | continuous magnitude | heatmaps, choropleths |
+| Diverging | two opposing poles around a baseline | variance, growth above and below 0 |
 
-Màu trạng thái (`--color-text-success`, `--color-text-danger`…) **không được dùng làm series**. Chúng có nghĩa riêng, và luôn đi kèm icon + nhãn chứ không đứng một mình bằng màu.
+Status colors (`--color-text-success`, `--color-text-danger`, …) **are not series colors**. They carry their own meaning, and they always travel with an icon and a label rather than standing on color alone.
 
-## Categorical — 8 bậc
+## Categorical — 8 steps
 
-Gán theo **thứ tự cố định**, không xoay vòng: series thứ nhất luôn lấy `--viz-cat-1`. Lọc bỏ bớt series thì các series còn lại **giữ nguyên màu cũ** — màu bám vào thực thể, không bám vào thứ hạng. Cần series thứ 9 thì gộp thành "Khác" hoặc tách thành nhiều biểu đồ nhỏ, không sinh thêm hue.
+Assign in **fixed order**, never cycling: the first series always takes `--viz-cat-1`. When a series is filtered out, the rest **keep their colors** — color belongs to the entity, not to the rank. If you need a ninth series, group into "Other" or split into small multiples; don't invent another hue.
 
 <SemanticColors names={['--viz-cat-1', '--viz-cat-2', '--viz-cat-3', '--viz-cat-4', '--viz-cat-5', '--viz-cat-6', '--viz-cat-7', '--viz-cat-8']} />
 
-Bậc 1 chính là brand `#287CF0`. Gạt sang dark để thấy bộ màu dark — **chọn riêng cho nền tối**, không phải lật ngược từ light.
+Step 1 is the brand color `#287CF0`. Switch to dark to see the dark set — **chosen for dark backgrounds**, not flipped from the light one.
 
-## Sequential — một tông, sáng → đậm
+## Sequential — one hue, light → dark
 
 <SemanticColors names={['--viz-seq-100', '--viz-seq-200', '--viz-seq-300', '--viz-seq-400', '--viz-seq-500', '--viz-seq-600', '--viz-seq-700']} />
 
-Dùng **cả dải** cho độ lớn liên tục, ở đó bậc nhạt nhất nghĩa là "gần bằng không" nên được phép chìm vào nền. Với **bậc rời rạc** (phễu, hạng, nhóm có thứ tự) thì đầu gần nền phải tách khỏi nền: trên nền sáng bắt đầu từ `--viz-seq-400`, trên nền tối dừng ở `--viz-seq-600`.
+Use the **whole range** for continuous magnitude, where the lightest step means "close to zero" and is allowed to sink into the background. For **ordinal steps** (funnels, rankings, ordered groups), the end nearest the background must separate from it: on light backgrounds start at `--viz-seq-400`, on dark backgrounds stop at `--viz-seq-600`.
 
-## Diverging — hai cực, giữa là xám
+## Diverging — two poles, gray in the middle
 
 <SemanticColors names={['--viz-diverge-cool', '--viz-diverge-mid', '--viz-diverge-warm']} />
 
-Xanh ↔ đỏ, hai cực đọc ra là đối nghịch. Điểm giữa phải là **xám trung tính** — nó nghĩa là "không có gì", nên không được là một hue. Hai cánh chia đều số bậc.
+Blue ↔ red, two poles that read as opposites. The midpoint must be a **neutral gray** — it means "nothing here", so it cannot be a hue. Both wings get the same number of steps.
 
-## Quy tắc khi vẽ
+## Rules for drawing
 
-- **Một trục.** Không bao giờ hai thang y trên cùng một biểu đồ. Hai đại lượng khác thang thì tách hai biểu đồ, hoặc quy về cùng một mốc chỉ số.
-- **Từ 2 series trở lên luôn có legend**, và từ 4 series trở xuống thì gắn nhãn trực tiếp — danh tính không bao giờ chỉ dựa vào màu. Một series thì tiêu đề đã gọi tên nó, không cần legend.
-- **Chữ mặc chữ.** Số liệu, nhãn, legend dùng `--color-text-primary/secondary/muted`, không tô theo màu series. Ô màu nhỏ bên cạnh mới là thứ mang danh tính.
-- Mark mảnh, lưới và trục lùi về sau, không ghi số lên mọi điểm.
+- **One axis.** Never two y-scales on one chart. Two quantities on different scales become two charts, or get normalized to a common index.
+- **Two or more series always get a legend**, and four or fewer get direct labels — identity never rests on color alone. With a single series the title already names it, so no legend is needed.
+- **Text stays text.** Figures, labels, and legends use `--color-text-primary/secondary/muted`, never the series color. The small swatch beside them is what carries identity.
+- Keep marks thin, let gridlines and axes recede, and don't print a number on every point.
 
-## Bốn màu cần nhãn kèm trên nền sáng
+## Four colors that need a label on light backgrounds
 
-`--viz-cat-2` (2.98:1), `--viz-cat-3` (2.62:1), `--viz-cat-4` (2.02:1), `--viz-cat-5` (2.51:1) nằm dưới 3:1 so với nền kem. Chúng vẫn hợp lệ, nhưng **bắt buộc có nhãn nhìn thấy được hoặc bảng số kèm theo** — không được để người đọc chỉ dựa vào màu. Trên nền tối cả 8 bậc đều đạt ≥ 3:1.
+`--viz-cat-2` (2.98:1), `--viz-cat-3` (2.62:1), `--viz-cat-4` (2.02:1), and `--viz-cat-5` (2.51:1) fall below 3:1 against the cream background. They remain valid, but they **require a visible label or an accompanying data table** — readers must never depend on color alone. On dark backgrounds all 8 steps reach ≥ 3:1.
 
-## Kết quả kiểm tra
+## Validation results
 
-Bảng màu được chấm bằng máy, không ước lượng bằng mắt.
+The palette is scored by machine, not estimated by eye.
 
-| Phép kiểm | Light (nền `#f7f7f4`) | Dark (nền `#16150f`) |
+| Check | Light (background `#f7f7f4`) | Dark (background `#16150f`) |
 |---|---|---|
-| Dải sáng OKLCH | đạt, cả 8 trong 0.43–0.77 | đạt, cả 8 trong 0.48–0.67 |
-| Sàn chroma ≥ 0.10 | đạt | đạt |
-| Tách màu cho người mù màu (cặp kề) | ΔE 9.1 — đạt mốc 8 | ΔE 8.4 — đạt |
-| Sàn thị lực thường (cặp kề) | ΔE 19.6 — đạt sàn 15 | ΔE 19.3 — đạt |
-| Tương phản với nền | 4 bậc dưới 3:1, cần nhãn kèm | cả 8 đạt ≥ 3:1 |
+| OKLCH lightness range | pass, all 8 within 0.43–0.77 | pass, all 8 within 0.48–0.67 |
+| Chroma floor ≥ 0.10 | pass | pass |
+| Color-blind separation (adjacent pairs) | ΔE 9.1 — clears the floor of 8 | ΔE 8.4 — pass |
+| Normal-vision floor (adjacent pairs) | ΔE 19.6 — clears the floor of 15 | ΔE 19.3 — pass |
+| Contrast against the background | 4 steps below 3:1, labels required | all 8 reach ≥ 3:1 |

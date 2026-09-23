@@ -3,21 +3,21 @@ import './Card.css';
 
 export interface CardMedia {
   src: string;
-  /** Rỗng chỉ khi ảnh thuần trang trí và mọi thông tin đã có trong chữ. */
+  /** Empty only when the image is purely decorative and the text already carries the information. */
   alt: string;
-  /** Tỉ lệ khung, giữ bằng nhau trong cùng một lưới để hàng không so le. */
+  /** Aspect ratio; keep it identical across a grid so rows don't go ragged. */
   ratio?: '16/9' | '4/3' | '1/1';
 }
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {
   title?: string; description?: string;
-  /** Một Badge hoặc nút ghost/secondary sm. Không đặt primary ở header. */
+  /** One Badge, or a sm ghost/secondary button. Never a primary in the header. */
   action?: ReactNode; footer?: ReactNode;
-  /** flat = hairline (mặc định). raised = hairline đậm hơn — hệ này không có bóng. */
+  /** flat = hairline (default). raised = a stronger hairline — this system has no shadows. */
   elevation?: 'flat' | 'raised';
   flush?: boolean;
-  /** Ảnh dẫn đầu. Đứng trên cùng khi dọc, nằm bên trái khi ngang. */
+  /** Leading image. On top when vertical, on the left when horizontal. */
   media?: CardMedia;
-  /** horizontal dùng trong danh sách dọc: ảnh trái, chữ phải. */
+  /** horizontal is for vertical lists: image left, text right. */
   orientation?: 'vertical' | 'horizontal';
   children?: ReactNode;
 }

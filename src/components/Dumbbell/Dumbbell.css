@@ -1,4 +1,4 @@
-.eb-dumb { display: flex; flex-direction: column; gap: var(--space-4); }
+.eb-dumb { container-type: inline-size; display: flex; flex-direction: column; gap: var(--space-4); }
 .eb-dumb__row { display: grid; grid-template-columns: minmax(72px, 22%) 1fr auto; align-items: center; gap: var(--space-3); }
 .eb-dumb__label { font-size: var(--text-xs); color: var(--color-text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .eb-dumb__track { position: relative; height: 16px; }
@@ -7,3 +7,9 @@
 .eb-dumb__dot--from { background: var(--color-text-muted); }
 .eb-dumb__dot--to { background: var(--viz-cat-1); }
 .eb-dumb__delta { font-size: var(--text-xs); font-variant-numeric: tabular-nums; color: var(--color-text-primary); }
+
+/* Narrow: the row label moves to its own line so the bar keeps enough room to read (section 3.5). */
+@container (max-width: 639px) {
+  .eb-dumb__row { grid-template-columns: 1fr auto; }
+  .eb-dumb__label { grid-column: 1 / -1; white-space: normal; }
+}

@@ -6,19 +6,19 @@ export interface ScatterPoint {
   x: number;
   y: number;
   label: string;
-  /** Đại lượng thứ ba. Có giá trị này thì biểu đồ thành dạng bong bóng (bubble). */
+  /** A third quantity. When present, the chart becomes a bubble chart. */
   size?: number;
 }
 export interface ScatterSeries { name: string; points: ScatterPoint[] }
 export interface ScatterPlotProps {
-  /** Tối đa 3 series: dạng này so mọi cặp màu với nhau, nên trần thấp hơn cột và đường. */
+  /** At most 3 series: this form compares every pair of colors, so the ceiling is lower than for bars and lines. */
   series: ScatterSeries[];
   xLabel: string;
   yLabel: string;
   formatX?: (n: number) => string;
   formatY?: (n: number) => string;
   height?: number;
-  /** Tên đại lượng gán vào kích thước bong bóng. Bắt buộc khi điểm có `size`. */
+  /** The quantity mapped to bubble size. Required when points carry `size`. */
   sizeLabel?: string;
   formatSize?: (n: number) => string;
 }
@@ -27,11 +27,11 @@ const colorOf = (i: number) => `var(--viz-cat-${(i % 8) + 1})`;
 const W = 640, PAD = { l: 44, r: 12, t: 12, b: 34 };
 
 /**
- * Quan hệ giữa hai đại lượng. Điểm có `size` thì thành biểu đồ bong bóng (bubble) —
- * chiều thứ ba mã hoá bằng diện tích, kèm legend kích thước.
- * Trần 3 series vì ở dạng này mọi cặp màu đều có thể nằm cạnh nhau.
+ * The relationship between two quantities. Points with `size` make it a bubble chart —
+ * the third dimension is encoded as area, with a size legend.
+ * Capped at 3 series because here every pair of colors can end up adjacent.
  */
-export function ScatterPlot({ series, xLabel, yLabel, formatX = (n) => n.toLocaleString('vi-VN'), formatY = (n) => n.toLocaleString('vi-VN'), height = 260, sizeLabel, formatSize = (n) => n.toLocaleString('vi-VN') }: ScatterPlotProps) {
+export function ScatterPlot({ series, xLabel, yLabel, formatX = (n) => n.toLocaleString('en-US'), formatY = (n) => n.toLocaleString('en-US'), height = 260, sizeLabel, formatSize = (n) => n.toLocaleString('en-US') }: ScatterPlotProps) {
   const [hover, setHover] = useState<{ x: number; y: number; text: string } | null>(null);
   const pts = series.flatMap((s) => s.points);
   const xs = pts.map((p) => p.x), ys = pts.map((p) => p.y);
@@ -39,8 +39,8 @@ export function ScatterPlot({ series, xLabel, yLabel, formatX = (n) => n.toLocal
   const px = (v: number) => PAD.l + ((v - x0) / (x1 - x0 || 1)) * (W - PAD.l - PAD.r);
   const py = (v: number) => (height - PAD.b) - ((v - y0) / (y1 - y0 || 1)) * (height - PAD.b - PAD.t);
 
-  // Bong bóng: mắt người đọc DIỆN TÍCH, nên bán kính đi theo căn bậc hai của giá trị.
-  // Gán thẳng vào bán kính là phóng đại sai lệch bình phương.
+  // Bubbles: the eye reads AREA, so the radius follows the square root of the value.
+  // Mapping the value straight to the radius exaggerates it quadratically.
   const sizes = pts.map((p) => p.size).filter((v): v is number => v !== undefined);
   const bubble = sizes.length > 0;
   const sMin = bubble ? Math.min(...sizes) : 0, sMax = bubble ? Math.max(...sizes) : 1;
@@ -59,7 +59,7 @@ export function ScatterPlot({ series, xLabel, yLabel, formatX = (n) => n.toLocal
           {series.map((s, i) => <li key={s.name}><span className="eb-chart__swatch" style={{ background: colorOf(i) }} aria-hidden="true" />{s.name}</li>)}
         </ul>
       )}
-      <svg className="eb-scatter" viewBox={`0 0 ${W} ${height}`} role="img" aria-label={`Biểu đồ phân tán: ${yLabel} theo ${xLabel}`}>
+      <svg className="eb-scatter" viewBox={`0 0 ${W} ${height}`} role="img" aria-label={`Scatter plot: ${yLabel} against ${xLabel}`}>
         {[0, 0.5, 1].map((t) => <line key={t} className="eb-chart__grid" x1={PAD.l} x2={W - PAD.r} y1={py(y0 + (y1 - y0) * t)} y2={py(y0 + (y1 - y0) * t)} />)}
         <line className="eb-scatter__axis-line" x1={PAD.l} x2={PAD.l} y1={PAD.t} y2={height - PAD.b} />
         <text className="eb-chart__axis" x={PAD.l} y={height - 8}>{formatX(x0)}</text>
@@ -95,8 +95,8 @@ export function ScatterPlot({ series, xLabel, yLabel, formatX = (n) => n.toLocal
         </div>
       )}
       <table className="eb-chart__table">
-        <caption>Số liệu dạng bảng</caption>
-        <thead><tr><th scope="col">Điểm</th><th scope="col">{xLabel}</th><th scope="col">{yLabel}</th>{bubble && <th scope="col">{sizeLabel ?? 'Kích thước'}</th>}<th scope="col">Nhóm</th></tr></thead>
+        <caption>Data table</caption>
+        <thead><tr><th scope="col">Point</th><th scope="col">{xLabel}</th><th scope="col">{yLabel}</th>{bubble && <th scope="col">{sizeLabel ?? 'Size'}</th>}<th scope="col">Series</th></tr></thead>
         <tbody>{series.flatMap((s) => s.points.map((p) => <tr key={`${s.name}-${p.label}`}><th scope="row">{p.label}</th><td>{formatX(p.x)}</td><td>{formatY(p.y)}</td>{bubble && <td>{p.size === undefined ? '—' : formatSize(p.size)}</td>}<td>{s.name}</td></tr>))}</tbody>
       </table>
     </div>

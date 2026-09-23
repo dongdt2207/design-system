@@ -2,8 +2,8 @@ import { DisclosureGroup, Disclosure, Button, DisclosurePanel, Heading } from 'r
 import type { ReactNode } from 'react';
 import './Accordion.css';
 export interface AccordionItem { id: string; title: string; content: ReactNode }
-export interface AccordionProps { items: AccordionItem[]; /** Cho mở nhiều mục cùng lúc. */ multiple?: boolean; defaultExpanded?: string[] }
-/** Ẩn nội dung phụ để trang ngắn. Không giấu thông tin bắt buộc trong accordion. FAQ, cài đặt nâng cao. */
+export interface AccordionProps { items: AccordionItem[]; /** Allow several items open at once. */ multiple?: boolean; defaultExpanded?: string[] }
+/** Hides secondary content to keep a page short. Never hide required information in an accordion. FAQs, advanced settings. */
 export function Accordion({ items, multiple, defaultExpanded = [] }: AccordionProps) {
   return (
     <DisclosureGroup className="eb-acc" allowsMultipleExpanded={multiple} defaultExpandedKeys={defaultExpanded}>

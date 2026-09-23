@@ -1,8 +1,8 @@
 import { Breadcrumbs, Breadcrumb as ABreadcrumb, Link } from 'react-aria-components';
 import './Breadcrumb.css';
 export interface Crumb { label: string; href?: string }
-export interface BreadcrumbProps { /** Mục cuối là trang hiện tại, không phải link. */ items: Crumb[] }
-/** Dùng khi sâu hơn 2 cấp. Tối đa 4 mục; nhiều hơn thì rút gọn giữa. */
+export interface BreadcrumbProps { /** The last item is the current page, not a link. */ items: Crumb[] }
+/** Use when depth exceeds 2 levels. At most 4 items; beyond that, collapse the middle. */
 export function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <Breadcrumbs className="eb-crumbs">

@@ -8,7 +8,7 @@ export interface RadioGroupProps {
   orientation?: 'vertical' | 'horizontal';
   hint?: string; error?: string; disabled?: boolean;
 }
-/** Chọn đúng một. Dùng khi 2–5 lựa chọn cần nhìn thấy hết; nhiều hơn dùng Select. */
+/** Pick exactly one. Use for 2–5 options that should all be visible; beyond that use Select. */
 export function RadioGroup({ label, options, value, defaultValue, onChange, orientation = 'vertical', hint, error, disabled }: RadioGroupProps) {
   return (
     <ARadioGroup className="eb-radio-group" value={value} defaultValue={defaultValue} onChange={onChange} orientation={orientation} isDisabled={disabled} isInvalid={!!error}>

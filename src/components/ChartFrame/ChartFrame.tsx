@@ -8,21 +8,21 @@ import { Button } from '../Button/Button';
 export interface ChartLegendItem { name: string; color: string }
 export interface ChartFrameProps {
   title?: string;
-  /** Một câu: kỳ dữ liệu, đơn vị, nguồn. */
+  /** One sentence: period, unit, source. */
   subtitle?: string;
-  /** Bắt buộc từ 2 series trở lên — danh tính không được chỉ dựa vào màu. */
+  /** Required from 2 series up — identity must not rest on color alone. */
   legend?: ChartLegendItem[];
   state?: 'ready' | 'loading' | 'empty' | 'error';
   emptyTitle?: string;
   errorTitle?: string;
   onRetry?: () => void;
-  /** Chiều cao vùng vẽ, giữ nguyên qua mọi trạng thái để trang không nhảy. */
+  /** Plot height, held constant across states so the page doesn't jump. */
   height?: number;
   children?: ReactNode;
 }
 
-/** Khung chung của mọi biểu đồ: tiêu đề, legend, và bốn trạng thái theo mục 9.3/9.5. */
-export function ChartFrame({ title, subtitle, legend, state = 'ready', emptyTitle = 'Chưa có dữ liệu', errorTitle = 'Không tải được dữ liệu', onRetry, height = 200, children }: ChartFrameProps) {
+/** The shared frame for every chart: title, legend, and the four states from sections 9.3 and 9.5. */
+export function ChartFrame({ title, subtitle, legend, state = 'ready', emptyTitle = 'No data yet', errorTitle = 'Couldn\u2019t load the data', onRetry, height = 200, children }: ChartFrameProps) {
   return (
     <figure className="eb-chart" style={{ margin: 0 }}>
       {(title || subtitle) && (
@@ -40,8 +40,8 @@ export function ChartFrame({ title, subtitle, legend, state = 'ready', emptyTitl
       )}
       <div className="eb-chart__body" style={{ minHeight: height }}>
         {state === 'loading' && <Skeleton shape="block" height={height} />}
-        {state === 'empty' && <EmptyState size="compact" title={emptyTitle} description="Chọn khoảng thời gian khác hoặc bỏ bớt bộ lọc." />}
-        {state === 'error' && <EmptyState size="compact" title={errorTitle} description="Kết nối bị gián đoạn." action={onRetry && <Button variant="secondary" size="sm" onClick={onRetry}>Thử lại</Button>} />}
+        {state === 'empty' && <EmptyState size="compact" title={emptyTitle} description="Pick a different period, or remove some filters." />}
+        {state === 'error' && <EmptyState size="compact" title={errorTitle} description="The connection dropped." action={onRetry && <Button variant="secondary" size="sm" onClick={onRetry}>Try again</Button>} />}
         {state === 'ready' && children}
       </div>
     </figure>

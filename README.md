@@ -7,11 +7,12 @@ Node 20.16+. `npm install` rồi `npm run storybook` → http://localhost:6006
 ```
 src/tokens/tokens.css   ← NGUỒN SỰ THẬT: primitive → semantic. Figma Variables trùng tên
 src/tokens/base.css
-src/components/*/       ← Name.tsx + Name.css + Name.stories.tsx (29 component)
+src/components/*/       ← Name.tsx + Name.css + Name.stories.tsx (47 component)
 src/components/aria.css ← overlay/list dùng chung cho React Aria
 src/sections/           ← 12 section landing + sections.css, manifest.json, renderLanding.tsx
 src/content/*.json      ← nội dung landing (agent sinh file này)
 src/foundations/*.mdx   ← trang token, đọc giá trị thật từ CSS
+src/story-frame.tsx     ← helper frame(390) cho story kiểm co giãn
 scripts/validate-landing.mjs
 docs/style-reference.md ← tham chiếu phong cách
 DESIGN-RULES.md · CLAUDE.md
@@ -35,11 +36,16 @@ Sửa `--brand-*` (đang là placeholder cam), `--gray-*`, `--font-sans` trong `
 Ảnh trong `public/img/` lấy từ Wikimedia Commons (CC0 và CC BY 2.0), credit ghi ở dòng meta của footer.
 Trang này bật chuyển động khi cuộn qua class `.lp-motion` + hook `useScrollReveal` — nằm ngoài DESIGN-RULES 9.8 ("Motion: không có"), giữ riêng trong `landing-motion.css` để gỡ được.
 
+## Ngôn ngữ
+Tài liệu `.md` viết tiếng Việt. Chữ trong sản phẩm — nhãn nút, `aria-label`, JSDoc, story, nội dung landing — viết tiếng Anh; ngày/số/tiền theo quy ước Anh — Mỹ (DESIGN-RULES 10.5).
+
 ## Danh sách component
 Form: Input · Textarea · Select · ComboBox · DatePicker · Checkbox · RadioGroup · Switch · Toggle · Slider
 Hành động: Button · Menu · Popover · Tooltip
-Hiển thị: Badge · Avatar · Card · Table · Pagination · Breadcrumb · Tabs · Accordion · Progress · Skeleton · EmptyState
+Hiển thị: Badge · Avatar · Card · ActionCard · SelectableCard · Table · Pagination · Breadcrumb · Tabs · Accordion · Progress · Skeleton · EmptyState
 Overlay: Modal · AlertDialog · Drawer · Toast
+Biểu đồ: StatTile · Sparkline · Meter · BarChart · LineChart · DonutChart · Heatmap · DivergingBar · Dumbbell · ScatterPlot · FunnelChart · ChartFrame
+Trợ lý agent: ChatMessage · AgentTrace · PromptInput · AgentAssistant
 Section landing: Nav · HeroEditorial · Manifesto · SplitText · Timeline · FeatureFullBleed · Comparison · Pricing · Testimonial · TeamBlock · CTAFinal · Footer
 
 Đặt `<Toaster />` một lần ở gốc app để dùng `toast()`.

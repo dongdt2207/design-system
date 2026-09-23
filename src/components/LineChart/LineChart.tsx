@@ -5,21 +5,21 @@ import './LineChart.css';
 export interface LineSeries { name: string; values: number[] }
 export interface LineChartProps {
   series: LineSeries[];
-  /** Nhãn trục x, cùng độ dài với mỗi series. */
+  /** X-axis labels, the same length as each series. */
   labels: string[];
-  /** Tô vùng dưới đường. Chỉ dùng khi có đúng một series. */
+  /** Fill the area under the line. Only with exactly one series. */
   area?: boolean;
   formatValue?: (n: number) => string;
   height?: number;
-  /** Bắt đầu trục y từ 0. Tắt khi dao động nhỏ trên nền lớn — và nói rõ trong subtitle. */
+  /** Start the y-axis at 0. Turn it off for small swings on large values — and say so in the subtitle. */
   zeroBased?: boolean;
 }
 
 const colorOf = (i: number) => `var(--viz-cat-${(i % 8) + 1})`;
 const W = 640, PAD_L = 8, PAD_R = 8, PAD_B = 22;
 
-/** Thay đổi theo thời gian. Một thang y duy nhất — hai đại lượng khác thang thì tách hai biểu đồ. */
-export function LineChart({ series, labels, area = false, formatValue = (n) => n.toLocaleString('vi-VN'), height = 200, zeroBased = true }: LineChartProps) {
+/** Change over time. One y-scale only — two quantities on different scales become two charts. */
+export function LineChart({ series, labels, area = false, formatValue = (n) => n.toLocaleString('en-US'), height = 200, zeroBased = true }: LineChartProps) {
   const [hover, setHover] = useState<number | null>(null);
   const all = series.flatMap((s) => s.values);
   const max = Math.max(...all), min = zeroBased ? 0 : Math.min(...all);
@@ -30,7 +30,7 @@ export function LineChart({ series, labels, area = false, formatValue = (n) => n
 
   return (
     <div style={{ position: 'relative' }} onMouseLeave={() => setHover(null)}>
-      <svg className="eb-line" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" role="img" aria-label={`Biểu đồ đường: ${series.map((s) => s.name).join(', ')}`}>
+      <svg className="eb-line" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" role="img" aria-label={`Line chart: ${series.map((s) => s.name).join(', ')}`}>
         {[0, 0.5, 1].map((t) => <line key={t} className="eb-chart__grid" x1={PAD_L} x2={W - PAD_R} y1={y(min + span * t)} y2={y(min + span * t)} />)}
         {series.map((s, si) => {
           const d = s.values.map((v, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)} ${y(v).toFixed(1)}`).join(' ');
@@ -66,7 +66,7 @@ export function LineChart({ series, labels, area = false, formatValue = (n) => n
       )}
 
       <table className="eb-chart__table">
-        <caption>Số liệu dạng bảng</caption>
+        <caption>Data table</caption>
         <thead><tr><th scope="col">Mốc</th>{series.map((s) => <th scope="col" key={s.name}>{s.name}</th>)}</tr></thead>
         <tbody>{labels.map((l, i) => <tr key={l}><th scope="row">{l}</th>{series.map((s) => <td key={s.name}>{formatValue(s.values[i])}</td>)}</tr>)}</tbody>
       </table>

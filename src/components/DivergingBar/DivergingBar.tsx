@@ -3,15 +3,15 @@ import './DivergingBar.css';
 
 export interface DivergingDatum { label: string; value: number }
 export interface DivergingBarProps {
-  /** Giá trị âm và dương quanh mốc 0. */
+  /** Negative and positive values around a zero baseline. */
   data: DivergingDatum[];
   formatValue?: (n: number) => string;
-  /** Nhãn hai cực, dùng cho legend và cho screen reader. */
+  /** Pole labels, used for the legend and for screen readers. */
   poles?: { negative: string; positive: string };
 }
 
-/** Trên/dưới một mốc: chênh lệch so với chỉ tiêu, tăng trưởng âm dương. Điểm giữa là 0. */
-export function DivergingBar({ data, formatValue = (n) => n.toLocaleString('vi-VN'), poles = { negative: 'Dưới mốc', positive: 'Trên mốc' } }: DivergingBarProps) {
+/** Above/below a baseline: variance against target, positive and negative growth. The midpoint is 0. */
+export function DivergingBar({ data, formatValue = (n) => n.toLocaleString('en-US'), poles = { negative: 'Below baseline', positive: 'Above baseline' } }: DivergingBarProps) {
   const span = Math.max(...data.map((d) => Math.abs(d.value)), 1);
   return (
     <div className="eb-div">
@@ -36,8 +36,8 @@ export function DivergingBar({ data, formatValue = (n) => n.toLocaleString('vi-V
         );
       })}
       <table className="eb-chart__table">
-        <caption>Số liệu dạng bảng</caption>
-        <thead><tr><th scope="col">Hạng mục</th><th scope="col">Chênh lệch</th></tr></thead>
+        <caption>Data table</caption>
+        <thead><tr><th scope="col">Category</th><th scope="col">Variance</th></tr></thead>
         <tbody>{data.map((d) => <tr key={d.label}><th scope="row">{d.label}</th><td>{d.value > 0 ? '+' : ''}{formatValue(d.value)}</td></tr>)}</tbody>
       </table>
     </div>

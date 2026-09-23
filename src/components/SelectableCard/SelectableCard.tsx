@@ -2,13 +2,13 @@ import type { ReactNode } from 'react';
 import './SelectableCard.css';
 
 export interface SelectableCardProps {
-  /** Tên nhóm. Radio bắt buộc có, để bàn phím đi giữa các lựa chọn bằng phím mũi tên. */
+  /** Group name. Required for radios, so arrow keys move between options. */
   name: string;
   value: string;
   type?: 'radio' | 'checkbox';
   title: string;
   description?: string;
-  /** Dòng phụ dưới cùng: giá, thời hạn, ghi chú. */
+  /** The bottom line: price, term, note. */
   meta?: ReactNode;
   checked?: boolean;
   defaultChecked?: boolean;
@@ -16,7 +16,7 @@ export interface SelectableCardProps {
   onChange?: (checked: boolean) => void;
 }
 
-/** Chọn một trong nhiều phương án, cả thẻ là vùng bấm. Dưới lớp hình là input thật. */
+/** Choose one of several options with the whole card as the hit area. Under the visual layer sits a real input. */
 export function SelectableCard({ name, value, type = 'radio', title, description, meta, checked, defaultChecked, disabled, onChange }: SelectableCardProps) {
   return (
     <label className={`eb-sel-card eb-sel-card--${type}`}>

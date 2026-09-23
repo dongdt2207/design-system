@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Toggle } from './Toggle';
-const meta: Meta<typeof Toggle> = { title: 'Components/Toggle', component: Toggle, tags: ['autodocs'], args: { label: 'Chế độ tối', size: 'md' }, argTypes: { size: { control: 'radio', options: ['sm', 'md'] } } };
+const meta: Meta<typeof Toggle> = { title: 'Components/Toggle', component: Toggle, tags: ['autodocs'], args: { label: 'Dark mode', size: 'md' }, argTypes: { size: { control: 'radio', options: ['sm', 'md'] } } };
 export default meta;
 type Story = StoryObj<typeof Toggle>;
 export const Default: Story = {};

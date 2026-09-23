@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Switch } from './Switch';
-const meta: Meta<typeof Switch> = { title: 'Components/Switch', component: Switch, tags: ['autodocs'], args: { label: 'Thông báo email', size: 'md' }, argTypes: { size: { control: 'radio', options: ['sm', 'md'] } } };
+const meta: Meta<typeof Switch> = { title: 'Components/Switch', component: Switch, tags: ['autodocs'], args: { label: 'Email notifications', size: 'md' }, argTypes: { size: { control: 'radio', options: ['sm', 'md'] } } };
 export default meta;
 type Story = StoryObj<typeof Switch>;
 export const Default: Story = {};

@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import './Avatar.css';
 export interface AvatarProps {
-  /** Tên đầy đủ — dùng cho chữ cái đầu và alt. */
+  /** Full name — used for the initials and the alt text. */
   name: string; src?: string;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  /** Chấm trạng thái online. */
+  /** Online status dot. */
   status?: 'online' | 'offline' | 'busy';
 }
 const initials = (n: string) => n.trim().split(/\s+/).slice(-2).map((w) => w[0]).join('').toUpperCase();
-/** Ảnh đại diện; không có ảnh thì chữ cái đầu trên nền mực. Không dùng làm nút. */
+/** A profile image; without one, initials on an ink background. Never use it as a button. */
 export function Avatar({ name, src, size = 'md', status }: AvatarProps) {
   const [failed, setFailed] = useState(false);
   return (

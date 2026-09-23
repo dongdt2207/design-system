@@ -1,4 +1,8 @@
-.eb-agent { display: grid; grid-template-columns: 240px 1fr; height: 100%; min-height: 480px; background: var(--color-bg-page); color: var(--color-text-primary); }
+/* Layout follows the CONTAINER width (container query), not just the window:
+   this screen also gets embedded in panels, split views, and the Storybook iframe.
+   Thresholds from section 3.2 — lg 1024 (sidebar), sm 640 (density). */
+.eb-agent { container-type: inline-size; height: 100%; min-height: 480px; background: var(--color-bg-page); color: var(--color-text-primary); }
+.eb-agent__shell { display: grid; grid-template-columns: 240px 1fr; height: 100%; min-height: inherit; }
 
 /* ---------- Sidebar ---------- */
 .eb-agent__side { display: flex; flex-direction: column; min-height: 0; background: var(--color-bg-surface); border-right: 1px solid var(--color-border-default); }
@@ -16,15 +20,15 @@
 .eb-agent__item-title { font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--color-text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .eb-agent__item-meta { font-size: var(--text-xs); color: var(--color-text-muted); }
 
-/* ---------- Main ---------- */
+/* ---------- Main area ---------- */
 .eb-agent__main { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
 .eb-agent__head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); height: 56px; flex: none; padding: 0 var(--space-6); background: var(--color-bg-surface); border-bottom: 1px solid var(--color-border-default); }
 .eb-agent__head-start { display: flex; align-items: center; gap: var(--space-3); min-width: 0; }
-.eb-agent__head-end { display: flex; align-items: center; gap: var(--space-2); }
+.eb-agent__head-end { display: flex; flex: none; align-items: center; gap: var(--space-2); }
 .eb-agent__title { margin: 0; font-size: var(--text-lg); font-weight: var(--weight-semibold); line-height: var(--leading-tight); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .eb-agent__side-open { display: none; }
 
-.eb-agent__thread { flex: 1; min-height: 0; overflow-y: auto; padding: var(--space-6); }
+.eb-agent__thread { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: var(--space-6); }
 .eb-agent__thread:focus-visible { outline: 2px solid var(--color-border-focus); outline-offset: -2px; }
 .eb-agent__messages { max-width: 800px; margin: 0 auto; }
 
@@ -37,17 +41,35 @@
 .eb-agent__chip { min-height: 32px; padding: 0 var(--space-3); border: 1px solid var(--color-border-default); border-radius: var(--radius-full); background: var(--color-bg-surface); color: var(--color-text-secondary); font-size: var(--text-sm); cursor: pointer; transition: background-color var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard); }
 .eb-agent__chip:hover { background: var(--color-bg-subtle); color: var(--color-text-primary); }
 .eb-agent__chip:focus-visible { outline: none; box-shadow: var(--focus-ring); }
-@media (hover: none) { .eb-agent__chip { min-height: 40px; } }
 
 .eb-agent__composer { flex: none; padding: var(--space-4) var(--space-6) var(--space-6); background: var(--color-bg-page); }
 .eb-agent__composer > * { max-width: 800px; margin: 0 auto; }
 
-/* ---------- Dưới lg: sidebar thành drawer  ---------- */
-@media (max-width: 1023px) {
-  .eb-agent { grid-template-columns: 1fr; }
+/* ---------- Below lg: the sidebar collapses into a drawer (section 3.3) ---------- */
+@container (max-width: 1023px) {
+  .eb-agent__shell { grid-template-columns: 1fr; }
+  .eb-agent__side-head { padding: var(--space-3) var(--space-4); }
   .eb-agent__side { display: none; }
   .eb-agent__side-open { display: inline-flex; }
   .eb-agent__head { padding: 0 var(--space-4); }
   .eb-agent__thread { padding: var(--space-4); }
   .eb-agent__composer { padding: var(--space-3) var(--space-4) var(--space-4); }
+}
+
+/* ---------- Below sm: phone density ---------- */
+@container (max-width: 639px) {
+  .eb-agent { min-height: 400px; }
+  .eb-agent__head { gap: var(--space-2); padding: 0 var(--space-2) 0 var(--space-1); }
+  .eb-agent__head-start { gap: var(--space-1); }
+  .eb-agent__title { font-size: var(--text-md); }
+  .eb-agent__thread { padding: var(--space-3); }
+  .eb-agent__composer { padding: var(--space-2) var(--space-3) var(--space-3); }
+  /* Suggestions stack one per line — easier to tap than a crowded row of chips. */
+  .eb-agent__chips { flex-direction: column; align-items: stretch; }
+  .eb-agent__chip { min-height: 40px; text-align: left; }
+}
+
+@media (hover: none) {
+  .eb-agent__chip { min-height: 40px; }
+  .eb-agent__item { min-height: 44px; }
 }

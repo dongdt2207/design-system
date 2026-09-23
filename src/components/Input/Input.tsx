@@ -3,9 +3,9 @@ import './Input.css';
 
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   label?: string;
-  /** Điều cần biết trước khi nhập. */
+  /** What to know before typing. */
   hint?: string;
-  /** Điều sai sau khi nhập — nói cái gì sai và sửa thế nào. */
+  /** What went wrong after typing — name the problem and the fix. */
   error?: string;
   size?: 'sm' | 'md' | 'lg';
   iconStart?: ReactNode;

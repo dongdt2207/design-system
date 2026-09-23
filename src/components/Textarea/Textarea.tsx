@@ -2,9 +2,9 @@ import { forwardRef, useId, type TextareaHTMLAttributes } from 'react';
 import './Textarea.css';
 export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string; hint?: string; error?: string;
-  /** Số dòng hiển thị ban đầu. */
+  /** Initial number of visible rows. */
   rows?: number;
-  /** Hiện đếm ký tự khi có maxLength. */
+  /** Show the character count when maxLength is set. */
   showCount?: boolean;
 }
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function Textarea({ label, hint, error, rows = 4, showCount, id, className, disabled, maxLength, value, defaultValue, onChange, ...rest }, ref) {

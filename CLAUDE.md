@@ -2,6 +2,10 @@
 
 Stack: Vite + React 19 + TypeScript + CSS thuần (token = CSS variables) + **React Aria Components** cho logic/a11y (Tabs, Tooltip, Menu, RadioGroup, ComboBox, DatePicker; Radix còn ở Modal, Select) + Storybook 10.
 
+Ngôn ngữ: **tài liệu `.md` ở repo viết tiếng Việt; mọi thứ hiện trong Storybook và trong sản phẩm — nhãn nút, `aria-label`, JSDoc, story, trang `.mdx`, nội dung landing — viết tiếng Anh**, định dạng ngày/số/tiền theo quy ước Anh — Mỹ (DESIGN-RULES mục 10.5).
+
+Co giãn: component co theo **khung chứa** (`container-type: inline-size` + `@container`, ngưỡng 1023 / 639), `@media` chỉ cho khung trang và đặc tính thiết bị — DESIGN-RULES mục 3.5.
+
 Component mới có tương tác: lấy logic từ React Aria Components, style qua data-attribute (`[data-hovered]`, `[data-selected]`, `[data-focus-visible]`) trong file CSS bằng token. Overlay dùng chung `src/components/aria.css` (`.eb-popover`, `.eb-list`). Không tự viết focus trap, keyboard nav, aria.
 
 Trước khi sinh, sửa, hoặc review bất kỳ UI nào:
@@ -18,4 +22,4 @@ Không tạo section, không thêm CSS, không viết layout, không dùng visua
 Section mới: đề xuất (tên, use, props) → chờ duyệt → thêm vào `src/sections/index.tsx` + `sections.css` + `manifest.json` + `renderLanding.tsx` + story + DESIGN-RULES 9.8.
 
 ## Component mới
-Thư mục trong `src/components/`, 3 file, đủ story mọi trạng thái, export trong `src/index.ts`, `npm run build-storybook` không lỗi, tab Accessibility sạch.
+Thư mục trong `src/components/`, 3 file, đủ story mọi trạng thái (thêm story 390px và 820px nếu component chiếm cả vùng nội dung), export trong `src/index.ts`, `npm run build-storybook` không lỗi, tab Accessibility sạch.

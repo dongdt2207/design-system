@@ -3,18 +3,18 @@ import './AgentTrace.css';
 
 export interface TraceStep {
   id: string;
-  /** Việc agent làm, động từ + đối tượng: "Đọc bảng đơn hàng". */
+  /** What the agent did, verb + object: "Read the orders table". */
   label: string;
-  /** Tham số hoặc kết quả ngắn — hiện bằng font mono. */
+  /** Parameters or a short result — shown in the mono font. */
   detail?: string;
   status: 'running' | 'done' | 'error';
-  /** Thời gian chạy: "1,2s". */
+  /** Run time: "1.2s". */
   meta?: string;
 }
 
 export interface AgentTraceProps {
   steps: TraceStep[];
-  /** Câu trên nút mở. Mặc định đếm bước đã xong. */
+  /** The sentence on the toggle. Defaults to a count of the steps. */
   summary?: string;
   defaultExpanded?: boolean;
 }
@@ -24,15 +24,15 @@ const icons = {
   done: <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8.5l3.5 3.5L13 5" /></svg>,
   error: <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"><path d="M4 4l8 8M12 4l-8 8" /></svg>,
 };
-const statusLabel = { running: 'Đang chạy', done: 'Xong', error: 'Lỗi' };
+const statusLabel = { running: 'Running', done: 'Done', error: 'Failed' };
 
 const defaultSummary = (steps: TraceStep[]) => {
-  if (steps.some((s) => s.status === 'error')) return 'Có bước lỗi';
-  if (steps.some((s) => s.status === 'running')) return `Đang chạy bước ${steps.findIndex((s) => s.status === 'running') + 1}/${steps.length}`;
-  return `Đã chạy ${steps.length} bước`;
+  if (steps.some((s) => s.status === 'error')) return 'A step failed';
+  if (steps.some((s) => s.status === 'running')) return `Running step ${steps.findIndex((s) => s.status === 'running') + 1} of ${steps.length}`;
+  return `Ran ${steps.length} steps`;
 };
 
-/** Nhật ký các bước agent đã chạy trước khi trả lời. Đóng mặc định — mở ra để kiểm chứng, không giấu thông tin bắt buộc ở đây. */
+/** The agent's run log, shown above its answer. Collapsed by default — open it to check the work, never hide required information here. */
 export function AgentTrace({ steps, summary, defaultExpanded = false }: AgentTraceProps) {
   return (
     <Disclosure className="eb-trace" defaultExpanded={defaultExpanded}>

@@ -1,9 +1,9 @@
 .eb-tabs { display: flex; flex-direction: column; gap: var(--space-4); }
-.eb-tabs__list { display: flex; gap: var(--space-1); }
-.eb-tabs__tab { position: relative; padding: var(--space-2) var(--space-3); font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--color-text-secondary); border-radius: var(--radius-sm); cursor: pointer; outline: none; transition: color var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard); }
+.eb-tabs__list { display: flex; gap: var(--space-1); overflow-x: auto; scrollbar-width: thin; scroll-padding-inline: var(--space-2); }
+.eb-tabs__tab { position: relative; flex: none; white-space: nowrap; padding: var(--space-2) var(--space-3); font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--color-text-secondary); border-radius: var(--radius-sm); cursor: pointer; outline: none; transition: color var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard); }
 .eb-tabs__tab[data-hovered] { color: var(--color-text-primary); }
 .eb-tabs__tab[data-selected] { color: var(--color-text-primary); }
-.eb-tabs__tab[data-focus-visible] { box-shadow: var(--focus-ring); }
+.eb-tabs__tab[data-focus-visible] { outline: 2px solid var(--color-border-focus); outline-offset: -2px; }
 .eb-tabs__tab[data-disabled] { color: var(--color-text-disabled); cursor: not-allowed; }
 .eb-tabs__panel { outline: none; font-size: var(--text-sm); }
 /* line */
@@ -13,3 +13,10 @@
 /* pill */
 .eb-tabs--pill .eb-tabs__list { display: inline-flex; padding: 2px; background: var(--color-bg-muted); border-radius: var(--radius-md); align-self: flex-start; }
 .eb-tabs--pill .eb-tabs__tab[data-selected] { background: var(--color-bg-surface); box-shadow: var(--shadow-sm); }
+
+/* More tabs than width: the tab list scrolls sideways; tabs stay focusable, so the keyboard scrolls them into view.
+   The focus ring is drawn inset (outline-offset: -2px) because a scroll container clips an outset box-shadow. */
+.eb-tabs--pill .eb-tabs__list { max-width: 100%; }
+@media (hover: none) {
+  .eb-tabs__tab { display: inline-flex; align-items: center; min-height: 40px; }
+}

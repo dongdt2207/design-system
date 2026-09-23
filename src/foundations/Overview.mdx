@@ -4,21 +4,21 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Ebig Design System
 
-Nguồn sự thật cho giao diện các sản phẩm Ebig. Mọi thứ ở đây là **code thật đang chạy**.
+The source of truth for the interface of Ebig products. Everything here is **real code, running**.
 
-Phong cách: **editorial calm** — nền kem, mực ấm, một màu accent dùng dè sẻn, tiêu đề lớn weight 400, depth bằng hairline không bóng, bo góc 8/12. Tham chiếu trong `docs/style-reference.md`.
+Style: **editorial calm** — cream background, warm ink, one accent used sparingly, large headings at weight 400, depth from hairlines instead of shadows, radii of 8 and 12. Reference in `docs/style-reference.md`.
 
-## Cách dùng
+## How to use it
 
 **Designer**
-- Trước khi vẽ màn hình mới, xem *Components* và *Sections*.
-- Figma Variables trùng tên với token ở *Foundations*. Không nhập màu hoặc số tay.
-- Property của component Figma trùng tên với props.
-- Duyệt kết quả tại đây; tab **Design** hiện frame Figma cạnh story.
+- Before drawing a new screen, look through *Components* and *Sections*.
+- Figma Variables share names with the tokens under *Foundations*. Never type a color or a number by hand.
+- Figma component properties share names with the props.
+- Review the result here; the **Design** tab shows the Figma frame beside the story.
 
 **Developer**
-- Component chỉ dùng token semantic (`--color-bg-brand`), không dùng primitive (`--brand-500`), không viết hex.
-- Mỗi component: `Name.tsx` + `Name.css` + `Name.stories.tsx`.
-- Mỗi trạng thái nhìn thấy được một story. Tab **Accessibility** sạch lỗi trước khi merge.
+- Components use semantic tokens only (`--color-bg-brand`), never primitives (`--brand-500`), never raw hex.
+- Each component: `Name.tsx` + `Name.css` + `Name.stories.tsx`.
+- One story per visible state. The **Accessibility** tab must be clean before merging.
 
-Chuyển theme bằng nút trên thanh công cụ.
+Switch themes with the toolbar button.

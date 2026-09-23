@@ -1,10 +1,10 @@
 /*
- * Trang docs (Foundations/*.mdx và autodocs) do Storybook tự vẽ, không dùng token của hệ:
- * nó sơn nền trắng của docs theme đè lên `body`. Khi toolbar gạt sang dark thì token chữ
- * đổi sang sáng nhưng nền docs vẫn trắng, nên chữ gần như biến mất.
+ * Docs pages (Foundations/*.mdx and autodocs) are drawn by Storybook itself and ignore our
+ * tokens: the docs theme paints its white background over `body`. Flip the toolbar to dark
+ * and the text tokens go light while the docs background stays white, so text all but vanishes.
  *
- * Ở đây chỉ kéo các bề mặt docs về đúng token, và chỉ trong dark — light vẫn để Storybook
- * tự lo. Không đụng tới story: story thường đã đúng nhờ `body` trong base.css.
+ * This file only pulls the docs surfaces back onto our tokens, and only in dark — light is
+ * left to Storybook. It never touches stories: those are already correct via `body` in base.css.
  */
 :root[data-theme='dark'] .sbdocs-wrapper,
 :root[data-theme='dark'] .sbdocs.sbdocs-content,
@@ -43,12 +43,12 @@
 }
 
 /*
- * Docblock — bảng args, khối source, empty block. Chúng là component emotion của
- * Storybook, dùng bảng màu riêng nên không đổi theo `data-theme`: nền trắng giữ nguyên
- * trong dark, làm tên prop (màu chữ đậm trên nền sáng) gần như biến mất.
+ * Docblocks — the args table, source blocks, empty blocks. These are Storybook's own emotion
+ * components with their own palette, so they ignore `data-theme`: the white background stays
+ * in dark mode, and prop names (dark text meant for a light surface) all but vanish.
  *
- * Phủ theo class chứ không dùng !important: selector ở đây có độ ưu tiên (0,3,1),
- * cao hơn class đơn của emotion.
+ * Overridden by class rather than !important: these selectors carry specificity (0,3,1),
+ * which beats emotion's single class.
  */
 :root[data-theme='dark'] .docblock-argstable,
 :root[data-theme='dark'] .docblock-argstable-head,

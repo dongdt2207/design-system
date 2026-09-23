@@ -13,7 +13,7 @@ export function renderVisual(v: VisualSpec) {
   }
 }
 
-export interface NavProps { logo: string; links: { label: string; href: string }[]; cta?: { label: string; href: string }; /** aria-label của <nav>, đổi theo ngôn ngữ trang */ navLabel?: string }
+export interface NavProps { logo: string; links: { label: string; href: string }[]; cta?: { label: string; href: string }; /** aria-label for the <nav>, matching the page language */ navLabel?: string }
 export function Nav({ logo, links, cta, navLabel = 'Chính' }: NavProps) {
   return (
     <header className="lp-nav"><nav className="lp-grid" aria-label={navLabel}>
@@ -25,7 +25,7 @@ export function Nav({ logo, links, cta, navLabel = 'Chính' }: NavProps) {
 }
 
 export interface HeroBlock { value: string; label: string; height?: 'tall' | 'mid' | 'low'; deep?: boolean }
-export interface HeroEditorialProps { eyebrow?: string; /** ≤ 4 từ */ title: string; /** 4–6 khối, đúng một deep */ blocks: HeroBlock[] }
+export interface HeroEditorialProps { eyebrow?: string; /** ≤ 4 words */ title: string; /** 4–6 blocks, exactly one deep */ blocks: HeroBlock[] }
 export function HeroEditorial({ eyebrow, title, blocks }: HeroEditorialProps) {
   return (
     <section className="lp-section lp-hero"><div className="lp-grid">
@@ -98,8 +98,8 @@ export function CTAFinal({ title, primary, secondary, note }: CTAFinalProps) {
   );
 }
 
-export interface FooterProps { brand: string; tagline: string; columns: { title: string; links: { label: string; href: string }[] }[]; meta?: string; /** địa danh ở góc phải dòng meta */ place?: string }
-export function Footer({ brand, tagline, columns, meta, place = 'Hà Nội' }: FooterProps) {
+export interface FooterProps { brand: string; tagline: string; columns: { title: string; links: { label: string; href: string }[] }[]; meta?: string; /** the place name at the right end of the meta line */ place?: string }
+export function Footer({ brand, tagline, columns, meta, place = 'Portland' }: FooterProps) {
   return (
     <footer className="lp-footer"><div className="lp-grid">
       <div className="lp-footer__brand"><strong>{brand}</strong>{tagline}</div>
@@ -119,7 +119,7 @@ export function Stats({ items }: { items: { value: string; label: string }[] }) 
 /* ---------- Pricing ---------- */
 export interface Tier { name: string; description: string; price: string; period?: string; features: string[]; cta: { label: string; href: string }; featured?: boolean }
 export interface PricingProps { eyebrow?: string; title: string; tiers: Tier[] }
-/** 2–4 tier. Đúng một `featured` — đảo mực, không ribbon màu. Giá là số thật hoặc "[cần số thật]". */
+/** 2–4 tiers. Exactly one `featured` — inverted ink, never a colored ribbon. Prices are real numbers or "[real number needed]". */
 export function Pricing({ eyebrow, title, tiers }: PricingProps) {
   return (
     <section className="lp-section"><div className="lp-grid">
@@ -139,8 +139,8 @@ export function Pricing({ eyebrow, title, tiers }: PricingProps) {
 }
 
 /* ---------- Comparison ---------- */
-export interface ComparisonProps { eyebrow?: string; title: string; /** Tên cột: ["Tiêu chí", "Ebig CDN", "CDN truyền thống"] */ columns: [string, string, string]; rows: [string, string, string][] }
-/** So sánh trung thực: mỗi hàng là sự thật kiểm chứng được, không dùng ✓/✗. Cột "ta" tô nền brand-subtle rất nhẹ. */
+export interface ComparisonProps { eyebrow?: string; title: string; /** Column names: ["Criterion", "Ebig CDN", "Traditional CDN"] */ columns: [string, string, string]; rows: [string, string, string][] }
+/** An honest comparison: every row is a verifiable fact, never a ✓/✗. Our column gets a very light brand-subtle background. */
 export function Comparison({ eyebrow, title, columns, rows }: ComparisonProps) {
   return (
     <section className="lp-section"><div className="lp-grid">

@@ -2,10 +2,10 @@ import '../chart.css';
 import './Sparkline.css';
 
 export interface SparklineProps {
-  /** Ít nhất 2 điểm. Không trục, không nhãn — đọc xu hướng, không đọc giá trị. */
+  /** At least 2 points. No axes, no labels — it shows trend, not values. */
   data: number[];
   variant?: 'line' | 'bar';
-  /** Bắt buộc: câu mô tả cho người dùng screen reader, vì chart này không có trục. */
+  /** Required: a sentence for screen reader users, because this chart has no axes. */
   label: string;
   width?: number;
   height?: number;
@@ -13,7 +13,7 @@ export interface SparklineProps {
   area?: boolean;
 }
 
-/** Xu hướng trong một ô bảng hoặc cạnh con số. Cần đọc giá trị cụ thể thì dùng LineChart. */
+/** A trend inside a table cell or beside a figure. When exact values matter, use LineChart. */
 export function Sparkline({ data, variant = 'line', label, width = 96, height = 24, tone = 'brand', area = false }: SparklineProps) {
   if (data.length < 2) return null;
   const min = Math.min(...data), max = Math.max(...data), span = max - min || 1;

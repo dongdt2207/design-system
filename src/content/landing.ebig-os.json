@@ -1,50 +1,50 @@
 {
-  "title": "Ebig OS — Tự chủ công nghệ",
+  "title": "Ebig OS — Own your technology",
   "sections": [
     {
       "type": "nav",
       "props": {
         "logo": "ebig",
         "links": [
-          { "label": "Nền tảng", "href": "https://ebig.co/vi/ebig-platform" },
-          { "label": "Giải pháp", "href": "https://ebig.co/vi/solution-owner" },
+          { "label": "Platform", "href": "https://ebig.co/vi/ebig-platform" },
+          { "label": "Solutions", "href": "https://ebig.co/vi/solution-owner" },
           { "label": "Deep Insight", "href": "https://ebig.co/vi/deep-insight-enterprise" },
-          { "label": "Tài liệu", "href": "https://ebig.co/vi/wiki/overview" },
-          { "label": "Bảng giá", "href": "https://ebig.co/vi/pricing" }
+          { "label": "Docs", "href": "https://ebig.co/vi/wiki/overview" },
+          { "label": "Pricing", "href": "https://ebig.co/vi/pricing" }
         ],
-        "cta": { "label": "Liên hệ", "href": "https://ebig.co/vi/contact" }
+        "cta": { "label": "Contact", "href": "https://ebig.co/vi/contact" }
       }
     },
     {
       "type": "hero",
       "props": {
-        "eyebrow": "Ebig OS — hệ điều hành doanh nghiệp trên kiến trúc hội tụ",
-        "title": "Tự chủ công nghệ",
+        "eyebrow": "Ebig OS — the enterprise operating system on a converged architecture",
+        "title": "Own your technology",
         "blocks": [
           {
             "value": "Low-code",
-            "label": "dựng ứng dụng bằng metadata, không viết lại từ đầu",
+            "label": "build apps from metadata instead of rewriting from scratch",
             "height": "mid"
           },
           {
             "value": "Multi-tenant",
-            "label": "một hệ phục vụ nhiều đơn vị trong cùng tập đoàn",
+            "label": "one system serving many units inside the same group",
             "height": "low"
           },
           {
             "value": "[cần số thật]",
-            "label": "doanh nghiệp đang vận hành trên Ebig OS",
+            "label": "companies running on Ebig OS",
             "height": "tall",
             "deep": true
           },
           {
             "value": "AI Agent",
-            "label": "tác tử thực thi nghiệp vụ hành chính",
+            "label": "agents that carry out administrative work",
             "height": "mid"
           },
           {
             "value": "Cloud + On-prem",
-            "label": "chạy trên hạ tầng doanh nghiệp tự chọn",
+            "label": "runs on the infrastructure you choose",
             "height": "low"
           }
         ]
@@ -53,23 +53,23 @@
     {
       "type": "manifesto",
       "props": {
-        "text": "Doanh nghiệp không cần thêm một phần mềm nữa. Cần một hệ điều hành để mọi phần mềm nói cùng một ngôn ngữ.",
+        "text": "A company does not need one more piece of software. It needs an operating system so every piece speaks the same language.",
         "asideLeft": "Ebig OS",
-        "asideRight": "Kiến trúc hội tụ"
+        "asideRight": "Converged architecture"
       }
     },
     {
       "type": "split",
       "props": {
-        "eyebrow": "Cách hoạt động",
-        "text": "Ba nhà máy số dựng nên hệ: Ebig Tool vẽ giao diện và design token, Ebig Platform mô hình hoá quy trình, Ebig Module đóng gói tính năng dùng lại. Cả ba đọc chung một lớp metadata và một lõi dữ liệu Ebig Database, nên đổi một nơi là cả hệ đổi theo.",
+        "eyebrow": "How it works",
+        "text": "Three digital factories build the system: Ebig Tool draws interfaces and design tokens, Ebig Platform models processes, Ebig Module packages reusable features. All three read one metadata layer and one Ebig Database core, so a change in one place moves through the whole system.",
         "visual": {
           "type": "stats",
           "items": [
-            { "value": "Tool", "label": "nhà máy thiết kế — giao diện và design token" },
-            { "value": "Platform", "label": "nhà máy quy trình — low-code hướng metadata" },
-            { "value": "Module", "label": "nhà máy tính năng — module dùng lại" },
-            { "value": "Database", "label": "lõi dữ liệu — một nguồn chân lý duy nhất" }
+            { "value": "Tool", "label": "the design factory — interfaces and design tokens" },
+            { "value": "Platform", "label": "the process factory — metadata-driven low-code" },
+            { "value": "Module", "label": "the feature factory — reusable modules" },
+            { "value": "Database", "label": "the data core — a single source of truth" }
           ]
         }
       }
@@ -78,16 +78,16 @@
       "type": "feature",
       "props": {
         "index": "01",
-        "title": "Ứng dụng dựng từ metadata",
-        "description": "Giao diện, quy trình và ràng buộc dữ liệu được khai báo thành metadata thay vì hard-code. Đổi yêu cầu là sửa khai báo rồi phát hành, không phải viết lại rồi chờ một chu kỳ phát triển mới.",
+        "title": "Applications built from metadata",
+        "description": "Interfaces, processes, and data constraints are declared as metadata instead of hard-coded. A changed requirement means editing the declaration and shipping, not rewriting and waiting for another development cycle.",
         "visualSide": "right",
         "visual": {
           "type": "stats",
           "items": [
-            { "value": "24 cột", "label": "lưới responsive chuẩn của Ebig Platform" },
-            { "value": "Token", "label": "design token đồng bộ mọi ứng dụng" },
-            { "value": "Binding", "label": "ràng buộc biểu thức động, không sửa mã" },
-            { "value": "[cần số thật]", "label": "thời gian từ khai báo tới phát hành" }
+            { "value": "24 columns", "label": "the standard responsive grid in Ebig Platform" },
+            { "value": "Token", "label": "design tokens shared across every application" },
+            { "value": "Binding", "label": "dynamic expression binding, with no code changes" },
+            { "value": "[real number needed]", "label": "time from declaration to release" }
           ]
         }
       }
@@ -96,16 +96,16 @@
       "type": "feature",
       "props": {
         "index": "02",
-        "title": "Dữ liệu chảy theo sự kiện",
-        "description": "Kiến trúc hướng sự kiện đẩy mọi thay đổi từ phòng ban này sang phòng ban khác ngay khi nó xảy ra. Không còn silo dữ liệu, không còn buổi đối soát cuối tháng giữa những tệp Excel rời nhau.",
+        "title": "Data moves on events",
+        "description": "An event-driven architecture pushes every change from one department to the next the moment it happens. No data silos, and no month-end reconciliation across disconnected spreadsheets.",
         "visualSide": "left",
         "visual": {
           "type": "stats",
           "items": [
-            { "value": "Event", "label": "mỗi thay đổi là một sự kiện lan trong hệ" },
-            { "value": "State", "label": "trạng thái tập trung, giao diện tự cập nhật" },
-            { "value": "Data API", "label": "truy vấn và đồng bộ theo thời gian thực" },
-            { "value": "SSOT", "label": "một nguồn chân lý cho mọi phòng ban" }
+            { "value": "Event", "label": "every change is an event travelling through the system" },
+            { "value": "State", "label": "central state, with interfaces updating themselves" },
+            { "value": "Data API", "label": "real-time querying and synchronization" },
+            { "value": "SSOT", "label": "one source of truth for every department" }
           ]
         }
       }
@@ -114,16 +114,16 @@
       "type": "feature",
       "props": {
         "index": "03",
-        "title": "Hạ tầng đặt nơi bạn muốn",
-        "description": "Cloud native khi cần co giãn nhanh, on-premise khi dữ liệu phải nằm trong nhà. Cùng một hệ, cùng bộ module, chỉ khác nơi đặt — đổi chỗ không phải làm lại.",
+        "title": "Infrastructure wherever you want it",
+        "description": "Cloud native when you need to scale fast, on-premise when the data has to stay in the building. The same system and the same modules — only the location differs, and moving does not mean rebuilding.",
         "visualSide": "right",
         "visual": {
           "type": "stats",
           "items": [
-            { "value": "Cloud", "label": "triển khai cloud native, co giãn theo tải" },
-            { "value": "On-prem", "label": "đặt trong hạ tầng của doanh nghiệp" },
-            { "value": "[cần tên thật]", "label": "chứng chỉ tiêu chuẩn đã đạt" },
-            { "value": "[cần số thật]", "label": "cam kết khả dụng theo hợp đồng" }
+            { "value": "Cloud", "label": "cloud native deployment that scales with load" },
+            { "value": "On-prem", "label": "hosted inside your own infrastructure" },
+            { "value": "[real name needed]", "label": "standards certification achieved" },
+            { "value": "[real number needed]", "label": "contractual availability commitment" }
           ]
         }
       }
@@ -131,20 +131,20 @@
     {
       "type": "cta",
       "props": {
-        "title": "Xem hệ chạy thật trong 30 phút",
-        "primary": { "label": "Đặt lịch demo", "href": "https://ebig.co/vi/contact" },
-        "secondary": { "label": "Đọc tài liệu kỹ thuật", "href": "https://ebig.co/vi/wiki/overview" },
-        "note": "Chạy trên dữ liệu mẫu của ngành bạn. Chưa cần cài gì."
+        "title": "See the system running in 30 minutes",
+        "primary": { "label": "Book a demo", "href": "https://ebig.co/vi/contact" },
+        "secondary": { "label": "Read the technical docs", "href": "https://ebig.co/vi/wiki/overview" },
+        "note": "Runs on sample data from your industry. Nothing to install."
       }
     },
     {
       "type": "footer",
       "props": {
         "brand": "Ebig",
-        "tagline": "Hệ điều hành doanh nghiệp trên kiến trúc hội tụ.",
+        "tagline": "The enterprise operating system on a converged architecture.",
         "columns": [
           {
-            "title": "Nền tảng",
+            "title": "Platform",
             "links": [
               { "label": "Ebig Platform", "href": "https://ebig.co/vi/ebig-platform" },
               { "label": "Ebig Tool", "href": "https://ebig.co/vi/ebig-tool" },
@@ -153,24 +153,24 @@
             ]
           },
           {
-            "title": "Giải pháp",
+            "title": "Solutions",
             "links": [
               { "label": "Ebig AI", "href": "https://ebig.co/vi/solution-ebig-ai" },
-              { "label": "Hạ tầng", "href": "https://ebig.co/vi/solution-ebig-infrastructure" },
+              { "label": "Infrastructure", "href": "https://ebig.co/vi/solution-ebig-infrastructure" },
               { "label": "Digital Workplace", "href": "https://ebig.co/vi/ebig-digital-workplace" },
               { "label": "Deep Insight", "href": "https://ebig.co/vi/deep-insight-enterprise" }
             ]
           },
           {
-            "title": "Công ty",
+            "title": "Company",
             "links": [
-              { "label": "Về Ebig", "href": "https://ebig.co/vi/about" },
-              { "label": "Bảng giá", "href": "https://ebig.co/vi/pricing" },
-              { "label": "Liên hệ", "href": "https://ebig.co/vi/contact" }
+              { "label": "About Ebig", "href": "https://ebig.co/vi/about" },
+              { "label": "Pricing", "href": "https://ebig.co/vi/pricing" },
+              { "label": "Contact", "href": "https://ebig.co/vi/contact" }
             ]
           }
         ],
-        "meta": "Trang thử dựng bằng Ebig Design System. Nội dung lấy từ ebig.co/llms.txt, mọi số liệu còn trống chờ dữ liệu thật."
+        "meta": "A trial page built with the Ebig Design System. Content comes from ebig.co/llms.txt; every blank figure is waiting on real data."
       }
     }
   ]

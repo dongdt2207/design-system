@@ -4,12 +4,12 @@ import '../aria.css';
 import './Popover.css';
 export interface PopoverProps {
   trigger: ReactNode;
-  /** Tiêu đề ngắn (aria). */
+  /** Short title (aria). */
   title?: string;
   placement?: 'bottom start' | 'bottom end' | 'bottom' | 'top' | 'left' | 'right';
   children: ReactNode | ((close: () => void) => ReactNode);
 }
-/** Nội dung tạm trong ngữ cảnh: bộ lọc, form nhỏ. Có hành động thì có nút đóng rõ ràng; không hành động thì dùng Tooltip. */
+/** Temporary content in context: filters, small forms. With actions it needs an explicit close button; without actions, use Tooltip. */
 export function Popover({ trigger, title, placement = 'bottom start', children }: PopoverProps) {
   return (
     <DialogTrigger>

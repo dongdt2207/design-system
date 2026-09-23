@@ -1,4 +1,4 @@
-.eb-bar { display: flex; flex-direction: column; gap: var(--space-3); }
+.eb-bar { container-type: inline-size; display: flex; flex-direction: column; gap: var(--space-3); }
 .eb-bar__row { display: grid; grid-template-columns: minmax(72px, 24%) 1fr auto; align-items: center; gap: var(--space-3); }
 .eb-bar__label { font-size: var(--text-xs); color: var(--color-text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .eb-bar__tracks { display: flex; flex-direction: column; gap: 2px; }
@@ -8,7 +8,8 @@
 .eb-bar__fill:not(:last-child) { border-radius: 0; }
 .eb-bar__fill:hover { opacity: 0.85; }
 .eb-bar__value { font-size: var(--text-xs); color: var(--color-text-primary); font-variant-numeric: tabular-nums; }
-@media (max-width: 640px) {
+/* Labels move to their own line when the chart column is narrow — follows the chart width (section 3.5). */
+@container (max-width: 639px) {
   .eb-bar__row { grid-template-columns: 1fr auto; }
   .eb-bar__label { grid-column: 1 / -1; }
 }

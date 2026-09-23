@@ -5,7 +5,7 @@ import { Button } from '../Button/Button';
 
 const ClipIcon = () => <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M10.5 5.5l-4 4a1.5 1.5 0 002 2l4.5-4.5a3 3 0 10-4.2-4.2L4 7.6a4.5 4.5 0 006.4 6.4l3.6-3.6" /></svg>;
 
-/** Ô soạn câu hỏi cho trợ lý. Enter gửi, Shift + Enter xuống dòng; ô cao dần theo nội dung rồi tự cuộn. */
+/** The composer for questions to the assistant. Enter sends, Shift + Enter adds a line; the field grows with the content, then scrolls. */
 const meta: Meta<typeof PromptInput> = {
   title: 'Components/PromptInput', component: PromptInput, tags: ['autodocs'],
   argTypes: { toolbar: { control: false }, onSend: { action: 'send' }, onStop: { action: 'stop' } },
@@ -14,43 +14,43 @@ const meta: Meta<typeof PromptInput> = {
 export default meta;
 type Story = StoryObj<typeof PromptInput>;
 
-/** Rỗng — nút Gửi khoá cho tới khi có nội dung. */
+/** Empty — Send stays disabled until there is content. */
 export const Empty: Story = {};
-export const HasText: Story = { args: { defaultValue: 'Doanh thu tháng 8 thế nào?' } };
+export const HasText: Story = { args: { defaultValue: 'How did August revenue do?' } };
 
-/** Nút phụ bên trái: đính kèm tệp, chọn phạm vi dữ liệu. */
+/** Secondary controls on the left: attach a file, pick a data scope. */
 export const WithToolbar: Story = {
-  args: { defaultValue: 'Tổng hợp doanh thu theo tuần', toolbar: <><Button variant="ghost" size="sm" iconStart={<ClipIcon />}>Đính kèm</Button><Button variant="ghost" size="sm">Nguồn dữ liệu</Button></> },
+  args: { defaultValue: 'Summarize revenue by week', toolbar: <><Button variant="ghost" size="sm" iconStart={<ClipIcon />}>Attach</Button><Button variant="ghost" size="sm">Data source</Button></> },
 };
 
-/** Trợ lý đang trả lời: nút đổi thành Dừng, ô vẫn gõ được để soạn câu tiếp theo. */
+/** The assistant is answering: the button becomes Stop, and the field stays editable for the next question. */
 export const Busy: Story = { args: { busy: true, defaultValue: '' } };
 
-export const WithCount: Story = { args: { maxLength: 500, defaultValue: 'So sánh doanh thu tháng 8 với cùng kỳ năm ngoái.' } };
+export const WithCount: Story = { args: { maxLength: 500, defaultValue: 'Compare August revenue with the same month last year.' } };
 
-/** Lỗi nói cái gì sai và cách sửa. */
-export const Error: Story = { args: { defaultValue: '', error: 'Câu hỏi dài quá 500 ký tự. Rút ngắn rồi gửi lại.' } };
+/** The error says what went wrong and how to fix it. */
+export const Error: Story = { args: { defaultValue: '', error: 'The question is over 500 characters. Shorten it, then send again.' } };
 
-export const Disabled: Story = { args: { disabled: true, defaultValue: 'Không gửi được khi mất kết nối.' } };
+export const Disabled: Story = { args: { disabled: true, defaultValue: 'Can\u2019t send while the connection is down.' } };
 
-/** Nội dung dài — ô cao tối đa 8 dòng rồi cuộn trong ô. */
+/** Long content — the field grows to 8 rows, then scrolls inside itself. */
 export const LongText: Story = {
-  args: { defaultValue: Array.from({ length: 10 }, (_, i) => `Dòng ${i + 1}: mô tả thêm ngữ cảnh cho trợ lý.`).join('\n') },
+  args: { defaultValue: Array.from({ length: 10 }, (_, i) => `Line ${i + 1}: more context for the assistant.`).join('\n') },
 };
 
-/** Bật `voice` để thêm nút ghi âm bên trái thanh công cụ. */
+/** Set `voice` to add the record button on the left of the toolbar. */
 export const Voice: Story = { args: { voice: true } };
 
-/** Đang ghi: ô gõ nhường chỗ cho dải trạng thái có chấm đỏ và đồng hồ; nút đổi thành Huỷ / Xong. */
+/** Recording: the field gives way to a status strip with a red dot and a timer; the buttons become Cancel / Done. */
 export const VoiceRecording: Story = { args: { voice: true, voiceState: 'recording', voiceDuration: 7 } };
 
-/** Đã dừng ghi, đang chuyển lời nói thành chữ. */
+/** Recording stopped, speech being turned into text. */
 export const VoiceTranscribing: Story = { args: { voice: true, voiceState: 'transcribing' } };
 
-/** Không ghi âm được — nói cách sửa, ô gõ vẫn dùng bình thường. */
+/** Recording failed — it says how to fix it, and typing still works. */
 export const VoiceError: Story = { args: { voice: true, voiceState: 'error' } };
 
-/** Bản chạy thử: bấm micro để ghi, đồng hồ chạy, bấm Xong để nhận bản chữ. */
+/** Live demo: press the mic to record, watch the timer, press Done to get the transcript. */
 export const VoiceDemo: Story = {
   parameters: { controls: { disable: true } },
   render: () => {
@@ -69,7 +69,7 @@ export const VoiceDemo: Story = {
         onVoiceCancel={() => setState('idle')}
         onVoiceStop={() => {
           setState('transcribing');
-          window.setTimeout(() => { setText((t) => `${t}${t ? ' ' : ''}Doanh thu tháng 8 thế nào?`); setState('idle'); }, 1200);
+          window.setTimeout(() => { setText((t) => `${t}${t ? ' ' : ''}How did August revenue do?`); setState('idle'); }, 1200);
         }}
         onSend={() => setText('')}
       />

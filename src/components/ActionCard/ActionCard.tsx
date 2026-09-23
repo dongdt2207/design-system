@@ -5,14 +5,14 @@ export interface ActionCardProps {
   title: string;
   description?: string;
   icon?: ReactNode;
-  /** Đúng một hành động chính. Cần hai việc ngang nhau thì đó là hai thẻ. */
+  /** Exactly one main action. Two equal jobs means two cards. */
   action: ReactNode;
-  /** Xoá rào cản: "Miễn phí 14 ngày", "Không cần thẻ". */
+  /** Removes a barrier: "Free for 14 days", "No card required". */
   note?: string;
   variant?: 'default' | 'subtle';
 }
 
-/** Một thẻ, một việc. Mô tả nói kết quả người dùng nhận được, không mô tả tính năng. */
+/** One card, one job. The description states the outcome the user gets, not the feature. */
 export function ActionCard({ title, description, icon, action, note, variant = 'default' }: ActionCardProps) {
   return (
     <div className={`eb-action-card${variant === 'subtle' ? ' eb-action-card--subtle' : ''}`}>

@@ -5,12 +5,12 @@ import { ColorScale, SemanticColors } from './TokenBlocks';
 
 # Colors
 
-Hai tầng. **Primitive** là bảng màu thô (`--gray-*`, `--brand-*`, chỉ dùng trong `tokens.css`). **Semantic** là màu theo ý nghĩa, đổi theo theme — component chỉ dùng tầng này. Nền là kem, mực là nâu-đen ấm, không có trắng tinh hay đen tuyệt đối.
+Two layers. **Primitive** is the raw palette (`--gray-*`, `--brand-*`, used only inside `tokens.css`). **Semantic** is color by meaning, changing with the theme — components use this layer only. The background is cream and the ink is a warm brown-black; there is no pure white or absolute black.
 
 ## Primitive
-### Gray (neutral ấm)
+### Gray (warm neutrals)
 <ColorScale prefix="gray" steps={[50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]} />
-### Brand (Cornflower Blue — `#287CF0` ở bậc 500)
+### Brand (Cornflower Blue — `#287CF0` at step 500)
 <ColorScale prefix="brand" steps={[50, 100, 200, 300, 400, 500, 600, 700, 800, 900]} />
 ### Feedback
 <ColorScale prefix="green" steps={[100, 500, 700]} />
@@ -22,5 +22,5 @@ Hai tầng. **Primitive** là bảng màu thô (`--gray-*`, `--brand-*`, chỉ d
 <SemanticColors names={['--color-bg-page', '--color-bg-surface', '--color-bg-surface-raised', '--color-bg-subtle', '--color-bg-muted', '--color-bg-brand', '--color-bg-brand-hover', '--color-bg-brand-subtle', '--color-bg-ink', '--color-bg-danger', '--color-bg-danger-subtle', '--color-bg-success-subtle', '--color-bg-warning-subtle']} />
 ### Text
 <SemanticColors names={['--color-text-primary', '--color-text-secondary', '--color-text-muted', '--color-text-disabled', '--color-text-on-brand', '--color-text-on-ink', '--color-text-brand', '--color-text-danger', '--color-text-success', '--color-text-warning']} />
-### Border (hairline — thay cho bóng)
+### Border (hairlines — instead of shadows)
 <SemanticColors names={['--color-border-soft', '--color-border-default', '--color-border-strong', '--color-border-brand', '--color-border-danger', '--color-border-focus']} />

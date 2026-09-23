@@ -1,4 +1,7 @@
-.eb-heat { display: flex; flex-direction: column; gap: var(--space-3); overflow-x: auto; }
+.eb-heat { display: flex; flex-direction: column; gap: var(--space-3); }
+/* The grid scrolls sideways when narrow — the scroll area must be keyboard focusable (section 3.5). */
+.eb-heat__scroll { overflow-x: auto; }
+.eb-heat__scroll:focus-visible { outline: 2px solid var(--color-border-focus); outline-offset: 2px; border-radius: var(--radius-sm); }
 .eb-heat__grid { display: grid; gap: 2px; }
 .eb-heat__cell { aspect-ratio: 1; border-radius: var(--radius-xs); min-width: 18px; }
 .eb-heat__cell--empty { background: var(--color-bg-subtle); }

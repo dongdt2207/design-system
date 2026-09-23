@@ -1,5 +1,5 @@
-/* Cả thẻ là vùng bấm, nhưng bên dưới là input thật — không phải div gắn onClick.
-   Nhờ vậy có sẵn: bàn phím, nhóm radio, đọc màn hình, và trạng thái checked. */
+/* The whole card is the hit area, but underneath is a real input — not a div with onClick.
+   That gives keyboard support, radio grouping, screen readers, and the checked state for free. */
 .eb-sel-card { position: relative; display: block; cursor: pointer; }
 .eb-sel-card__input { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .eb-sel-card__box { display: flex; gap: var(--space-4); align-items: flex-start; padding: var(--space-5); background: var(--color-bg-surface); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); transition: border-color var(--duration-fast) var(--ease-standard), background var(--duration-fast) var(--ease-standard); }

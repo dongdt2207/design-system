@@ -5,9 +5,9 @@ import { RadiusScale, ShadowScale } from './TokenBlocks';
 
 # Radius & Shadow
 ## Radius
-`sm` 6 checkbox, tag · `md` 8 nút, ô nhập · `lg` 12 card, modal, dropdown · `xl` 16 card lớn (hiếm) · `full` badge, avatar.
+`sm` 6 checkbox, tag · `md` 8 button, input · `lg` 12 card, modal, dropdown · `xl` 16 large card (rare) · `full` badge, avatar.
 <RadiusScale steps={['sm', 'md', 'lg', 'xl', 'full']} />
 
-## Shadow — hệ này không có bóng
-Depth bằng hairline: `--shadow-sm/md/lg` là viền 1px với ba độ đậm, không phải bóng đổ. Card nổi lên nhờ trắng-trên-kem.
+## Shadow — this system has none
+Depth comes from hairlines: `--shadow-sm/md/lg` are 1px borders at three weights, not drop shadows. Cards lift through white-on-cream.
 <ShadowScale steps={['sm', 'md', 'lg']} />

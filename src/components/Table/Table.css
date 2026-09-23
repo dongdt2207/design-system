@@ -1,5 +1,5 @@
 @import '../Skeleton/Skeleton.css';
-.eb-table-wrap { position: relative; overflow-x: auto; border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); background: var(--color-bg-surface); }
+.eb-table-wrap { container-type: inline-size; position: relative; overflow-x: auto; border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); background: var(--color-bg-surface); }
 .eb-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
 .eb-table th { position: sticky; top: 0; z-index: 1; background: var(--color-bg-subtle); text-align: left; font-size: var(--text-xs); font-weight: var(--weight-medium); color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border-default); white-space: nowrap; }
 .eb-table td { border-bottom: 1px solid var(--color-border-soft); color: var(--color-text-primary); vertical-align: middle; }
@@ -20,3 +20,22 @@
 .eb-table--sticky th:first-child { background: var(--color-bg-subtle); z-index: 3; }
 .eb-table--sticky td:first-child { background: var(--color-bg-surface); }
 .eb-table .eb-check__box { margin-top: 0; }
+
+/* A horizontal scroll area must be keyboard reachable (sections 3.5 and 11). */
+.eb-table-wrap:focus-visible { outline: 2px solid var(--color-border-focus); outline-offset: -2px; }
+
+/* Below 640: the table becomes a card list (section 9.6). Each cell carries its column label. */
+@container (max-width: 639px) {
+  .eb-table-wrap { overflow-x: visible; border: 0; background: none; border-radius: 0; }
+  .eb-table, .eb-table tbody, .eb-table tr, .eb-table td { display: block; }
+  .eb-table thead { display: none; }
+  .eb-table tbody tr { margin-bottom: var(--space-3); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); background: var(--color-bg-surface); overflow: hidden; }
+  .eb-table tbody tr:last-child { margin-bottom: 0; }
+  .eb-table--sm td, .eb-table--md td, .eb-table--lg td { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); height: auto; min-height: 40px; padding: var(--space-2) var(--space-3); }
+  .eb-table td[data-label]::before { content: attr(data-label); flex: none; font-size: var(--text-xs); color: var(--color-text-muted); }
+  .eb-table__td--right { text-align: left; }
+  .eb-table tbody tr:hover td, .eb-table tbody tr[data-selected] td { background: none; }
+  .eb-table tbody tr[data-selected] { border-color: var(--color-border-brand); background: var(--color-bg-brand-subtle); }
+  .eb-table--sticky td:first-child { position: static; }
+  .eb-table__empty { display: block; border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); background: var(--color-bg-surface); }
+}

@@ -6,10 +6,10 @@ export interface TabItem { id: string; label: string; content: ReactNode; disabl
 export interface TabsProps {
   items: TabItem[];
   defaultSelected?: string; selected?: string; onChange?: (id: string) => void;
-  /** line = gạch dưới (mặc định). pill = viên trong khay, cho toolbar. */
+  /** line = underline (default). pill = pills in a tray, for toolbars. */
   variant?: 'line' | 'pill';
 }
-/** Chuyển giữa các view cùng cấp, tối đa 6 tab. Không dùng để điều hướng giữa trang. */
+/** Switches between sibling views, at most 6 tabs. Never for navigating between pages. */
 export function Tabs({ items, defaultSelected, selected, onChange, variant = 'line' }: TabsProps) {
   return (
     <ATabs className={`eb-tabs eb-tabs--${variant}`} defaultSelectedKey={defaultSelected} selectedKey={selected} onSelectionChange={(k: Key) => onChange?.(String(k))}>

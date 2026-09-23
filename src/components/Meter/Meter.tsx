@@ -5,15 +5,15 @@ export interface MeterProps {
   value: number;
   /** Trần của thang. */
   max: number;
-  /** Mốc cần đạt hoặc không được vượt — vẽ thành vạch dọc. */
+  /** A target to reach or a ceiling not to cross — drawn as a vertical tick. */
   limit?: number;
-  /** Vượt limit là xấu (hạn mức) hay tốt (chỉ tiêu). Mặc định: xấu. */
+  /** Whether crossing the limit is bad (a quota) or good (a target). Default: bad. */
   overIs?: 'bad' | 'good';
   formatValue?: (n: number) => string;
 }
 
-/** Một tỉ lệ so với một mốc. Không dùng bánh hai lát, không dùng đồng hồ kim. */
-export function Meter({ label, value, max, limit, overIs = 'bad', formatValue = (n) => n.toLocaleString('vi-VN') }: MeterProps) {
+/** One ratio against one baseline. Never a two-slice pie, never a gauge dial. */
+export function Meter({ label, value, max, limit, overIs = 'bad', formatValue = (n) => n.toLocaleString('en-US') }: MeterProps) {
   const pct = Math.min(100, (value / max) * 100);
   const over = limit !== undefined && value > limit;
   return (
@@ -28,7 +28,7 @@ export function Meter({ label, value, max, limit, overIs = 'bad', formatValue = 
       </div>
       <div className="eb-meter__foot">
         <span>0</span>
-        {limit !== undefined && <span>{over ? 'Đã vượt mốc ' : 'Mốc '}{formatValue(limit)}</span>}
+        {limit !== undefined && <span>{over ? 'Over ' : 'Target '}{formatValue(limit)}</span>}
         <span>{formatValue(max)}</span>
       </div>
     </div>

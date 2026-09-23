@@ -7,11 +7,11 @@ export default meta;
 type Story = StoryObj<typeof Popover>;
 export const Filter: Story = {
   render: (a) => (
-    <Popover {...a} title="Lọc theo trạng thái" trigger={<Button variant="secondary">Bộ lọc</Button>}>
+    <Popover {...a} title="Filter by status" trigger={<Button variant="secondary">Filters</Button>}>
       {(close) => (
         <div style={{ display: 'grid', gap: 12 }}>
-          <Checkbox label="Đang hoạt động" defaultChecked /><Checkbox label="Chờ duyệt" /><Checkbox label="Bị khoá" />
-          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 8, marginTop: 4 }}><Button variant="ghost" size="sm" onClick={close}>Huỷ</Button><Button size="sm" onClick={close}>Áp dụng</Button></div>
+          <Checkbox label="Active" defaultChecked /><Checkbox label="Pending" /><Checkbox label="Locked" />
+          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 8, marginTop: 4 }}><Button variant="ghost" size="sm" onClick={close}>Cancel</Button><Button size="sm" onClick={close}>Apply</Button></div>
         </div>
       )}
     </Popover>

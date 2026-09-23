@@ -4,19 +4,19 @@ import { Button } from '../Button/Button';
 import './AlertDialog.css';
 export interface AlertDialogProps {
   trigger: ReactNode;
-  /** Nói rõ đối tượng: "Xoá dự án Alpha?" */
+  /** Names the object: "Delete project Alpha?" */
   title: string;
-  /** Nói hệ quả, không hỏi "bạn có chắc". */
+  /** States the consequence; never asks "are you sure". */
   description: string;
-  /** Động từ + đối tượng: "Xoá dự án". */
+  /** Verb + object: "Delete project". */
   confirmLabel: string;
   cancelLabel?: string;
-  /** danger cho không hoàn tác (mặc định). */
+  /** danger for irreversible actions (default). */
   tone?: 'danger' | 'primary';
   onConfirm?: () => void | Promise<void>;
 }
-/** Xác nhận hành động quan trọng. Khác Modal: không đóng khi bấm ra ngoài, focus mặc định vào nút Huỷ. */
-export function AlertDialog({ trigger, title, description, confirmLabel, cancelLabel = 'Huỷ', tone = 'danger', onConfirm }: AlertDialogProps) {
+/** Confirms an important action. Unlike Modal: no dismiss on outside click, focus starts on Cancel. */
+export function AlertDialog({ trigger, title, description, confirmLabel, cancelLabel = 'Cancel', tone = 'danger', onConfirm }: AlertDialogProps) {
   return (
     <DialogTrigger>
       <Pressable><span style={{ display: 'inline-flex' }}>{trigger}</span></Pressable>

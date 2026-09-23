@@ -8,11 +8,11 @@ const meta: Meta<typeof Drawer> = { title: 'Components/Drawer', component: Drawe
 export default meta;
 type Story = StoryObj<typeof Drawer>;
 export const EditMember: Story = {
-  args: { title: 'Chỉnh sửa thành viên', description: 'Trần Thu Hà · ha@ebig.co', side: 'right', size: 'md' },
+  args: { title: 'Edit member', description: 'Priya Raman · priya@ebig.co', side: 'right', size: 'md' },
   render: (a) => (
-    <Drawer {...a} trigger={<Button variant="secondary">Mở drawer</Button>} footer={(close) => <><Button variant="secondary" onClick={close}>Huỷ</Button><Button onClick={close}>Lưu thay đổi</Button></>}>
-      <div style={{ display: 'grid', gap: 16 }}><Input label="Tên hiển thị" defaultValue="Trần Thu Hà" /><Select label="Vai trò" defaultValue="editor" options={[{ value: 'admin', label: 'Quản trị viên' }, { value: 'editor', label: 'Biên tập' }, { value: 'viewer', label: 'Chỉ xem' }]} /><Switch label="Nhận thông báo email" defaultSelected /></div>
+    <Drawer {...a} trigger={<Button variant="secondary">Open drawer</Button>} footer={(close) => <><Button variant="secondary" onClick={close}>Cancel</Button><Button onClick={close}>Save changes</Button></>}>
+      <div style={{ display: 'grid', gap: 16 }}><Input label="Display name" defaultValue="Priya Raman" /><Select label="Role" defaultValue="editor" options={[{ value: 'admin', label: 'Administrator' }, { value: 'editor', label: 'Editor' }, { value: 'viewer', label: 'Viewer' }]} /><Switch label="Email notifications" defaultSelected /></div>
     </Drawer>
   ),
 };
-export const Bottom: Story = { args: { title: 'Bộ lọc', side: 'bottom' }, render: (a) => <Drawer {...a} trigger={<Button variant="secondary">Mở từ dưới</Button>}>Nội dung bộ lọc trên mobile.</Drawer> };
+export const Bottom: Story = { args: { title: 'Filters', side: 'bottom' }, render: (a) => <Drawer {...a} trigger={<Button variant="secondary">Open from the bottom</Button>}>Filter controls on mobile.</Drawer> };

@@ -8,7 +8,7 @@ export interface SelectProps {
 }
 const Chevron = () => <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 6l4 4 4-4" /></svg>;
 const Check = () => <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8.5l3 3 7-7" /></svg>;
-/** Chọn một trong danh sách. Dưới 4 lựa chọn cân nhắc Radio; trên 15 cần ComboBox có tìm kiếm. */
+/** Pick one from a list. Below 4 options consider Radio; above 15, use a searchable ComboBox. */
 export function Select({ label, hint, error, placeholder = 'Chọn…', options, value, defaultValue, onValueChange, size = 'md', disabled }: SelectProps) {
   const id = useId(); const descId = `${id}-desc`;
   const cls = ['eb-field', `eb-field--${size}`, error && 'eb-field--error', disabled && 'eb-field--disabled'].filter(Boolean).join(' ');

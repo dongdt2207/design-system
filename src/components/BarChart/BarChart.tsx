@@ -4,16 +4,16 @@ import './BarChart.css';
 
 export interface BarDatum {
   label: string;
-  /** Một giá trị cho mỗi series, đúng thứ tự `series`. */
+  /** One value per series, in the same order as `series`. */
   values: number[];
 }
 export interface BarChartProps {
   data: BarDatum[];
-  /** Tên series. Bỏ trống = một series duy nhất, khi đó không cần legend. */
+  /** Series names. Omit for a single series, which needs no legend. */
   series?: string[];
   /** Cộng dồn trong một thanh. Chỉ dùng khi tổng có nghĩa. */
   stacked?: boolean;
-  /** Trần thang. Bỏ trống = lấy giá trị lớn nhất trong dữ liệu. */
+  /** Scale ceiling. Omit to use the largest value in the data. */
   max?: number;
   formatValue?: (n: number) => string;
 }
@@ -22,8 +22,8 @@ type TipRow = { name: string; value: string; color: string };
 type Tip = { x: number; y: number; head: string; rows: TipRow[] } | null;
 const colorOf = (i: number) => `var(--viz-cat-${(i % 8) + 1})`;
 
-/** So sánh giữa các hạng mục. Nằm ngang là mặc định vì nhãn dài vẫn đọc được. */
-export function BarChart({ data, series = [], stacked = false, max, formatValue = (n) => n.toLocaleString('vi-VN') }: BarChartProps) {
+/** Comparison across categories. Horizontal is the default because long labels stay readable. */
+export function BarChart({ data, series = [], stacked = false, max, formatValue = (n) => n.toLocaleString('en-US') }: BarChartProps) {
   const [tip, setTip] = useState<Tip>(null);
   const names = series.length ? series : [''];
   const rowTotal = (d: BarDatum) => d.values.reduce((a, b) => a + b, 0);
@@ -48,7 +48,7 @@ export function BarChart({ data, series = [], stacked = false, max, formatValue 
                     key={i}
                     className="eb-bar__fill"
                     style={{ width: `${(v / ceiling) * 100}%`, background: colorOf(i) }}
-                    onMouseMove={(e) => show(e, d.label, [{ name: names[i] || 'Giá trị', value: formatValue(v), color: colorOf(i) }])}
+                    onMouseMove={(e) => show(e, d.label, [{ name: names[i] || 'Value', value: formatValue(v), color: colorOf(i) }])}
                   />
                 ))}
               </div>
@@ -81,8 +81,8 @@ export function BarChart({ data, series = [], stacked = false, max, formatValue 
       )}
 
       <table className="eb-chart__table">
-        <caption>Số liệu dạng bảng</caption>
-        <thead><tr><th scope="col">Hạng mục</th>{names.map((n, i) => <th scope="col" key={i}>{n || 'Giá trị'}</th>)}</tr></thead>
+        <caption>Data table</caption>
+        <thead><tr><th scope="col">Category</th>{names.map((n, i) => <th scope="col" key={i}>{n || 'Value'}</th>)}</tr></thead>
         <tbody>{data.map((d) => <tr key={d.label}><th scope="row">{d.label}</th>{d.values.map((v, i) => <td key={i}>{formatValue(v)}</td>)}</tr>)}</tbody>
       </table>
     </div>

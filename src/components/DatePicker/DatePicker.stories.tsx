@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { parseDate, today, getLocalTimeZone } from '@internationalized/date';
 import { DatePicker } from './DatePicker';
-const meta: Meta<typeof DatePicker> = { title: 'Components/DatePicker', component: DatePicker, tags: ['autodocs'], args: { label: 'Ngày bắt đầu' }, argTypes: { size: { control: 'radio', options: ['sm', 'md', 'lg'] }, value: { control: false }, defaultValue: { control: false }, minValue: { control: false }, maxValue: { control: false } }, decorators: [(S) => <div style={{ width: 320 }}><S /></div>] };
+const meta: Meta<typeof DatePicker> = { title: 'Components/DatePicker', component: DatePicker, tags: ['autodocs'], args: { label: 'Start date' }, argTypes: { size: { control: 'radio', options: ['sm', 'md', 'lg'] }, value: { control: false }, defaultValue: { control: false }, minValue: { control: false }, maxValue: { control: false } }, decorators: [(S) => <div style={{ width: 320 }}><S /></div>] };
 export default meta;
 type Story = StoryObj<typeof DatePicker>;
 export const Default: Story = {};
 export const WithValue: Story = { args: { defaultValue: parseDate('2026-09-19') } };
-export const FutureOnly: Story = { args: { hint: 'Chỉ chọn từ hôm nay trở đi.', minValue: today(getLocalTimeZone()) } };
-export const Error: Story = { args: { error: 'Ngày bắt đầu phải trước ngày kết thúc.', defaultValue: parseDate('2026-10-01') } };
+export const FutureOnly: Story = { args: { hint: 'Today or later only.', minValue: today(getLocalTimeZone()) } };
+export const Error: Story = { args: { error: 'The start date must come before the end date.', defaultValue: parseDate('2026-10-01') } };
 export const Disabled: Story = { args: { disabled: true, defaultValue: parseDate('2026-09-19') } };

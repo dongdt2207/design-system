@@ -2,7 +2,7 @@ import '../components/Button/Button.css';
 import { Nav, HeroEditorial, Manifesto, SplitText, Timeline, FeatureFullBleed, Testimonial, TeamBlock, Pricing, Comparison, CTAFinal, Footer } from './index';
 import type { NavProps, HeroEditorialProps, ManifestoProps, SplitTextProps, TimelineProps, FeatureFullBleedProps, TestimonialProps, TeamBlockProps, PricingProps, ComparisonProps, CTAFinalProps, FooterProps } from './index';
 
-/** Landing = danh sách section + dữ liệu. Agent chỉ sinh cấu trúc này. */
+/** A landing page = a list of sections plus data. Agents generate only this structure. */
 export type LandingSection =
   | { type: 'nav'; props: NavProps } | { type: 'hero'; props: HeroEditorialProps } | { type: 'manifesto'; props: ManifestoProps }
   | { type: 'split'; props: SplitTextProps } | { type: 'timeline'; props: TimelineProps }

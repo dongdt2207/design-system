@@ -1,5 +1,5 @@
 {
-  "title": "Ebig CDN — Nhanh ở mọi nơi",
+  "title": "Ebig CDN — Fast everywhere",
   "sections": [
     {
       "type": "nav",
@@ -7,24 +7,24 @@
         "logo": "ebig cdn",
         "links": [
           {
-            "label": "Tính năng",
+            "label": "Features",
             "href": "#features"
           },
           {
-            "label": "Giá",
+            "label": "Pricing",
             "href": "#pricing"
           },
           {
-            "label": "Tài liệu",
+            "label": "Docs",
             "href": "#docs"
           },
           {
-            "label": "Trạng thái",
+            "label": "Status",
             "href": "#status"
           }
         ],
         "cta": {
-          "label": "Bắt đầu",
+          "label": "Get started",
           "href": "#start"
         }
       }
@@ -32,28 +32,28 @@
     {
       "type": "hero",
       "props": {
-        "eyebrow": "Ebig CDN — phân phối nội dung trên mạng biên Cloudflare",
-        "title": "Nhanh ở mọi nơi",
+        "eyebrow": "Ebig CDN — content delivery on the Cloudflare edge network",
+        "title": "Fast everywhere",
         "blocks": [
           {
             "value": "12 ms",
-            "label": "độ trễ trung vị, Việt Nam",
+            "label": "median latency, Vietnam",
             "height": "mid"
           },
           {
             "value": "300+",
-            "label": "điểm biên toàn cầu",
+            "label": "edge locations worldwide",
             "height": "low"
           },
           {
             "value": "99.99%",
-            "label": "cam kết khả dụng",
+            "label": "availability commitment",
             "height": "tall",
             "deep": true
           },
           {
             "value": "JWT",
-            "label": "xác thực ngay tại biên",
+            "label": "authentication at the edge",
             "height": "mid"
           },
           {
@@ -67,7 +67,7 @@
     {
       "type": "manifesto",
       "props": {
-        "text": "Chúng tôi xây CDN để tệp đến tay người dùng nhanh nhất có thể, với ít cấu hình nhất có thể.",
+        "text": "We built this CDN so files reach people as fast as possible, with as little configuration as possible.",
         "asideLeft": "2024",
         "asideRight": "R2 + Workers"
       }
@@ -75,26 +75,26 @@
     {
       "type": "split",
       "props": {
-        "eyebrow": "Cách hoạt động",
-        "text": "Bạn đẩy tệp lên một bucket. Ebig CDN đặt tệp đó tại 300+ điểm biên, nén sẵn, kiểm tra quyền truy cập bằng JWT ngay tại biên, và trả về với header cache đúng chuẩn. Không có origin server để bảo trì, không có invalidation để chờ.",
+        "eyebrow": "How it works",
+        "text": "You push files to a bucket. Ebig CDN places them at 300+ edge locations, pre-compressed, checks access with JWT right at the edge, and returns them with correct cache headers. No origin server to maintain, no invalidation to wait on.",
         "visual": {
           "type": "stats",
           "items": [
             {
               "value": "1",
-              "label": "lệnh để triển khai"
+              "label": "commands to deploy"
             },
             {
               "value": "0",
-              "label": "origin server phải quản lý"
+              "label": "origin servers to manage"
             },
             {
               "value": "< 50 ms",
-              "label": "purge lan toàn cầu"
+              "label": "for a purge to reach every edge"
             },
             {
               "value": "∞",
-              "label": "băng thông egress, không phí"
+              "label": "egress bandwidth, at no charge"
             }
           ]
         }
@@ -104,8 +104,8 @@
       "type": "feature",
       "props": {
         "index": "01",
-        "title": "Phục vụ từ điểm biên gần nhất",
-        "description": "Tệp nằm trên R2 và được cache tại mọi điểm biên Cloudflare. Người dùng ở Hà Nội, Tokyo hay Frankfurt đều lấy từ trạm cách họ vài chục km.",
+        "title": "Served from the nearest edge",
+        "description": "Files live on R2 and are cached at every Cloudflare edge. Someone in Hanoi, Tokyo, or Frankfurt fetches from a location a few dozen kilometers away.",
         "visualSide": "right",
         "visual": {
           "type": "terminal",
@@ -139,8 +139,8 @@
       "type": "feature",
       "props": {
         "index": "02",
-        "title": "Quyền truy cập kiểm tra tại biên",
-        "description": "Ký JWT ở phía bạn, Ebig CDN xác minh ngay tại điểm biên trước khi trả tệp. Tệp riêng tư không bao giờ rời trạm biên nếu chữ ký sai hoặc hết hạn.",
+        "title": "Access checked at the edge",
+        "description": "You sign the JWT on your side; Ebig CDN verifies it at the edge before returning the file. A private file never leaves the edge if the signature is wrong or expired.",
         "visualSide": "left",
         "visual": {
           "type": "terminal",
@@ -179,8 +179,8 @@
       "type": "feature",
       "props": {
         "index": "03",
-        "title": "Nén sẵn, không nén lúc chạy",
-        "description": "Mỗi asset được nén Brotli ở mức cao nhất lúc tải lên, không phải lúc phục vụ. Người dùng nhận tệp nhỏ hơn 20–30% so với gzip, còn điểm biên không tốn CPU.",
+        "title": "Compressed ahead of time, not at request time",
+        "description": "Every asset is Brotli-compressed at the highest level on upload, not on delivery. People receive files 20–30% smaller than gzip, and the edge spends no CPU on it.",
         "visualSide": "right",
         "visual": {
           "type": "terminal",
@@ -214,37 +214,37 @@
     {
       "type": "comparison",
       "props": {
-        "eyebrow": "So với cách cũ",
-        "title": "Ít việc hơn để có cùng kết quả",
+        "eyebrow": "Compared with the old way",
+        "title": "Less work for the same result",
         "columns": [
-          "Tiêu chí",
+          "Criterion",
           "Ebig CDN",
           "Origin + CDN truyền thống"
         ],
         "rows": [
           [
-            "Origin server phải quản lý",
-            "Không có",
-            "Một hoặc nhiều, tự vá và giám sát"
+            "Origin servers to manage",
+            "None",
+            "One or more, patched and monitored by you"
           ],
           [
-            "Xác thực tệp riêng tư",
-            "JWT kiểm tra tại biên",
+            "Private file authentication",
+            "JWT verified at the edge",
             "Qua origin, mỗi request tới server"
           ],
           [
             "Nén",
-            "Brotli sẵn lúc tải lên",
-            "Gzip lúc phục vụ, tốn CPU biên"
+            "Brotli applied on upload",
+            "Gzip on delivery, spending edge CPU"
           ],
           [
             "Purge cache",
-            "< 50 ms toàn cầu",
-            "Vài phút, theo tag hoặc URL"
+            "< 50 ms worldwide",
+            "Minutes, by tag or URL"
           ],
           [
-            "Phí băng thông ra",
-            "Không tính",
+            "Egress bandwidth fee",
+            "None",
             "Tính theo GB"
           ]
         ]
@@ -253,55 +253,55 @@
     {
       "type": "pricing",
       "props": {
-        "eyebrow": "Giá",
-        "title": "Bắt đầu miễn phí, trả theo dung lượng",
+        "eyebrow": "Pricing",
+        "title": "Start free, pay for storage",
         "tiers": [
           {
             "name": "Miễn phí",
-            "description": "Dự án cá nhân, thử nghiệm.",
-            "price": "0 ₫",
-            "period": "tháng",
+            "description": "Personal projects and experiments.",
+            "price": "$0",
+            "period": "month",
             "features": [
-              "100 GB lưu trữ",
-              "Băng thông ra không giới hạn",
-              "1 domain riêng",
+              "100 GB storage",
+              "Unlimited egress bandwidth",
+              "1 custom domain",
               "Purge qua dashboard"
             ],
             "cta": {
-              "label": "Tạo tài khoản",
+              "label": "Create an account",
               "href": "#start"
             }
           },
           {
             "name": "Team",
-            "description": "Sản phẩm đang chạy, nhiều môi trường.",
-            "price": "[cần số thật]",
-            "period": "tháng",
+            "description": "Live products across several environments.",
+            "price": "[real number needed]",
+            "period": "month",
             "features": [
-              "1 TB lưu trữ",
-              "JWT tại biên",
-              "5 domain riêng",
+              "1 TB storage",
+              "JWT at the edge",
+              "5 custom domains",
               "Purge qua API",
-              "Log truy cập 30 ngày"
+              "30 days of access logs"
             ],
             "cta": {
-              "label": "Dùng thử 14 ngày",
+              "label": "Start a 14-day trial",
               "href": "#start"
             },
             "featured": true
           },
           {
             "name": "Doanh nghiệp",
-            "description": "SLA, hỗ trợ riêng, hoá đơn VAT.",
-            "price": "Liên hệ",
+            "description": "SLA, dedicated support, tax invoicing.",
+            "price": "Talk to us",
             "features": [
-              "Lưu trữ theo thoả thuận",
+              "Storage by agreement",
               "SLA 99.99%",
-              "Hỗ trợ kỹ thuật riêng",
-              "Hoá đơn và hợp đồng"
+              "Dedicated technical support",
+              "Invoicing and contracts"
             ],
             "cta": {
-              "label": "Liên hệ",
+              "label": "Contact us",
               "href": "#contact"
             }
           }
@@ -314,7 +314,7 @@
         "variant": "single",
         "quotes": [
           {
-            "quote": "Chúng tôi bỏ nginx origin và toàn bộ lớp cache tự viết. Thời gian tải trang giảm một nửa, còn đội hạ tầng bớt một việc phải trực.",
+            "quote": "We dropped the nginx origin and the whole hand-written cache layer. Page load time halved, and the infrastructure team has one less thing on call.",
             "author": "Trần Minh",
             "role": "CTO, DigitalITM"
           }
@@ -327,12 +327,12 @@
         "variant": "pair",
         "quotes": [
           {
-            "quote": "Cấu hình mất mười phút. Hai tháng rồi chưa phải mở lại dashboard.",
+            "quote": "Setup took ten minutes. Two months on, I have not had to open the dashboard again.",
             "author": "Lê Hoàng Nam",
             "role": "Lead engineer, Vinatrade"
           },
           {
-            "quote": "JWT tại biên là lý do chúng tôi chọn. Tệp hợp đồng của khách không đi qua server của chúng tôi nữa.",
+            "quote": "JWT at the edge is why we chose it. Customer contract files no longer pass through our servers.",
             "author": "Nguyễn Thu Hà",
             "role": "Head of platform, Kova"
           }
@@ -342,26 +342,26 @@
     {
       "type": "cta",
       "props": {
-        "title": "Triển khai tệp đầu tiên trong năm phút",
+        "title": "Ship your first file in five minutes",
         "primary": {
-          "label": "Tạo tài khoản miễn phí",
+          "label": "Create a free account",
           "href": "#start"
         },
         "secondary": {
-          "label": "Đọc tài liệu",
+          "label": "Read the docs",
           "href": "#docs"
         },
-        "note": "Miễn phí 100 GB đầu tiên mỗi tháng. Không cần thẻ."
+        "note": "The first 100 GB each month is free. No card required."
       }
     },
     {
       "type": "footer",
       "props": {
         "brand": "Ebig",
-        "tagline": "Hạ tầng cho sản phẩm số, xây trên Cloudflare.",
+        "tagline": "Infrastructure for digital products, built on Cloudflare.",
         "columns": [
           {
-            "title": "Sản phẩm",
+            "title": "Product",
             "links": [
               {
                 "label": "Ebig CDN",
@@ -378,14 +378,14 @@
             ]
           },
           {
-            "title": "Tài nguyên",
+            "title": "Resources",
             "links": [
               {
-                "label": "Tài liệu",
+                "label": "Docs",
                 "href": "#"
               },
               {
-                "label": "Trạng thái",
+                "label": "Status",
                 "href": "#"
               },
               {
@@ -395,14 +395,14 @@
             ]
           },
           {
-            "title": "Công ty",
+            "title": "Company",
             "links": [
               {
                 "label": "Về Ebig",
                 "href": "#"
               },
               {
-                "label": "Liên hệ",
+                "label": "Contact us",
                 "href": "#"
               }
             ]

@@ -3,7 +3,7 @@
 .lp-grid { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--space-6); max-width: var(--lp-max); margin: 0 auto; padding: 0 var(--lp-gutter); }
 .lp-section { padding: var(--lp-section) 0; }
 
-/* Chữ: hai cấp — display 400 tracking âm, và nhỏ */
+/* Type: two levels — display at 400 with negative tracking, and small text */
 .lp-display { font-weight: var(--weight-regular); letter-spacing: var(--tracking-tight); margin: 0; }
 .lp-display--lg { font-size: var(--display-lg); line-height: 1.1; }
 .lp-display--md { font-size: var(--display-md); line-height: 1.2; }
@@ -42,7 +42,7 @@
 .lp-split__visual { grid-column: 7 / span 6; }
 .lp-split__text p { max-width: 42ch; }
 
-/* Feature — khối đảo mực */
+/* Feature — inverted ink block */
 .lp-feature { background: var(--color-bg-canvas-deep); color: var(--color-text-on-deep); }
 .lp-feature + .lp-feature { border-top: 1px solid rgba(255,255,255,0.08); }
 .lp-feature__inner { padding: var(--lp-section) 0; }
@@ -108,7 +108,7 @@
   .lp-cta__note { margin-top: var(--space-6); }
 }
 
-/* Pricing — tier featured đảo mực (không ribbon màu) */
+/* Pricing — the featured tier inverts to ink (no colored ribbon) */
 .lp-pricing__head { grid-column: 1 / span 7; margin-bottom: var(--lp-block); }
 .lp-pricing__grid { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-4); }
 .lp-tier { display: flex; flex-direction: column; gap: var(--space-5); padding: var(--space-8); background: var(--color-bg-surface); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); }
@@ -127,7 +127,7 @@
 .lp-tier__cta { align-self: flex-start; }
 .lp-tier--featured .eb-btn--ink { background: var(--color-bg-canvas); color: var(--color-text-primary); }
 
-/* Comparison — 2 cột, không "ta thắng địch thua" bằng màu */
+/* Comparison — 2 columns, never "we win, they lose" through color */
 .lp-compare__head { grid-column: 1 / span 7; margin-bottom: var(--lp-block); }
 .lp-compare { grid-column: 1 / -1; border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); overflow: hidden; background: var(--color-bg-surface); }
 .lp-compare table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
@@ -139,7 +139,7 @@
 .lp-compare th.lp-compare__us { color: var(--color-text-primary); }
 @media (max-width: 900px) { .lp-pricing__head, .lp-compare__head { grid-column: 1 / -1; } }
 
-/* Timeline — mốc theo thời gian, hàng cách nhau bằng viền 1px */
+/* Timeline — milestones in real time, rows separated by a 1px border */
 .lp-timeline__head { grid-column: 1 / span 5; }
 .lp-timeline { grid-column: 7 / span 6; list-style: none; margin: 0; padding: 0; }
 .lp-timeline__item { display: grid; grid-template-columns: var(--space-16) 1fr; column-gap: var(--space-5); padding: var(--space-5) 0; border-top: 1px solid var(--color-border-default); }
@@ -148,7 +148,7 @@
 .lp-timeline__label { margin: 0 0 var(--space-2); font-size: var(--text-sm); font-weight: var(--weight-medium); }
 .lp-timeline__text { color: var(--color-text-secondary); max-width: 42ch; }
 
-/* Team — ảnh tràn lưới, không bo góc, không bóng */
+/* Team — image spanning the grid, no radius, no shadow */
 .lp-team__image { grid-column: 1 / -1; }
 .lp-team__image img { display: block; width: 100%; height: auto; }
 .lp-team__head { grid-column: 1 / span 7; margin-top: var(--lp-block); }

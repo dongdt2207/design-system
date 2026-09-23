@@ -7,32 +7,32 @@ export default meta;
 type Story = StoryObj<typeof ActionCard>;
 
 export const MacDinh: Story = {
-  name: 'Mặc định',
+  name: 'Default',
   args: {
-    title: 'Đặt lịch khảo sát',
-    description: 'Một buổi tại nhà để đo đạc và nghe nếp sinh hoạt, trước khi vẽ bất cứ thứ gì.',
-    action: <Button variant="primary">Đặt lịch</Button>,
-    note: 'Miễn phí, không cần cọc',
+    title: 'Book a site visit',
+    description: 'One session at your place to measure up and hear how you live, before anything gets drawn.',
+    action: <Button variant="primary">Book a visit</Button>,
+    note: 'Free, no deposit',
   },
   render: (args) => <div style={{ maxWidth: 480 }}><ActionCard {...args} /></div>,
 };
 export const Nhat: Story = {
-  name: 'Nền nhạt — đặt trong trang dày đặc',
+  name: 'Subtle — inside a dense page',
   args: {
     variant: 'subtle',
-    title: 'Nhập dữ liệu từ bảng tính',
-    description: 'Tải lên tệp .xlsx, hệ thống khớp cột rồi hỏi lại trước khi ghi.',
+    title: 'Import from a spreadsheet',
+    description: 'Upload an .xlsx file; the system matches columns and asks before writing anything.',
     action: <Button variant="secondary">Chọn tệp</Button>,
   },
   render: (args) => <div style={{ maxWidth: 480 }}><ActionCard {...args} /></div>,
 };
-export const KhongMoTa: Story = { name: 'Không có mô tả', args: { title: 'Tạo báo cáo mới', action: <Button variant="primary">Tạo báo cáo</Button> }, render: (args) => <div style={{ maxWidth: 480 }}><ActionCard {...args} /></div> };
+export const NoDescription: Story = { name: 'No description', args: { title: 'Create a report', action: <Button variant="primary">Create report</Button> }, render: (args) => <div style={{ maxWidth: 480 }}><ActionCard {...args} /></div> };
 export const Hang: Story = {
-  name: 'Hai thẻ cạnh nhau',
+  name: 'Two cards side by side',
   render: () => (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
-      <ActionCard title="Mời đồng nghiệp" description="Gửi lời mời qua email, họ tự đặt mật khẩu." action={<Button variant="secondary">Mời</Button>} />
-      <ActionCard title="Kết nối kho dữ liệu" description="Đọc trực tiếp từ kho, không phải tải tệp thủ công." action={<Button variant="secondary">Kết nối</Button>} />
+      <ActionCard title="Invite a colleague" description="Send an email invitation; they set their own password." action={<Button variant="secondary">Invite</Button>} />
+      <ActionCard title="Connect a warehouse" description="Read straight from the warehouse instead of uploading files by hand." action={<Button variant="secondary">Connect</Button>} />
     </div>
   ),
 };

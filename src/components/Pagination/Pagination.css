@@ -1,6 +1,8 @@
-.eb-pager { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); font-size: var(--text-sm); }
+.eb-pager { container-type: inline-size; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2) var(--space-4); font-size: var(--text-sm); }
 .eb-pager__info { color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
 .eb-pager__pages { display: flex; align-items: center; gap: 2px; }
+.eb-pager__nums { display: flex; align-items: center; gap: 2px; }
+.eb-pager__compact { display: none; padding: 0 var(--space-2); color: var(--color-text-secondary); font-variant-numeric: tabular-nums; }
 .eb-pager__btn { min-width: 32px; height: 32px; padding: 0 var(--space-2); border: 0; background: transparent; border-radius: var(--radius-sm); color: var(--color-text-secondary); font: inherit; font-variant-numeric: tabular-nums; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
 .eb-pager__btn svg { width: 16px; height: 16px; }
 .eb-pager__btn:hover:not(:disabled) { background: var(--color-bg-subtle); color: var(--color-text-primary); }
@@ -9,3 +11,12 @@
 .eb-pager__btn--current { background: var(--color-bg-ink); color: var(--color-text-on-ink); }
 .eb-pager__btn--current:hover { background: var(--color-bg-ink) !important; color: var(--color-text-on-ink) !important; }
 .eb-pager__gap { padding: 0 var(--space-1); color: var(--color-text-disabled); }
+
+/* Below 640: the number row gives way to "Page 3 of 12" — those buttons fit neither the width nor the touch target. */
+@container (max-width: 639px) {
+  .eb-pager__nums { display: none; }
+  .eb-pager__compact { display: inline; }
+}
+@media (hover: none) {
+  .eb-pager__btn { min-width: 40px; height: 40px; }
+}
